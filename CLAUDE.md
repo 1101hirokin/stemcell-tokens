@@ -96,7 +96,9 @@ explicit `data-theme` attribute is set.
 Light theme: bg tokens use high shades (600–800), soft-bg uses low shades (50).
 Dark theme: bg tokens use mid shades (300–400), soft-bg uses high shades (800–900).
 This "flip" keeps perceived contrast roughly equivalent across schemes.
-Exception: `warning.fg` is `#000000` in dark mode (yellow bg requires dark text).
+Exception: `warning.fg`, `danger.fg`, `success.fg`, `plain.fg` are `#000000` in dark
+mode — their 400-shade backgrounds are too light (~2.5:1 with white, failing WCAG AA).
+Only `primary.fg` keeps white because brand.400 (#5e4bde) yields 5.94:1 contrast.
 
 ### `vars` Export
 Each theme TS module exports a `vars` constant — a flat `Record<string, string>`

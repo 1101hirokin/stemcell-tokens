@@ -54,7 +54,7 @@
             },
             "danger": {
                 "bg": { "$value": "{color.red.400}", "$type": "color" },
-                "fg": { "$value": "#ffffff", "$type": "color" },
+                "fg": { "$value": "#000000", "$type": "color" },
                 "border": { "$value": "{color.semantic.danger.bg}", "$type": "color" },
                 "icon": { "$value": "{color.semantic.danger.fg}", "$type": "color" },
                 "focus-ring": { "$value": "{color.semantic.focus-ring}", "$type": "color" },
@@ -82,7 +82,7 @@
             },
             "success": {
                 "bg": { "$value": "{color.green.400}", "$type": "color" },
-                "fg": { "$value": "#ffffff", "$type": "color" },
+                "fg": { "$value": "#000000", "$type": "color" },
                 "border": { "$value": "{color.semantic.success.bg}", "$type": "color" },
                 "icon": { "$value": "{color.semantic.success.fg}", "$type": "color" },
                 "focus-ring": { "$value": "{color.semantic.focus-ring}", "$type": "color" },
@@ -96,7 +96,7 @@
             },
             "plain": {
                 "bg": { "$value": "{color.gray.400}", "$type": "color" },
-                "fg": { "$value": "#ffffff", "$type": "color" },
+                "fg": { "$value": "#000000", "$type": "color" },
                 "border": { "$value": "{color.semantic.plain.bg}", "$type": "color" },
                 "icon": { "$value": "{color.semantic.plain.fg}", "$type": "color" },
                 "focus-ring": { "$value": "{color.semantic.focus-ring}", "$type": "color" },

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "declaration": true,
+    "outDir": "dist/web",
+    "rootDir": "dist/_ts/web",
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["dist/_ts/web/*.ts"]
+}

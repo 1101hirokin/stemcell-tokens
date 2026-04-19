@@ -31,7 +31,7 @@ const webBase = new StyleDictionary({
     },
     ts: {
       transformGroup: 'stemcell/web',
-      buildPath: 'dist/web/',
+      buildPath: 'dist/_ts/web/',
       files: [
         {
           destination: 'base.ts',
@@ -66,7 +66,7 @@ const webLight = new StyleDictionary({
     },
     ts: {
       transformGroup: 'stemcell/web',
-      buildPath: 'dist/web/',
+      buildPath: 'dist/_ts/web/',
       files: [
         {
           destination: 'standard-light.ts',

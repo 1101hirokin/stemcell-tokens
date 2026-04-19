@@ -1,19 +1,30 @@
 {
   "name": "stemcell-tokens",
-  "module": "index.ts",
+  "version": "0.1.0",
   "type": "module",
+  "exports": {
+    "./web/base": {
+      "import": "./dist/web/base.js",
+      "types": "./dist/web/base.d.ts"
+    },
+    "./web/standard-light": {
+      "import": "./dist/web/standard-light.js",
+      "types": "./dist/web/standard-light.d.ts"
+    },
+    "./web/base.css": "./dist/web/base.css",
+    "./web/standard-light.css": "./dist/web/standard-light.css"
+  },
+  "files": [
+    "dist/web/"
+  ],
   "scripts": {
-    "build": "bun run style-dictionary.config.ts",
-    "build:web": "bun run style-dictionary.config.ts"
+    "build": "bun run style-dictionary.config.ts && bunx tsc --project tsconfig.build.json",
+    "prepublishOnly": "bun run build"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/node": "^25.6.0"
-  },
-  "peerDependencies": {
+    "@types/node": "^25.6.0",
+    "style-dictionary": "^5.4.0",
     "typescript": "^5"
-  },
-  "dependencies": {
-    "style-dictionary": "^5.4.0"
   }
 }

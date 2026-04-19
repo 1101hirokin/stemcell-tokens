@@ -4,14 +4,10 @@
   "workspaces": {
     "": {
       "name": "stemcell-tokens",
-      "dependencies": {
-        "style-dictionary": "^5.4.0",
-      },
       "devDependencies": {
         "@types/bun": "latest",
         "@types/node": "^25.6.0",
-      },
-      "peerDependencies": {
+        "style-dictionary": "^5.4.0",
         "typescript": "^5",
       },
     },

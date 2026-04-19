@@ -2,10 +2,18 @@
   "name": "stemcell-tokens",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "build": "bun run style-dictionary.config.ts",
+    "build:web": "bun run style-dictionary.config.ts"
+  },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/node": "^25.6.0"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "style-dictionary": "^5.4.0"
   }
 }

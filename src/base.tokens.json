@@ -1080,7 +1080,7 @@
     "motion": {
         "none": {
             "duration": {
-                "$value": 0,
+                "$value": "0ms",
                 "$type": "duration",
                 "$description": "Instant — use for prefers-reduced-motion"
             },
@@ -1091,7 +1091,7 @@
         },
         "standard": {
             "duration": {
-                "$value": 200,
+                "$value": "200ms",
                 "$type": "duration"
             },
             "easing": {
@@ -1101,7 +1101,7 @@
         },
         "entrance": {
             "duration": {
-                "$value": 250,
+                "$value": "250ms",
                 "$type": "duration"
             },
             "easing": {
@@ -1111,7 +1111,7 @@
         },
         "exit": {
             "duration": {
-                "$value": 200,
+                "$value": "200ms",
                 "$type": "duration"
             },
             "easing": {

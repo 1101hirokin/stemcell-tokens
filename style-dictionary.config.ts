@@ -1,3 +1,5 @@
+// Style Dictionary build pipeline: base primitives + per-theme semantic layers.
+// webBase emits tokens from all consumers; webLight/webDark emit only source tokens.
 import StyleDictionary from 'style-dictionary';
 import { registerTransforms, registerTransformGroups } from './src/sd/transforms.ts';
 import { registerFormats } from './src/sd/formats.ts';
@@ -60,7 +62,10 @@ const webLight = new StyleDictionary({
           destination: 'standard-light.css',
           format: 'css/variables',
           filter: sourceOnly,
-          options: { outputReferences: false },
+          options: {
+            selector: ':root, [data-theme="standard-light"]',
+            outputReferences: false,
+          },
         },
       ],
     },
@@ -78,5 +83,38 @@ const webLight = new StyleDictionary({
   },
 });
 
+const webDark = new StyleDictionary({
+  log: { verbosity: 'default' },
+  usesDtcg: true,
+  include: ['src/base.tokens.json'],
+  source: ['src/theme/standard-dark.json'],
+  platforms: {
+    css: {
+      transformGroup: 'stemcell/web',
+      buildPath: 'dist/web/',
+      files: [
+        {
+          destination: 'standard-dark.css',
+          format: 'stemcell/css/dark-theme',
+          filter: sourceOnly,
+          options: { outputReferences: false },
+        },
+      ],
+    },
+    ts: {
+      transformGroup: 'stemcell/web',
+      buildPath: 'dist/_ts/web/',
+      files: [
+        {
+          destination: 'standard-dark.ts',
+          format: 'stemcell/ts/css-var-names',
+          filter: sourceOnly,
+        },
+      ],
+    },
+  },
+});
+
 await webBase.buildAllPlatforms();
 await webLight.buildAllPlatforms();
+await webDark.buildAllPlatforms();

@@ -11,8 +11,13 @@
       "import": "./dist/web/standard-light.js",
       "types": "./dist/web/standard-light.d.ts"
     },
+    "./standard-dark": {
+      "import": "./dist/web/standard-dark.js",
+      "types": "./dist/web/standard-dark.d.ts"
+    },
     "./base.css": "./dist/web/base.css",
-    "./standard-light.css": "./dist/web/standard-light.css"
+    "./standard-light.css": "./dist/web/standard-light.css",
+    "./standard-dark.css": "./dist/web/standard-dark.css"
   },
   "files": [
     "dist/web/"

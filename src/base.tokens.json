@@ -875,6 +875,13 @@
                 }
             ],
             "$description": "Elevation 23 — 0 2.0px 6.0px 0px rgba(0, 0, 0, 0.28), 0px 20.0px 28.0px 0px rgba(0, 0, 0, 0.18)"
+        },
+
+        "semantic": {
+            "card":    { "$type": "shadow", "$value": "{elevation.4}",  "$description": "Standard card / panel lift." },
+            "popover": { "$type": "shadow", "$value": "{elevation.8}",  "$description": "Dropdown, tooltip, context menu." },
+            "modal":   { "$type": "shadow", "$value": "{elevation.16}", "$description": "Dialog, drawer, bottom sheet." },
+            "overlay": { "$type": "shadow", "$value": "{elevation.23}", "$description": "Fullscreen overlay or scrim surface." }
         }
     },
 
@@ -917,12 +924,19 @@
     },
 
     "shape": {
-        "circular": { "$type": "borderRadius", "$value": "999999px" },
-        "rounded": { "$type": "borderRadius", "$value": "6px" },
-        "rounded-s": { "$type": "borderRadius", "$value": "2px" },
-        "rounded-m": { "$type": "borderRadius", "$value": "6px" },
-        "rounded-l": { "$type": "borderRadius", "$value": "10px" },
-        "angular": { "$type": "borderRadius", "$value": "0px" }
+        "circular":  { "$type": "borderRadius", "$value": "999999px", "$description": "Full pill." },
+        "rounded-s": { "$type": "borderRadius", "$value": "2px",      "$description": "Subtle rounding — tags, badges." },
+        "rounded-m": { "$type": "borderRadius", "$value": "6px",      "$description": "Standard rounding — buttons, inputs, cards." },
+        "rounded-l": { "$type": "borderRadius", "$value": "10px",     "$description": "Large rounding — dialogs, sheets." },
+        "angular":   { "$type": "borderRadius", "$value": "0px",      "$description": "No rounding." },
+
+        "semantic": {
+            "control": { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Button, input, select, checkbox, toggle." },
+            "card":    { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Card, panel, surface." },
+            "dialog":  { "$type": "borderRadius", "$value": "{shape.rounded-l}", "$description": "Modal, dialog, bottom sheet, drawer." },
+            "popover": { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Tooltip, dropdown menu, combobox popup." },
+            "pill":    { "$type": "borderRadius", "$value": "{shape.circular}",  "$description": "Badge, progress bar, avatar chip." }
+        }
     },
 
     "font-family": {

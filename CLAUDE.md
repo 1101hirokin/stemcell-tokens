@@ -33,52 +33,74 @@ bun run lint         # lint/validate token source files
 
 ## Architecture
 
-### Token Source (`tokens/`)
+### Token Source (`src/`)
 
-All source tokens live under `tokens/` in DTCG JSON format. Files are organized by category:
+All source tokens live under `src/` in DTCG JSON format:
 
 ```
-tokens/
-  color/       # base + semantic color tokens
-  typography/  # font families, sizes, weights, line-heights
-  spacing/     # scale values
-  radius/      # border radius
-  shadow/      # elevation / box-shadow
-  motion/      # duration, easing
-  ...
+src/
+  base.tokens.json          # primitive scales (color, typography, spacing, shadow, motion)
+  theme/
+    standard-light.json     # light theme semantic layer
+    standard-dark.json      # dark theme semantic layer
+    theme-types.ts          # TypeScript types for theme JSON shape
+  themes.ts                 # theme registry (name → JSON object)
+  sd/
+    transforms.ts           # custom Style Dictionary transforms
+    formats.ts              # custom Style Dictionary output formats
 ```
 
-Each file uses the DTCG `$value` / `$type` / `$description` convention. Composite tokens reference primitives via `{color.blue.500}` alias syntax.
+Each file uses the DTCG `$value` / `$type` / `$description` convention. Semantic tokens reference primitives via `{color.blue.500}` alias syntax — never hardcode values in semantic tokens.
 
 ### Style Dictionary Config (`style-dictionary.config.ts`)
 
-The config defines **one platform entry per output target**. Each platform specifies:
-- `source` — which token files to include
-- `transforms` — how values are converted (e.g. px → rem, hex → rgba)
-- `format` — the output format (css/variables, javascript/es6, ios-swift, android/compose)
-- `destination` — output file path under `dist/`
+Three SD instances run in sequence:
+- `webBase` — primitive tokens only (`src/base.tokens.json`), outputs `base.css` + `base.ts`
+- `webLight` — light theme (`src/theme/standard-light.json`), outputs `standard-light.css` + `standard-light.ts`
+- `webDark` — dark theme (`src/theme/standard-dark.json`), outputs `standard-dark.css` + `standard-dark.ts`
 
-Custom transforms and formats are registered in `src/transforms/` and `src/formats/` respectively.
+Theme instances use SD `include` (for alias resolution) + `source` + `filter: isSource` to emit only the tokens defined in that theme file.
+
+Custom transforms are in `src/sd/transforms.ts`; custom formats in `src/sd/formats.ts`.
 
 ### Output (`dist/`)
 
-Generated files go to `dist/` and are not committed to git. Each platform gets its own subdirectory:
+Generated files go to `dist/` and are not committed to git. Current web output:
 
 ```
 dist/
-  css/          # CSS custom properties (web)
-  js/           # ES module JS + TypeScript type declarations
-  swift/        # Swift enums/structs for SwiftUI
-  kotlin/        # Kotlin objects for Jetpack Compose
-  json/          # Raw resolved token JSON (consumed by other tools)
+  web/          # CSS custom properties + ES module JS + .d.ts
+  _ts/web/      # intermediate TypeScript (compiled by tsc → dist/web/)
 ```
 
 ### Package Registry
 
-`.npmrc` points to a local Verdaccio registry at `localhost:4873`. Published packages from `dist/` are how downstream framework repos consume the tokens.
+`.npmrc` points to a local Verdaccio registry at `localhost:4873`. Published packages from `dist/web/` are how downstream framework repos consume the tokens.
 
 ## Token Authoring Rules
 
 - All tokens must have `$type` and `$description`.
 - Semantic tokens must reference primitive aliases, never hardcode values.
 - Breaking changes to token names require a major version bump.
+
+## Theme Strategy
+
+### CSS Selector Pattern
+Each theme CSS file targets both `:root` and `[data-theme="<name>"]` so component
+libraries can switch themes at runtime without reloading. Dark theme additionally emits
+an `@media (prefers-color-scheme: dark)` block targeting
+`:root:not([data-theme="standard-light"])`, enabling OS-level auto-switching when no
+explicit `data-theme` attribute is set.
+
+### Dark Mode Color Scale Convention
+Light theme: bg tokens use high shades (600–800), soft-bg uses low shades (50).
+Dark theme: bg tokens use mid shades (300–400), soft-bg uses high shades (800–900).
+This "flip" keeps perceived contrast roughly equivalent across schemes.
+Exception: `warning.fg` is `#000000` in dark mode (yellow bg requires dark text).
+
+### `vars` Export
+Each theme TS module exports a `vars` constant — a flat `Record<string, string>`
+mapping CSS custom property names to their resolved values
+(e.g. `{ '--color-semantic-primary-bg': '#5e4bde' }`).
+Purpose: SSR theme injection (apply tokens via inline styles without a stylesheet)
+and runtime inspection of token values without `getComputedStyle`.

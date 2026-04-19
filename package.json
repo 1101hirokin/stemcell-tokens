@@ -1,5 +1,5 @@
 {
-  "name": "stemcell-tokens",
+  "name": "@stemcell/tokens",
   "version": "0.1.0",
   "type": "module",
   "exports": {

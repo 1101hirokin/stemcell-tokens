@@ -1,4 +1,4 @@
-# stemcell-tokens
+# @stemcell/tokens
 
 Design token pipeline for the **stemcell** universal design system.
 
@@ -21,13 +21,13 @@ Generates `dist/web/` containing CSS custom properties, ES module JS, and TypeSc
 ## Package Exports
 
 ```ts
-import 'stemcell-tokens/base.css';           // primitive scale CSS vars
-import 'stemcell-tokens/standard-light.css'; // :root, [data-theme="standard-light"]
-import 'stemcell-tokens/standard-dark.css';  // [data-theme="standard-dark"] + @media prefers-color-scheme
+import '@stemcell/tokens/base.css';           // primitive scale CSS vars
+import '@stemcell/tokens/standard-light.css'; // :root, [data-theme="standard-light"]
+import '@stemcell/tokens/standard-dark.css';  // [data-theme="standard-dark"] + @media prefers-color-scheme
 
-import { color, spacing } from 'stemcell-tokens';                // CSS var name constants (base)
-import { color, vars } from 'stemcell-tokens/standard-light';   // var names + resolved values
-import { color, vars } from 'stemcell-tokens/standard-dark';    // same for dark theme
+import { color, spacing } from '@stemcell/tokens';                // CSS var name constants (base)
+import { color, vars } from '@stemcell/tokens/standard-light';   // var names + resolved values
+import { color, vars } from '@stemcell/tokens/standard-dark';    // same for dark theme
 ```
 
 ### `vars` export
@@ -35,7 +35,7 @@ import { color, vars } from 'stemcell-tokens/standard-dark';    // same for dark
 Each theme module exports a flat `Record<string, string>` of CSS custom property names to their resolved values. Use this for SSR theme injection (without a stylesheet) or reading token values at runtime without `getComputedStyle`:
 
 ```ts
-import { vars } from 'stemcell-tokens/standard-dark';
+import { vars } from '@stemcell/tokens/standard-dark';
 
 // Apply theme via inline styles (e.g. in SSR)
 Object.entries(vars).forEach(([prop, val]) => {

@@ -1,3 +1,4 @@
+// Custom Style Dictionary transforms for the stemcell/web platform.
 import type StyleDictionary from 'style-dictionary';
 
 type ShadowObject = {

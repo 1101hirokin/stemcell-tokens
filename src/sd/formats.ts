@@ -79,7 +79,7 @@ export function registerFormats(sd: typeof StyleDictionary): void {
       return [
         '/**\n * Do not edit directly, this file was auto-generated.\n */',
         `[data-theme="standard-dark"] {\n${body}\n}`,
-        `@media (prefers-color-scheme: dark) {\n  :root:not([data-theme="standard-light"]) {\n${indentedBody}\n  }\n}`,
+        `@media (prefers-color-scheme: dark) {\n  :root:not([data-theme]) {\n${indentedBody}\n  }\n}`,
       ].join('\n\n') + '\n';
     },
   });

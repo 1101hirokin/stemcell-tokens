@@ -1,6 +1,6 @@
 {
   "name": "@stemcell/tokens",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "type": "module",
   "exports": {
     ".": {
@@ -15,20 +15,26 @@
       "import": "./dist/web/standard-dark.js",
       "types": "./dist/web/standard-dark.d.ts"
     },
+    "./types": {
+      "import": "./dist/web/types.js",
+      "types": "./dist/web/types.d.ts"
+    },
     "./base.css": "./dist/web/base.css",
     "./standard-light.css": "./dist/web/standard-light.css",
-    "./standard-dark.css": "./dist/web/standard-dark.css"
+    "./standard-dark.css": "./dist/web/standard-dark.css",
+    "./standard.css": "./dist/web/standard.css"
   },
   "files": [
     "dist/web/"
   ],
   "scripts": {
-    "build": "bun run style-dictionary.config.ts && bunx tsc --project tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "build": "bun run clean && bun run style-dictionary.config.ts && bunx tsc --project tsconfig.build.json",
+    "check": "bunx tsc --noEmit",
     "prepublishOnly": "bun run build"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/node": "^25.6.0",
     "style-dictionary": "^5.4.0",
     "typescript": "^5"
   }

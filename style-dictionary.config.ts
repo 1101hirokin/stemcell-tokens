@@ -3,6 +3,7 @@
 import StyleDictionary from 'style-dictionary';
 import { registerTransforms, registerTransformGroups } from './src/sd/transforms.ts';
 import { registerFormats } from './src/sd/formats.ts';
+import { themes } from './src/themes.ts';
 
 registerTransforms(StyleDictionary);
 registerTransformGroups(StyleDictionary);
@@ -118,3 +119,34 @@ const webDark = new StyleDictionary({
 await webBase.buildAllPlatforms();
 await webLight.buildAllPlatforms();
 await webDark.buildAllPlatforms();
+
+// Generate shared type declarations consumed by all stemcell framework packages.
+// AVAILABLE_THEMES and BuiltInThemeKey are auto-derived from the themes registry.
+const themeKeys = Object.keys(themes) as (keyof typeof themes)[];
+const themeUnion = themeKeys.map(k => JSON.stringify(k)).join(' | ');
+const themeTuple = themeKeys.map(k => JSON.stringify(k)).join(', ');
+
+await Bun.write(
+  'dist/web/types.js',
+  `export const AVAILABLE_THEMES = Object.freeze([${themeKeys.map(k => JSON.stringify(k)).join(', ')}]);\n`,
+);
+await Bun.write(
+  'dist/web/types.d.ts',
+  `export declare const AVAILABLE_THEMES: readonly [${themeTuple}];
+export type BuiltInThemeKey = ${themeUnion};
+export type ThemeKey = 'auto' | BuiltInThemeKey | (string & {});
+export type TokenTree = { [key: string]: string | TokenTree };
+export interface CustomThemeDefinition {
+  key: string;
+  scheme: 'light' | 'dark';
+  tokens: TokenTree;
+}
+`,
+);
+
+// Generate a convenience CSS bundle that imports all standard theme files in the
+// correct order (base → light → dark), preventing import-order bugs.
+await Bun.write(
+  'dist/web/standard.css',
+  `@import "./base.css";\n@import "./standard-light.css";\n@import "./standard-dark.css";\n`,
+);

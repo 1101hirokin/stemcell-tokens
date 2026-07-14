@@ -27,9 +27,12 @@ Default to using Bun instead of Node.js.
 ```sh
 bun install          # install deps
 bun run build        # run Style Dictionary transform (generates all platform outputs)
-bun test             # run token validation tests
-bun run lint         # lint/validate token source files
+bun run check        # typecheck (tsc --noEmit)
 ```
+
+There is no test or lint script. `bun run check` is the only gate, and it does not
+check the token JSON — `src/themes.ts` casts the theme files through `as unknown`,
+so nothing verifies token values, contrast ratios, or the `$type`/`$description` rule.
 
 ## Architecture
 
@@ -39,11 +42,15 @@ All source tokens live under `src/` in DTCG JSON format:
 
 ```
 src/
-  base.tokens.json          # primitive scales (color, typography, spacing, shadow, motion)
+  base.tokens.json          # theme-invariant tokens: color primitives, typography,
+                            # spacing, shape, motion, focus-ring, layer (z-index),
+                            # breakpoint, container, elevation levels
   theme/
-    standard-light.json     # light theme semantic layer
-    standard-dark.json      # dark theme semantic layer
+    standard-light.json     # light theme: color semantic layer + elevation facets + scrim
+    standard-dark.json      # dark theme: same
     theme-types.ts          # TypeScript types for theme JSON shape
+  density/
+    compact.json            # compact density: spacing overrides ([data-density])
   themes.ts                 # theme registry (name → JSON object)
   sd/
     transforms.ts           # custom Style Dictionary transforms
@@ -52,16 +59,52 @@ src/
 
 Each file uses the DTCG `$value` / `$type` / `$description` convention. Semantic tokens reference primitives via `{color.blue.500}` alias syntax — never hardcode values in semantic tokens.
 
+### What goes in `base.tokens.json` vs a theme file
+
+A token belongs in a theme file if and only if its value varies by theme. The theme SD
+instances filter on `isSource`, so a token only varies by theme when the theme file
+authors it — a base token cannot be overridden by a theme.
+
+This is why `elevation` is split. The level (`--elevation-modal-level: 4`) is normative
+and identical everywhere, so it lives in base. The facets that draw the level
+(`--elevation-modal-surface` / `-shadow`) differ between light and dark, so each theme
+authors them, and `base.css` has none. Theme files may also reference base primitives
+(`{color.gray.900}`) because SD `include`s base for alias resolution.
+
+### Custom `$type`s control unit conversion
+
+`stemcell/size/pxToRem` only matches `dimension` and `fontSize`. Types outside that set
+are deliberate opt-outs, not oversights:
+
+| `$type` | Result | Used by |
+|---|---|---|
+| `dimension`, `fontSize` | px → rem | spacing, focus-ring, container |
+| `borderRadius` | px preserved | shape (a radius should not grow with text) |
+| `breakpoint` | px preserved | breakpoint (must track native size classes) |
+| `number` | passthrough | layer z-index, elevation level, motion scale |
+
 ### Style Dictionary Config (`style-dictionary.config.ts`)
 
-Three SD instances run in sequence:
-- `webBase` — primitive tokens only (`src/base.tokens.json`), outputs `base.css` + `base.ts`
+Four SD instances run in sequence:
+- `webBase` — theme-invariant tokens (`src/base.tokens.json`), outputs `base.css` + `base.ts`
 - `webLight` — light theme (`src/theme/standard-light.json`), outputs `standard-light.css` + `standard-light.ts`
 - `webDark` — dark theme (`src/theme/standard-dark.json`), outputs `standard-dark.css` + `standard-dark.ts`
+- `webCompact` — compact density (`src/density/compact.json`), outputs `density-compact.css`
 
-Theme instances use SD `include` (for alias resolution) + `source` + `filter: isSource` to emit only the tokens defined in that theme file.
+Theme and density instances use SD `include` (for alias resolution) + `source` + `filter: isSource` to emit only the tokens defined in that file.
 
 Custom transforms are in `src/sd/transforms.ts`; custom formats in `src/sd/formats.ts`.
+
+The config tail uses `Bun.write` directly, so the build requires bun — running it under
+plain node emits every token file and then dies before writing `types.js`, `types.d.ts`,
+and the `standard.css` bundle.
+
+### `transitive: true` on value transforms
+
+`stemcell/shadow/css` is marked `transitive`. SD value transforms run *before* reference
+resolution by default, so a shadow whose colour aliases `{color.app.shadow}` would skip
+the transform and emit `[object Object]` into the CSS — with a green build and a green
+typecheck. Any future value transform that has to see through an alias needs this flag.
 
 ### Output (`dist/`)
 

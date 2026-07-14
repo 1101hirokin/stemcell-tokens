@@ -1020,5 +1020,19 @@
         "modal":        { "$value": 1400, "$type": "number", "$description": "Focus-trapped surfaces: modal / dialog / drawer / sheet." },
         "notification": { "$value": 1700, "$type": "number", "$description": "Frontmost transient messages: toast / snackbar." },
         "tooltip":      { "$value": 1800, "$type": "number", "$description": "Above every other layer despite drawing at popover depth — visual depth and stacking order are separate axes." }
+    },
+    "breakpoint": {
+        "compact":  { "$value": "0",      "$type": "breakpoint", "$description": "Handset. Page-skeleton structure only — components reflow on their own via container queries / intrinsic sizing, and consumers should not write breakpoint values (layout.md §3). Device-pixel by intent: these map 1:1 onto native size classes (Material WindowSizeClass, SwiftUI horizontalSizeClass), which do not shift with user font scaling, so they are deliberately not converted to rem (Constitution Art.2)." },
+        "medium":   { "$value": "600px",  "$type": "breakpoint", "$description": "Tablet portrait and up." },
+        "expanded": { "$value": "840px",  "$type": "breakpoint", "$description": "Tablet landscape and up." },
+        "large":    { "$value": "1200px", "$type": "breakpoint", "$description": "Desktop." },
+        "x-large":  { "$value": "1600px", "$type": "breakpoint", "$description": "Large desktop." }
+    },
+    "container": {
+        "sm":    { "$value": "640px",  "$type": "dimension", "$description": "Page-width constraint, small. Unlike breakpoints these scale with the root font size, since a width cap should grow when the reader enlarges text (Constitution Art.1)." },
+        "md":    { "$value": "768px",  "$type": "dimension", "$description": "Page-width constraint, medium." },
+        "lg":    { "$value": "1024px", "$type": "dimension", "$description": "Page-width constraint, large." },
+        "xl":    { "$value": "1280px", "$type": "dimension", "$description": "Page-width constraint, extra large." },
+        "prose": { "$value": "66ch",   "$type": "dimension", "$description": "Measure. Body text stops at ~66ch however wide its container is — the single explicit exception to fill-by-default, because readability outranks full width (layout.md §2)." }
     }
 }

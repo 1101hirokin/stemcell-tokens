@@ -15,6 +15,13 @@ const expandTypography = {
   include: (token: { $type?: string }) => token.$type === 'typography',
 };
 
+// Elevation's facets are Stemcell's, not a theme's, but they must be declared
+// inside each theme block: a custom property holding var() resolves where it is
+// declared, so one copy at :root would hand every subtree the root theme's
+// shadow and [data-theme] would stop working below the root (Art.6). So the
+// definition lives in one file and is built into every theme.
+const elevationFacets = 'src/elevation.tokens.json';
+
 const webBase = new StyleDictionary({
   log: { verbosity: 'default' },
   usesDtcg: true,
@@ -53,7 +60,7 @@ const webLight = new StyleDictionary({
   log: { verbosity: 'default' },
   usesDtcg: true,
   include: ['src/base.tokens.json'],
-  source: ['src/theme/standard-light.json'],
+  source: ['src/theme/standard-light.json', elevationFacets],
   platforms: {
     css: {
       transformGroup: 'stemcell/web',
@@ -88,7 +95,7 @@ const webDark = new StyleDictionary({
   log: { verbosity: 'default' },
   usesDtcg: true,
   include: ['src/base.tokens.json'],
-  source: ['src/theme/standard-dark.json'],
+  source: ['src/theme/standard-dark.json', elevationFacets],
   platforms: {
     css: {
       transformGroup: 'stemcell/web',

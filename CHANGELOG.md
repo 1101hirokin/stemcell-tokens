@@ -54,12 +54,34 @@ depths, while the new names are structural roles. Pick the level by what the com
   resolve `color.app.shadow` (`#292f36`, a slightly-blue neutral black), which is what
   the elevation foundation has always specified.
 
+### Elevation is not a theme's to change
+
+A theme supplies the colours elevation draws with, and nothing else. The levels and the
+shadow geometry live in `src/elevation.tokens.json`, which is not a theme file — the
+constitution makes Elevation a structural layer and allows overriding only colour and
+material, and a shadow's offsets and blur are quantity, not colour.
+
+The two colours a theme does own are `--color-app-shadow-umbra` and
+`--color-app-shadow-penumbra`.
+
+Note that elevation is emitted into *every* theme block rather than once into `base.css`.
+That is not duplication for its own sake: a custom property holding `var()` resolves where
+it is declared, so a single copy at `:root` would hand every subtree the root theme's
+shadow, and `[data-theme]` would silently stop working below the root.
+
+### Dark now casts a slight shadow
+
+Dark used to cast none. The tonal ladder tops out at `gray.600` — going lighter drops body
+text below AA — so `modal` and `notification` share a surface, and a toast rendered over a
+dialog was invisible. Dark's shadow is black rather than `gray.900`: dark's own surfaces
+start at `gray.900`, so a `gray.900` shadow is 1.30:1 against `gray.800` and does not read.
+
 ### Notes for other platforms
 
 Shadow colours and `--scrim` carry their colour as a plain alias and their alpha as a
-number (`$extensions.stemcell.alpha` for colours, an `alpha` field for shadow layers).
-The CSS `rgba()` is composed by the web transform. Exporters for other platforms should
-read the alias and the alpha rather than parsing the CSS string.
+number (`$extensions.stemcell.alpha`). The CSS `rgba()` is composed by the web transform.
+Exporters for other platforms should read the alias and the alpha rather than parsing the
+CSS string.
 
 ### Added
 

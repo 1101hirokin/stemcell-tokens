@@ -29,6 +29,8 @@
             "border":         { "$value": "{color.gray.200}", "$type": "color", "$description": "Neutral border." },
             "divider":        { "$value": "{color.gray.100}", "$type": "color", "$description": "Neutral divider." },
             "shadow":         { "$value": "{color.gray.900}", "$type": "color", "$description": "Elevation shadow color (slightly-blue near-black)." },
+            "shadow-umbra":    { "$value": "{color.app.shadow}", "$type": "color", "$extensions": { "stemcell": { "alpha": 0.24 } }, "$description": "The near, hard shadow. Light draws depth with shadows over an untinted surface, so this is the heavier of the two. Elevation's geometry points at this colour; the colour is a theme's to set, the geometry is not." },
+            "shadow-penumbra": { "$value": "{color.app.shadow}", "$type": "color", "$extensions": { "stemcell": { "alpha": 0.14 } }, "$description": "The far, soft shadow. Lighter and wider than the umbra." },
             "scrim":          { "$value": "{color.gray.900}", "$type": "color", "$description": "Modal scrim color (used at ~0.5 opacity)." }
         },
         "brand": {
@@ -298,48 +300,6 @@
                     "$type": "color"
                 }
             }
-        }
-    },
-
-    "elevation": {
-        "flat": {
-            "surface": { "$value": "{color.app.background}", "$type": "color", "$description": "Ground plane. Light keeps every level untinted, so the whole surface facet resolves to background here; the tonal ladder only opens up in dark (elevation.md §5)." },
-            "shadow":  { "$value": [], "$type": "shadow", "$description": "Flat sits on the ground plane and casts nothing." }
-        },
-        "surface": {
-            "surface": { "$value": "{color.app.surface}", "$type": "color" },
-            "shadow":  { "$value": [
-                { "color": "{color.app.shadow}", "alpha": 0.24, "offsetX": "0px", "offsetY": "1px", "blur": "1px" },
-                { "color": "{color.app.shadow}", "alpha": 0.14, "offsetX": "0px", "offsetY": "1px", "blur": "2px" }
-            ], "$type": "shadow", "$description": "Card / panel / alert / table. umbra (tight, dark) over penumbra (wide, soft), lit from directly above. The two-layer geometry is this platform's expression of the level, not the level itself — a platform that can only draw one shadow keeps the level and renders one (Constitution Art.7)." }
-        },
-        "navigation": {
-            "surface": { "$value": "{color.app.surface}", "$type": "color" },
-            "shadow":  { "$value": [
-                { "color": "{color.app.shadow}", "alpha": 0.24, "offsetX": "0px", "offsetY": "1px", "blur": "2px" },
-                { "color": "{color.app.shadow}", "alpha": 0.14, "offsetX": "0px", "offsetY": "2px", "blur": "4px" }
-            ], "$type": "shadow", "$description": "App bar / sidebar / sticky header / tab bar." }
-        },
-        "popover": {
-            "surface": { "$value": "{color.app.surface-raised}", "$type": "color" },
-            "shadow":  { "$value": [
-                { "color": "{color.app.shadow}", "alpha": 0.24, "offsetX": "0px", "offsetY": "2px", "blur": "3px" },
-                { "color": "{color.app.shadow}", "alpha": 0.14, "offsetX": "0px", "offsetY": "4px", "blur": "8px" }
-            ], "$type": "shadow", "$description": "Menu / dropdown / select / combobox / popover. Tooltip draws at this depth but stacks at --layer-tooltip." }
-        },
-        "modal": {
-            "surface": { "$value": "{color.app.overlay}", "$type": "color" },
-            "shadow":  { "$value": [
-                { "color": "{color.app.shadow}", "alpha": 0.24, "offsetX": "0px", "offsetY": "3px", "blur": "5px" },
-                { "color": "{color.app.shadow}", "alpha": 0.14, "offsetX": "0px", "offsetY": "8px", "blur": "16px" }
-            ], "$type": "shadow", "$description": "Modal / dialog / drawer / sheet." }
-        },
-        "notification": {
-            "surface": { "$value": "{color.app.overlay}", "$type": "color" },
-            "shadow":  { "$value": [
-                { "color": "{color.app.shadow}", "alpha": 0.24, "offsetX": "0px", "offsetY": "4px", "blur": "6px" },
-                { "color": "{color.app.shadow}", "alpha": 0.14, "offsetX": "0px", "offsetY": "12px", "blur": "24px" }
-            ], "$type": "shadow", "$description": "Toast / snackbar." }
         }
     },
 

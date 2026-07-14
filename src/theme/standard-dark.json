@@ -40,7 +40,9 @@
             "link":           { "$value": "{color.app.system}", "$type": "color", "$description": "Hyperlink text." },
             "border":         { "$value": "{color.gray.700}", "$type": "color", "$description": "Neutral border." },
             "divider":        { "$value": "{color.gray.800}", "$type": "color", "$description": "Neutral divider." },
-            "shadow":         { "$value": "{color.gray.900}", "$type": "color", "$description": "Elevation shadow color." },
+            "shadow":         { "$value": "#000000", "$type": "color", "$description": "Elevation shadow color. Black, not gray.900 as in light: dark's own surfaces run from gray.900 up, so a gray.900 shadow lands on a surface it barely differs from — 1.30:1 against gray.800, and 1.45:1 against gray.600 even at half opacity. A shadow has to be darker than what it falls on." },
+            "shadow-umbra":    { "$value": "{color.app.shadow}", "$type": "color", "$extensions": { "stemcell": { "alpha": 0.3 } }, "$description": "The near, hard shadow. Dark draws depth tonally and the shadow only separates what the tonal ladder cannot: the ladder tops out at gray.600, so modal and notification share a surface and a toast would otherwise vanish into the dialog under it. 0.3 black gives a 1.56:1 edge there — legible, and still slight next to light's lift (Art.1, elevation.md §3 'ごく僅か')." },
+            "shadow-penumbra": { "$value": "{color.app.shadow}", "$type": "color", "$extensions": { "stemcell": { "alpha": 0.18 } }, "$description": "The far, soft shadow. Holds roughly light's umbra:penumbra ratio." },
             "scrim":          { "$value": "{color.gray.900}", "$type": "color", "$description": "Modal scrim color (used at ~0.5 opacity)." }
         },
         "semantic": {
@@ -142,33 +144,6 @@
                 "soft-fg":     { "$value": "{color.gray.600}", "$type": "color" },
                 "soft-border": { "$value": "{color.gray.700}", "$type": "color" }
             }
-        }
-    },
-
-    "elevation": {
-        "flat": {
-            "surface": { "$value": "{color.app.background}", "$type": "color", "$description": "Ground plane. Dark expresses depth by lightening the surface facet rather than casting shadows; the ladder itself is owned by color (elevation.md §5)." },
-            "shadow":  { "$value": [], "$type": "shadow", "$description": "Dark draws depth tonally, so no level casts a shadow. The level is unchanged — only its expression is (Constitution Art.2)." }
-        },
-        "surface": {
-            "surface": { "$value": "{color.app.surface}", "$type": "color" },
-            "shadow":  { "$value": [], "$type": "shadow" }
-        },
-        "navigation": {
-            "surface": { "$value": "{color.app.surface}", "$type": "color" },
-            "shadow":  { "$value": [], "$type": "shadow" }
-        },
-        "popover": {
-            "surface": { "$value": "{color.app.surface-raised}", "$type": "color" },
-            "shadow":  { "$value": [], "$type": "shadow" }
-        },
-        "modal": {
-            "surface": { "$value": "{color.app.overlay}", "$type": "color" },
-            "shadow":  { "$value": [], "$type": "shadow" }
-        },
-        "notification": {
-            "surface": { "$value": "{color.app.overlay}", "$type": "color" },
-            "shadow":  { "$value": [], "$type": "shadow" }
         }
     },
 

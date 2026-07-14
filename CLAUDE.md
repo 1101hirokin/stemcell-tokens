@@ -59,17 +59,31 @@ src/
 
 Each file uses the DTCG `$value` / `$type` / `$description` convention. Semantic tokens reference primitives via `{color.blue.500}` alias syntax — never hardcode values in semantic tokens.
 
-### What goes in `base.tokens.json` vs a theme file
+### What goes in which source file
 
-A token belongs in a theme file if and only if its value varies by theme. The theme SD
-instances filter on `isSource`, so a token only varies by theme when the theme file
-authors it — a base token cannot be overridden by a theme.
+A token belongs in a theme file if and only if its value varies by theme *and* a theme is
+allowed to decide it. The theme SD instances filter on `isSource`, so a token only varies
+by theme when a file sourced by that theme's instance authors it.
 
-This is why `elevation` is split. The level (`--elevation-modal-level: 4`) is normative
-and identical everywhere, so it lives in base. The facets that draw the level
-(`--elevation-modal-surface` / `-shadow`) differ between light and dark, so each theme
-authors them, and `base.css` has none. Theme files may also reference base primitives
-(`{color.gray.900}`) because SD `include`s base for alias resolution.
+Those are two different questions, and `elevation` is where they come apart. Its facets do
+vary by theme, but a theme does not get to decide them — elevation is a structural layer
+and only its colours are overridable. So there are three homes, not two:
+
+| File | Sourced by | Holds |
+|---|---|---|
+| `base.tokens.json` | `webBase` | theme-invariant tokens, including `elevation.*.level` |
+| `elevation.tokens.json` | `webLight` **and** `webDark` | `elevation.*.surface` / `.shadow` — Stemcell's, resolved per theme |
+| `theme/*.json` | its own instance | colours, including `app.shadow-umbra` / `-penumbra` |
+
+`elevation.tokens.json` is not a theme file, so nothing a consumer authors reaches it, but
+it is built into every theme. **Do not "simplify" this by emitting it once into
+`base.css`.** A custom property holding `var()` is resolved where it is declared, so one
+copy at `:root` would bake the root theme's shadow into the inherited value and
+`[data-theme]` would stop working on any subtree — silently, with a green build. This was
+tried; the browser proved it. It has to be declared inside each theme block.
+
+Theme files may reference base primitives (`{color.gray.900}`) because each theme instance
+`include`s base for alias resolution.
 
 ### Custom `$type`s control unit conversion
 

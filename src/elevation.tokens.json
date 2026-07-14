@@ -1,0 +1,45 @@
+{
+    "$description": "How each elevation level is drawn. Stemcell's, not a theme's and not a consumer's: the constitution names Elevation a structural layer and allows overriding only colour and material (Art.3), and a shadow's offsets and blur are quantity, which Art.7 counts as normative. So this file is not a theme file — nothing a consumer authors reaches it — but it is built into every theme, once per theme, and resolves against that theme's colours there. That last part is not decoration: a custom property holding var() is resolved where it is declared, so an elevation declared once at :root would hand every subtree the root theme's shadow. Declared per theme, [data-theme] works at any scope, which is what Art.6 means by a scope attribute. The only thing that changes between themes is colour — the surfaces below, and color.app.shadow-umbra / -penumbra.",
+
+    "elevation": {
+        "flat": {
+            "surface": { "$value": "{color.app.background}", "$type": "color", "$description": "The ground plane takes the app background." },
+            "shadow":  { "$value": [], "$type": "shadow", "$description": "Flat sits on the ground plane and casts nothing, in every theme." }
+        },
+        "surface": {
+            "surface": { "$value": "{color.app.surface}", "$type": "color", "$description": "Card / panel / alert / table." },
+            "shadow":  { "$value": [
+                { "color": "{color.app.shadow-umbra}",    "offsetX": "0px", "offsetY": "1px", "blur": "1px" },
+                { "color": "{color.app.shadow-penumbra}", "offsetX": "0px", "offsetY": "1px", "blur": "2px" }
+            ], "$type": "shadow", "$description": "umbra (tight, dark) over penumbra (wide, soft), lit from directly above. The two-layer geometry is this platform's expression of the level, not the level itself — a platform that can only draw one shadow keeps the level and renders one (Art.7)." }
+        },
+        "navigation": {
+            "surface": { "$value": "{color.app.surface}", "$type": "color", "$description": "App bar / sidebar / sticky header / tab bar. Shares a surface with level 1; they do not overlap, so the shadow carries the difference." },
+            "shadow":  { "$value": [
+                { "color": "{color.app.shadow-umbra}",    "offsetX": "0px", "offsetY": "1px", "blur": "2px" },
+                { "color": "{color.app.shadow-penumbra}", "offsetX": "0px", "offsetY": "2px", "blur": "4px" }
+            ], "$type": "shadow" }
+        },
+        "popover": {
+            "surface": { "$value": "{color.app.surface-raised}", "$type": "color", "$description": "Menu / dropdown / select / combobox / popover. Tooltip draws at this depth but stacks at --layer-tooltip." },
+            "shadow":  { "$value": [
+                { "color": "{color.app.shadow-umbra}",    "offsetX": "0px", "offsetY": "2px", "blur": "3px" },
+                { "color": "{color.app.shadow-penumbra}", "offsetX": "0px", "offsetY": "4px", "blur": "8px" }
+            ], "$type": "shadow" }
+        },
+        "modal": {
+            "surface": { "$value": "{color.app.overlay}", "$type": "color", "$description": "Modal / dialog / drawer / sheet." },
+            "shadow":  { "$value": [
+                { "color": "{color.app.shadow-umbra}",    "offsetX": "0px", "offsetY": "3px", "blur": "5px" },
+                { "color": "{color.app.shadow-penumbra}", "offsetX": "0px", "offsetY": "8px", "blur": "16px" }
+            ], "$type": "shadow" }
+        },
+        "notification": {
+            "surface": { "$value": "{color.app.overlay}", "$type": "color", "$description": "Toast / snackbar. Shares the overlay surface with modal, so in dark — where the tonal ladder has run out of headroom before it runs out of levels — the shadow is the only thing separating a toast from the dialog beneath it." },
+            "shadow":  { "$value": [
+                { "color": "{color.app.shadow-umbra}",    "offsetX": "0px", "offsetY": "4px", "blur": "6px" },
+                { "color": "{color.app.shadow-penumbra}", "offsetX": "0px", "offsetY": "12px", "blur": "24px" }
+            ], "$type": "shadow" }
+        }
+    }
+}

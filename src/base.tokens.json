@@ -407,11 +407,12 @@
     },
 
     "elevation": {
-        "flat":         { "level": { "$value": 0, "$type": "number", "$description": "Depth of the ground plane. The level is the normative datum — the ordering and the assignment of components to levels hold on every platform, while how a level is drawn (shadow / tonal / glass) is expressive and theme-owned (Constitution Art.2). The surface and shadow facets live in the theme files because they vary by theme; the level does not, so it lives here. Platforms that render from the level itself rather than from CSS geometry (Compose shadowElevation, SwiftUI) consume this token." } },
-        "surface":      { "level": { "$value": 1, "$type": "number", "$description": "Card / panel / alert / table." } },
-        "navigation":   { "level": { "$value": 2, "$type": "number", "$description": "App bar / sidebar / sticky header / tab bar." } },
-        "popover":      { "level": { "$value": 3, "$type": "number", "$description": "Menu / dropdown / select / combobox / popover. Tooltip draws at this depth but stacks at --layer-tooltip." } },
-        "modal":        { "level": { "$value": 4, "$type": "number", "$description": "Modal / dialog / drawer / sheet." } },
+        "$description": "The level is normative and theme-invariant, so it lives here. The facets that draw a level are in elevation.tokens.json — also Stemcell's, never a theme's (Constitution Art.3) — and are emitted into each theme so they resolve against that theme's colours at the scope the theme is applied (Art.6).",
+        "flat": { "level": { "$value": 0, "$type": "number", "$description": "Depth of the ground plane. The level is the normative datum — the ordering and the assignment of components to levels hold on every platform, while how a level is drawn (shadow / tonal / glass) is expressive (Constitution Art.2). Platforms that render from the level itself rather than from CSS geometry (Compose shadowElevation, SwiftUI) consume this token." } },
+        "surface": { "level": { "$value": 1, "$type": "number", "$description": "Card / panel / alert / table." } },
+        "navigation": { "level": { "$value": 2, "$type": "number", "$description": "App bar / sidebar / sticky header / tab bar." } },
+        "popover": { "level": { "$value": 3, "$type": "number", "$description": "Menu / dropdown / select / combobox / popover. Tooltip draws at this depth but stacks at --layer-tooltip." } },
+        "modal": { "level": { "$value": 4, "$type": "number", "$description": "Modal / dialog / drawer / sheet." } },
         "notification": { "level": { "$value": 5, "$type": "number", "$description": "Toast / snackbar." } }
     },
 

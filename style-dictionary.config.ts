@@ -116,9 +116,44 @@ const webDark = new StyleDictionary({
   },
 });
 
+// Density axis (orthogonal to theme): compact overrides for spacing semantic tokens,
+// emitted under [data-density="compact"]. Base tokens are included for alias resolution only.
+const webCompact = new StyleDictionary({
+  log: { verbosity: 'default' },
+  usesDtcg: true,
+  include: ['src/base.tokens.json'],
+  source: ['src/density/compact.json'],
+  platforms: {
+    css: {
+      transformGroup: 'stemcell/web',
+      buildPath: 'dist/web/',
+      files: [
+        {
+          destination: 'density-compact.css',
+          format: 'css/variables',
+          filter: sourceOnly,
+          options: { selector: '[data-density="compact"]', outputReferences: false },
+        },
+      ],
+    },
+    ts: {
+      transformGroup: 'stemcell/web',
+      buildPath: 'dist/_ts/web/',
+      files: [
+        {
+          destination: 'density-compact.ts',
+          format: 'stemcell/ts/css-var-names',
+          filter: sourceOnly,
+        },
+      ],
+    },
+  },
+});
+
 await webBase.buildAllPlatforms();
 await webLight.buildAllPlatforms();
 await webDark.buildAllPlatforms();
+await webCompact.buildAllPlatforms();
 
 // Generate shared type declarations consumed by all stemcell framework packages.
 // AVAILABLE_THEMES and BuiltInThemeKey are auto-derived from the themes registry.
@@ -148,5 +183,5 @@ export interface CustomThemeDefinition {
 // correct order (base → light → dark), preventing import-order bugs.
 await Bun.write(
   'dist/web/standard.css',
-  `@import "./base.css";\n@import "./standard-light.css";\n@import "./standard-dark.css";\n`,
+  `@import "./base.css";\n@import "./standard-light.css";\n@import "./standard-dark.css";\n@import "./density-compact.css";\n`,
 );

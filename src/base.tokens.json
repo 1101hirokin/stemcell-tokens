@@ -882,41 +882,36 @@
     },
 
     "spacing": {
-        "0x": { "$type": "dimension", "$value": "0px" },
-        "1x": { "$type": "dimension", "$value": "4px" },
-        "2x": { "$type": "dimension", "$value": "8px" },
-        "3x": { "$type": "dimension", "$value": "12px" },
-        "4x": { "$type": "dimension", "$value": "16px" },
-        "5x": { "$type": "dimension", "$value": "20px" },
-        "6x": { "$type": "dimension", "$value": "24px" },
-        "7x": { "$type": "dimension", "$value": "28px" },
-        "8x": { "$type": "dimension", "$value": "32px" },
-        "9x": { "$type": "dimension", "$value": "36px" },
-        "10x": { "$type": "dimension", "$value": "40px" },
-        "11x": { "$type": "dimension", "$value": "44px" },
-        "12x": { "$type": "dimension", "$value": "48px" },
+        "0":  { "$type": "dimension", "$value": "0px",  "$description": "4*0 px." },
+        "1":  { "$type": "dimension", "$value": "4px",  "$description": "4*1 px." },
+        "2":  { "$type": "dimension", "$value": "8px",  "$description": "4*2 px." },
+        "3":  { "$type": "dimension", "$value": "12px", "$description": "4*3 px." },
+        "4":  { "$type": "dimension", "$value": "16px", "$description": "4*4 px." },
+        "5":  { "$type": "dimension", "$value": "20px", "$description": "4*5 px." },
+        "6":  { "$type": "dimension", "$value": "24px", "$description": "4*6 px." },
+        "7":  { "$type": "dimension", "$value": "28px", "$description": "4*7 px." },
+        "8":  { "$type": "dimension", "$value": "32px", "$description": "4*8 px." },
+        "9":  { "$type": "dimension", "$value": "36px", "$description": "4*9 px." },
+        "10": { "$type": "dimension", "$value": "40px", "$description": "4*10 px." },
+        "11": { "$type": "dimension", "$value": "44px", "$description": "4*11 px." },
+        "12": { "$type": "dimension", "$value": "48px", "$description": "4*12 px." },
+        "13": { "$type": "dimension", "$value": "52px", "$description": "4*13 px." },
+        "14": { "$type": "dimension", "$value": "56px", "$description": "4*14 px." },
+        "15": { "$type": "dimension", "$value": "60px", "$description": "4*15 px." },
+        "16": { "$type": "dimension", "$value": "64px", "$description": "4*16 px." },
+        "17": { "$type": "dimension", "$value": "68px", "$description": "4*17 px." },
+        "18": { "$type": "dimension", "$value": "72px", "$description": "4*18 px." },
+        "19": { "$type": "dimension", "$value": "76px", "$description": "4*19 px." },
+        "20": { "$type": "dimension", "$value": "80px", "$description": "4*20 px." },
+        "21": { "$type": "dimension", "$value": "84px", "$description": "4*21 px." },
+        "22": { "$type": "dimension", "$value": "88px", "$description": "4*22 px." },
+        "23": { "$type": "dimension", "$value": "92px", "$description": "4*23 px." },
+        "24": { "$type": "dimension", "$value": "96px", "$description": "4*24 px." },
 
-        "semantic": {
-            "inset": {
-                "xs":  { "$type": "dimension", "$value": "{spacing.1x}", "$description": "4px — tight inset, dense controls" },
-                "sm":  { "$type": "dimension", "$value": "{spacing.2x}", "$description": "8px — compact inset" },
-                "md":  { "$type": "dimension", "$value": "{spacing.4x}", "$description": "16px — default component inset" },
-                "lg":  { "$type": "dimension", "$value": "{spacing.6x}", "$description": "24px — spacious inset" },
-                "xl":  { "$type": "dimension", "$value": "{spacing.8x}", "$description": "32px — extra spacious inset" }
-            },
-            "gap": {
-                "xs":  { "$type": "dimension", "$value": "{spacing.1x}", "$description": "4px — tight gap between elements" },
-                "sm":  { "$type": "dimension", "$value": "{spacing.2x}", "$description": "8px — compact gap" },
-                "md":  { "$type": "dimension", "$value": "{spacing.3x}", "$description": "12px — default gap" },
-                "lg":  { "$type": "dimension", "$value": "{spacing.4x}", "$description": "16px — loose gap" },
-                "xl":  { "$type": "dimension", "$value": "{spacing.6x}", "$description": "24px — section-level gap" }
-            },
-            "layout": {
-                "page-margin":  { "$type": "dimension", "$value": "{spacing.4x}",  "$description": "16px — horizontal page margin" },
-                "content-gap":  { "$type": "dimension", "$value": "{spacing.6x}",  "$description": "24px — between content blocks" },
-                "section-gap":  { "$type": "dimension", "$value": "{spacing.12x}", "$description": "48px — between major sections" }
-            }
-        }
+        "inset":  { "sm": { "$type": "dimension", "$value": "{spacing.2}", "$description": "8px." },  "md": { "$type": "dimension", "$value": "{spacing.4}", "$description": "16px." }, "lg": { "$type": "dimension", "$value": "{spacing.6}", "$description": "24px." } },
+        "stack":  { "sm": { "$type": "dimension", "$value": "{spacing.2}", "$description": "8px." },  "md": { "$type": "dimension", "$value": "{spacing.4}", "$description": "16px." }, "lg": { "$type": "dimension", "$value": "{spacing.6}", "$description": "24px." } },
+        "inline": { "sm": { "$type": "dimension", "$value": "{spacing.1}", "$description": "4px." },  "md": { "$type": "dimension", "$value": "{spacing.2}", "$description": "8px." },  "lg": { "$type": "dimension", "$value": "{spacing.3}", "$description": "12px." } },
+        "gap":    { "sm": { "$type": "dimension", "$value": "{spacing.2}", "$description": "8px." },  "md": { "$type": "dimension", "$value": "{spacing.4}", "$description": "16px." }, "lg": { "$type": "dimension", "$value": "{spacing.6}", "$description": "24px." } }
     },
 
     "shape": {

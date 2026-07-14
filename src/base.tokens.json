@@ -388,13 +388,13 @@
     },
 
     "font-size": {
-        "0": { "$type": "dimension", "$value": "42px",   "$description": "Harmonic 84/(n+2), n=0 (max)." },
-        "1": { "$type": "dimension", "$value": "28px",   "$description": "n=1." },
-        "2": { "$type": "dimension", "$value": "21px",   "$description": "n=2." },
-        "3": { "$type": "dimension", "$value": "16.8px", "$description": "n=3." },
-        "4": { "$type": "dimension", "$value": "14px",   "$description": "n=4 (body base)." },
-        "5": { "$type": "dimension", "$value": "12px",   "$description": "n=5 (regularized 11.62 -> 84/7 = 12)." },
-        "6": { "$type": "dimension", "$value": "10.5px", "$description": "n=6." }
+        "0": { "$type": "fontSize", "$value": "42px",   "$description": "Harmonic 84/(n+2), n=0 (max). fontSize type -> web rem / native sp / iOS Dynamic Type." },
+        "1": { "$type": "fontSize", "$value": "28px",   "$description": "n=1." },
+        "2": { "$type": "fontSize", "$value": "21px",   "$description": "n=2." },
+        "3": { "$type": "fontSize", "$value": "16.8px", "$description": "n=3." },
+        "4": { "$type": "fontSize", "$value": "14px",   "$description": "n=4 (body base)." },
+        "5": { "$type": "fontSize", "$value": "12px",   "$description": "n=5 (regularized 11.62 -> 84/7 = 12)." },
+        "6": { "$type": "fontSize", "$value": "10.5px", "$description": "n=6." }
     },
 
     "line-height": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio, fixed across all roles." },

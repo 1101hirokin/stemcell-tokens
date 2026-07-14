@@ -381,33 +381,29 @@
         }
     },
     "font-weight": {
-        "heading": { "$type": "fontWeight", "$value": 700 },
-        "subtitle": { "$type": "fontWeight", "$value": 600 },
-        "body": { "$type": "fontWeight", "$value": 400 },
-        "caption": { "$type": "fontWeight", "$value": 400 },
-        "overline": { "$type": "fontWeight", "$value": 500 },
-        "button": { "$type": "fontWeight", "$value": 600 },
-        "code": { "$type": "fontWeight", "$value": 500 }
+        "regular":  { "$type": "fontWeight", "$value": 400, "$description": "Regular." },
+        "medium":   { "$type": "fontWeight", "$value": 500, "$description": "Medium." },
+        "semibold": { "$type": "fontWeight", "$value": 600, "$description": "Semibold." },
+        "bold":     { "$type": "fontWeight", "$value": 700, "$description": "Bold." }
     },
 
     "font-size": {
-        "0": { "$type": "dimension", "$value": "42px" },
-        "1": { "$type": "dimension", "$value": "28px" },
-        "2": { "$type": "dimension", "$value": "21px" },
-        "3": { "$type": "dimension", "$value": "16.8px" },
-        "4": { "$type": "dimension", "$value": "14px" },
-        "5": { "$type": "dimension", "$value": "11.62px" },
-        "6": { "$type": "dimension", "$value": "10.5px" }
+        "0": { "$type": "fontSize", "$value": "42px",   "$description": "Harmonic 84/(n+2), n=0 (max). fontSize type -> web rem / native sp / iOS Dynamic Type." },
+        "1": { "$type": "fontSize", "$value": "28px",   "$description": "n=1." },
+        "2": { "$type": "fontSize", "$value": "21px",   "$description": "n=2." },
+        "3": { "$type": "fontSize", "$value": "16.8px", "$description": "n=3." },
+        "4": { "$type": "fontSize", "$value": "14px",   "$description": "n=4 (body base)." },
+        "5": { "$type": "fontSize", "$value": "12px",   "$description": "n=5 (regularized 11.62 -> 84/7 = 12)." },
+        "6": { "$type": "fontSize", "$value": "10.5px", "$description": "n=6." }
     },
 
-    "line-heights": {
-        "0": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.0 (42px × 1.334 ≈ 56px)" },
-        "1": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.1 (28px × 1.334 ≈ 37px)" },
-        "2": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.2 (21px × 1.334 ≈ 28px)" },
-        "3": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.3 (16.8px × 1.334 ≈ 22px)" },
-        "4": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.4 (14px × 1.334 ≈ 19px)" },
-        "5": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.5 (11.62px × 1.334 ≈ 16px)" },
-        "6": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.6 (10.5px × 1.334 ≈ 14px)" }
+    "line-height": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio, fixed across all roles." },
+
+    "letter-spacing": {
+        "tight":  { "$type": "dimension", "$value": "-0.01em", "$description": "Large headings." },
+        "normal": { "$type": "dimension", "$value": "0em",     "$description": "Body." },
+        "wide":   { "$type": "dimension", "$value": "0.02em",  "$description": "Labels." },
+        "wider":  { "$type": "dimension", "$value": "0.08em",  "$description": "Overline / caps." }
     },
 
     "elevation": {
@@ -886,41 +882,36 @@
     },
 
     "spacing": {
-        "0x": { "$type": "dimension", "$value": "0px" },
-        "1x": { "$type": "dimension", "$value": "4px" },
-        "2x": { "$type": "dimension", "$value": "8px" },
-        "3x": { "$type": "dimension", "$value": "12px" },
-        "4x": { "$type": "dimension", "$value": "16px" },
-        "5x": { "$type": "dimension", "$value": "20px" },
-        "6x": { "$type": "dimension", "$value": "24px" },
-        "7x": { "$type": "dimension", "$value": "28px" },
-        "8x": { "$type": "dimension", "$value": "32px" },
-        "9x": { "$type": "dimension", "$value": "36px" },
-        "10x": { "$type": "dimension", "$value": "40px" },
-        "11x": { "$type": "dimension", "$value": "44px" },
-        "12x": { "$type": "dimension", "$value": "48px" },
+        "0":  { "$type": "dimension", "$value": "0px",  "$description": "4*0 px." },
+        "1":  { "$type": "dimension", "$value": "4px",  "$description": "4*1 px." },
+        "2":  { "$type": "dimension", "$value": "8px",  "$description": "4*2 px." },
+        "3":  { "$type": "dimension", "$value": "12px", "$description": "4*3 px." },
+        "4":  { "$type": "dimension", "$value": "16px", "$description": "4*4 px." },
+        "5":  { "$type": "dimension", "$value": "20px", "$description": "4*5 px." },
+        "6":  { "$type": "dimension", "$value": "24px", "$description": "4*6 px." },
+        "7":  { "$type": "dimension", "$value": "28px", "$description": "4*7 px." },
+        "8":  { "$type": "dimension", "$value": "32px", "$description": "4*8 px." },
+        "9":  { "$type": "dimension", "$value": "36px", "$description": "4*9 px." },
+        "10": { "$type": "dimension", "$value": "40px", "$description": "4*10 px." },
+        "11": { "$type": "dimension", "$value": "44px", "$description": "4*11 px." },
+        "12": { "$type": "dimension", "$value": "48px", "$description": "4*12 px." },
+        "13": { "$type": "dimension", "$value": "52px", "$description": "4*13 px." },
+        "14": { "$type": "dimension", "$value": "56px", "$description": "4*14 px." },
+        "15": { "$type": "dimension", "$value": "60px", "$description": "4*15 px." },
+        "16": { "$type": "dimension", "$value": "64px", "$description": "4*16 px." },
+        "17": { "$type": "dimension", "$value": "68px", "$description": "4*17 px." },
+        "18": { "$type": "dimension", "$value": "72px", "$description": "4*18 px." },
+        "19": { "$type": "dimension", "$value": "76px", "$description": "4*19 px." },
+        "20": { "$type": "dimension", "$value": "80px", "$description": "4*20 px." },
+        "21": { "$type": "dimension", "$value": "84px", "$description": "4*21 px." },
+        "22": { "$type": "dimension", "$value": "88px", "$description": "4*22 px." },
+        "23": { "$type": "dimension", "$value": "92px", "$description": "4*23 px." },
+        "24": { "$type": "dimension", "$value": "96px", "$description": "4*24 px." },
 
-        "semantic": {
-            "inset": {
-                "xs":  { "$type": "dimension", "$value": "{spacing.1x}", "$description": "4px — tight inset, dense controls" },
-                "sm":  { "$type": "dimension", "$value": "{spacing.2x}", "$description": "8px — compact inset" },
-                "md":  { "$type": "dimension", "$value": "{spacing.4x}", "$description": "16px — default component inset" },
-                "lg":  { "$type": "dimension", "$value": "{spacing.6x}", "$description": "24px — spacious inset" },
-                "xl":  { "$type": "dimension", "$value": "{spacing.8x}", "$description": "32px — extra spacious inset" }
-            },
-            "gap": {
-                "xs":  { "$type": "dimension", "$value": "{spacing.1x}", "$description": "4px — tight gap between elements" },
-                "sm":  { "$type": "dimension", "$value": "{spacing.2x}", "$description": "8px — compact gap" },
-                "md":  { "$type": "dimension", "$value": "{spacing.3x}", "$description": "12px — default gap" },
-                "lg":  { "$type": "dimension", "$value": "{spacing.4x}", "$description": "16px — loose gap" },
-                "xl":  { "$type": "dimension", "$value": "{spacing.6x}", "$description": "24px — section-level gap" }
-            },
-            "layout": {
-                "page-margin":  { "$type": "dimension", "$value": "{spacing.4x}",  "$description": "16px — horizontal page margin" },
-                "content-gap":  { "$type": "dimension", "$value": "{spacing.6x}",  "$description": "24px — between content blocks" },
-                "section-gap":  { "$type": "dimension", "$value": "{spacing.12x}", "$description": "48px — between major sections" }
-            }
-        }
+        "inset":  { "sm": { "$type": "dimension", "$value": "{spacing.2}", "$description": "8px." },  "md": { "$type": "dimension", "$value": "{spacing.4}", "$description": "16px." }, "lg": { "$type": "dimension", "$value": "{spacing.6}", "$description": "24px." } },
+        "stack":  { "sm": { "$type": "dimension", "$value": "{spacing.2}", "$description": "8px." },  "md": { "$type": "dimension", "$value": "{spacing.4}", "$description": "16px." }, "lg": { "$type": "dimension", "$value": "{spacing.6}", "$description": "24px." } },
+        "inline": { "sm": { "$type": "dimension", "$value": "{spacing.1}", "$description": "4px." },  "md": { "$type": "dimension", "$value": "{spacing.2}", "$description": "8px." },  "lg": { "$type": "dimension", "$value": "{spacing.3}", "$description": "12px." } },
+        "gap":    { "sm": { "$type": "dimension", "$value": "{spacing.2}", "$description": "8px." },  "md": { "$type": "dimension", "$value": "{spacing.4}", "$description": "16px." }, "lg": { "$type": "dimension", "$value": "{spacing.6}", "$description": "24px." } }
     },
 
     "shape": {
@@ -929,13 +920,16 @@
         "rounded-m": { "$type": "borderRadius", "$value": "6px",      "$description": "Standard rounding — buttons, inputs, cards." },
         "rounded-l": { "$type": "borderRadius", "$value": "10px",     "$description": "Large rounding — dialogs, sheets." },
         "angular":   { "$type": "borderRadius", "$value": "0px",      "$description": "No rounding." },
+        "smoothing": { "$type": "number", "$value": 0.6, "$description": "Continuous corner smoothing (superellipse). 0=plain arc; ~0.6 approximates iOS .continuous / Figma 60% / Compose 0.6f. Falls back to a plain arc where unsupported (Constitution Art.7)." },
 
         "semantic": {
-            "control": { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Button, input, select, checkbox, toggle." },
-            "card":    { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Card, panel, surface." },
-            "dialog":  { "$type": "borderRadius", "$value": "{shape.rounded-l}", "$description": "Modal, dialog, bottom sheet, drawer." },
-            "popover": { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Tooltip, dropdown menu, combobox popup." },
-            "pill":    { "$type": "borderRadius", "$value": "{shape.circular}",  "$description": "Badge, progress bar, avatar chip." }
+            "control":   { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Button, input, select, textarea." },
+            "selection": { "$type": "borderRadius", "$value": "{shape.rounded-s}", "$description": "Checkbox." },
+            "card":      { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Card, panel, alert, surface, image." },
+            "dialog":    { "$type": "borderRadius", "$value": "{shape.rounded-l}", "$description": "Modal, dialog, bottom sheet, drawer." },
+            "popover":   { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Tooltip, dropdown menu, combobox popup." },
+            "pill":      { "$type": "borderRadius", "$value": "{shape.circular}",  "$description": "Badge, progress bar, avatar, radio, switch." },
+            "tag":       { "$type": "borderRadius", "$value": "{shape.rounded-s}", "$description": "Tag, chip, small badge." }
         }
     },
 
@@ -951,187 +945,71 @@
     },
 
     "typography": {
-        "title": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.0}",
-                "lineHeight": "{line-heights.0}"
-            }
-        },
-        "heading-1": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.1}",
-                "lineHeight": "{line-heights.1}"
-            }
-        },
-        "heading-2": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.2}",
-                "lineHeight": "{line-heights.2}"
-            }
-        },
-        "heading-3": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.3}",
-                "lineHeight": "{line-heights.3}"
-            }
-        },
-        "heading-4": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        },
-        "heading-5": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.5}",
-                "lineHeight": "{line-heights.5}"
-            }
-        },
-        "heading-6": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.6}",
-                "lineHeight": "{line-heights.6}"
-            }
-        },
-        "subtitle-1": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.subtitle}",
-                "fontSize": "{font-size.3}",
-                "lineHeight": "{line-heights.3}"
-            }
-        },
-        "subtitle-2": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.subtitle}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        },
-        "body-1": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.body}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        },
-        "body-2": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.body}",
-                "fontSize": "{font-size.5}",
-                "lineHeight": "{line-heights.5}"
-            }
-        },
-        "caption": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.caption}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        },
-        "overline": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.overline}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        },
-        "button": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.button}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        },
-        "code": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.code}",
-                "fontWeight": "{font-weight.code}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        }
+        "display-lg":  { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.0}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
+        "display-md":  { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.1}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
+        "headline-lg": { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.bold}", "fontSize": "{font-size.1}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
+        "headline-md": { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.bold}", "fontSize": "{font-size.2}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
+        "headline-sm": { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.bold}", "fontSize": "{font-size.3}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
+        "title-lg":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.2}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "title-md":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.3}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "title-sm":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.4}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "body-lg":     { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.3}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "body-md":     { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.4}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "body-sm":     { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.5}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "label-lg":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.medium}", "fontSize": "{font-size.4}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.wide}" } },
+        "label-md":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.medium}", "fontSize": "{font-size.5}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.wide}" } },
+        "label-sm":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.medium}", "fontSize": "{font-size.6}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.wide}" } },
+        "mono-md":     { "$type": "typography", "$value": { "fontFamily": "{font-family.code}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.4}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "mono-sm":     { "$type": "typography", "$value": { "fontFamily": "{font-family.code}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.5}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } }
     },
     "focus-ring": {
-        "width": { "$type": "dimension", "$value": "2px" },
-        "gap": { "$type": "dimension", "$value": "0px" }
+        "width": { "$type": "dimension", "$value": "2px", "$description": "Focus ring thickness (outline-width). WCAG 2.2 minimum." },
+        "offset": { "$type": "dimension", "$value": "2px", "$description": "Focus ring offset (outline-offset). Gap between the element edge and the ring so the background shows through, improving visibility." },
+        "style": { "$type": "strokeStyle", "$value": "solid", "$description": "Focus ring line style (outline-style)." }
     },
     "motion": {
-        "none": {
-            "duration": {
-                "$value": "0ms",
-                "$type": "duration",
-                "$description": "Instant — use for prefers-reduced-motion"
-            },
-            "easing": {
-                "$value": [0.0, 0.0, 1.0, 1.0],
-                "$type": "cubicBezier"
-            }
+        "duration": {
+            "fast-01":     { "$value": "70ms",  "$type": "duration", "$description": "Carbon fast-01. Micro feedback." },
+            "fast-02":     { "$value": "110ms", "$type": "duration", "$description": "Carbon fast-02. Hover/press/toggle feedback." },
+            "moderate-01": { "$value": "150ms", "$type": "duration", "$description": "Carbon moderate-01. General transitions and exits." },
+            "moderate-02": { "$value": "240ms", "$type": "duration", "$description": "Carbon moderate-02. Entrances and expand/collapse." },
+            "slow-01":     { "$value": "400ms", "$type": "duration", "$description": "Carbon slow-01. Large surfaces." },
+            "slow-02":     { "$value": "700ms", "$type": "duration", "$description": "Carbon slow-02. Loops (spinner/skeleton)." }
         },
-        "standard": {
-            "duration": {
-                "$value": "200ms",
-                "$type": "duration"
-            },
-            "easing": {
-                "$value": [0.2, 0.0, 0.38, 0.9],
-                "$type": "cubicBezier"
-            }
+        "easing": {
+            "standard": { "$value": [0.2, 0.0, 0.38, 0.9], "$type": "cubicBezier", "$description": "ease-out. Entrances and general transitions; the spring fallback." },
+            "exit":     { "$value": [0.2, 0.0, 1.0, 1.0],  "$type": "cubicBezier", "$description": "accelerate. Dismissals." },
+            "linear":   { "$value": [0.0, 0.0, 1.0, 1.0],  "$type": "cubicBezier", "$description": "Linear. Loops and the none/reduced result." }
+        },
+        "scale": { "$value": 1, "$type": "number", "$description": "Ambient motion multiplier. Components multiply durations by this; reduced-motion sets it to 0 (Constitution Art.6)." },
+
+        "none": {
+            "duration": { "$value": "0ms", "$type": "duration", "$description": "Instant. The reduced-motion result." },
+            "easing":   { "$value": "{motion.easing.linear}", "$type": "cubicBezier" }
+        },
+        "feedback": {
+            "duration": { "$value": "{motion.duration.fast-02}", "$type": "duration", "$description": "Hover/press/toggle." },
+            "easing":   { "$value": "{motion.easing.standard}", "$type": "cubicBezier" }
+        },
+        "transition": {
+            "duration": { "$value": "{motion.duration.moderate-01}", "$type": "duration", "$description": "General property change." },
+            "easing":   { "$value": "{motion.easing.standard}", "$type": "cubicBezier" }
         },
         "entrance": {
-            "duration": {
-                "$value": "250ms",
-                "$type": "duration"
-            },
-            "easing": {
-                "$value": [0.0, 0.0, 0.38, 0.9],
-                "$type": "cubicBezier"
-            }
+            "duration": { "$value": "{motion.duration.moderate-02}", "$type": "duration", "$description": "Element appears." },
+            "easing":   { "$value": "{motion.easing.standard}", "$type": "cubicBezier" }
         },
         "exit": {
-            "duration": {
-                "$value": "200ms",
-                "$type": "duration"
-            },
-            "easing": {
-                "$value": [0.2, 0.0, 1.0, 1.0],
-                "$type": "cubicBezier"
-            }
+            "duration": { "$value": "{motion.duration.moderate-01}", "$type": "duration", "$description": "Element dismisses (faster than entrance)." },
+            "easing":   { "$value": "{motion.easing.exit}", "$type": "cubicBezier" }
+        },
+        "expand": {
+            "duration": { "$value": "{motion.duration.moderate-02}", "$type": "duration", "$description": "Accordion/collapse/disclosure height." },
+            "easing":   { "$value": "{motion.easing.standard}", "$type": "cubicBezier" }
+        },
+        "loop": {
+            "duration": { "$value": "{motion.duration.slow-02}", "$type": "duration", "$description": "Spinner/skeleton (infinite)." },
+            "easing":   { "$value": "{motion.easing.linear}", "$type": "cubicBezier" }
         }
     }
 }

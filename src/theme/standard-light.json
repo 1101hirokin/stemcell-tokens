@@ -18,7 +18,18 @@
             "foreground": {
                 "$value": "{color.gray.900}",
                 "$type": "color"
-            }
+            },
+            "surface":        { "$value": "{color.app.background}", "$type": "color", "$description": "Raised surface (card/panel). Light: white; depth comes from shadow." },
+            "surface-raised": { "$value": "{color.app.background}", "$type": "color", "$description": "Nested raised surface." },
+            "overlay":        { "$value": "{color.app.background}", "$type": "color", "$description": "Popover/modal surface." },
+            "fg-muted":       { "$value": "{color.gray.600}", "$type": "color", "$description": "Secondary text." },
+            "fg-subtle":      { "$value": "{color.gray.500}", "$type": "color", "$description": "Supplementary text." },
+            "fg-disabled":    { "$value": "{color.gray.400}", "$type": "color", "$description": "Disabled text." },
+            "link":           { "$value": "{color.app.system}", "$type": "color", "$description": "Hyperlink text." },
+            "border":         { "$value": "{color.gray.200}", "$type": "color", "$description": "Neutral border." },
+            "divider":        { "$value": "{color.gray.100}", "$type": "color", "$description": "Neutral divider." },
+            "shadow":         { "$value": "{color.gray.900}", "$type": "color", "$description": "Elevation shadow color (slightly-blue near-black)." },
+            "scrim":          { "$value": "{color.gray.900}", "$type": "color", "$description": "Modal scrim color (used at ~0.5 opacity)." }
         },
         "brand": {
             "50": { "$value": "#ebe9fb", "$type": "color" },
@@ -204,6 +215,20 @@
                     "$value": "{color.green.200}",
                     "$type": "color"
                 }
+            },
+            "info": {
+                "bg":              { "$value": "{color.blue.600}", "$type": "color" },
+                "fg":              { "$value": "#ffffff",          "$type": "color" },
+                "border":          { "$value": "{color.semantic.info.bg}", "$type": "color" },
+                "icon":            { "$value": "{color.semantic.info.fg}", "$type": "color" },
+                "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
+                "bg-hover":        { "$value": "{color.blue.700}", "$type": "color" },
+                "bg-pressed":      { "$value": "{color.blue.800}", "$type": "color" },
+                "soft-bg":         { "$value": "{color.blue.50}",  "$type": "color" },
+                "soft-fg":         { "$value": "{color.blue.800}", "$type": "color" },
+                "soft-border":     { "$value": "{color.blue.300}", "$type": "color" },
+                "soft-bg-hover":   { "$value": "{color.blue.100}", "$type": "color" },
+                "soft-bg-pressed": { "$value": "{color.blue.200}", "$type": "color" }
             },
             "plain": {
                 "bg": { "$value": "{color.gray.600}", "$type": "color" },

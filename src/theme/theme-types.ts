@@ -10,6 +10,17 @@ export type StemcellAppColorTokens = Partial<{
     system: StemcellColorToken;
     background: StemcellColorToken;
     foreground: StemcellColorToken;
+    surface: StemcellColorToken;
+    "surface-raised": StemcellColorToken;
+    overlay: StemcellColorToken;
+    "fg-muted": StemcellColorToken;
+    "fg-subtle": StemcellColorToken;
+    "fg-disabled": StemcellColorToken;
+    link: StemcellColorToken;
+    border: StemcellColorToken;
+    divider: StemcellColorToken;
+    shadow: StemcellColorToken;
+    scrim: StemcellColorToken;
 }>;
 
 export type StemcellSemanticColorTokens = Partial<{

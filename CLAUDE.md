@@ -89,7 +89,7 @@ dist/
 Each theme CSS file targets both `:root` and `[data-theme="<name>"]` so component
 libraries can switch themes at runtime without reloading. Dark theme additionally emits
 an `@media (prefers-color-scheme: dark)` block targeting
-`:root:not([data-theme="standard-light"])`, enabling OS-level auto-switching when no
+`:root:not([data-theme])`, enabling OS-level auto-switching when no
 explicit `data-theme` attribute is set.
 
 ### Dark Mode Color Scale Convention

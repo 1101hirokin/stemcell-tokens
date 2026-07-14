@@ -54,6 +54,13 @@ depths, while the new names are structural roles. Pick the level by what the com
   resolve `color.app.shadow` (`#292f36`, a slightly-blue neutral black), which is what
   the elevation foundation has always specified.
 
+### Notes for other platforms
+
+Shadow colours and `--scrim` carry their colour as a plain alias and their alpha as a
+number (`$extensions.stemcell.alpha` for colours, an `alpha` field for shadow layers).
+The CSS `rgba()` is composed by the web transform. Exporters for other platforms should
+read the alias and the alpha rather than parsing the CSS string.
+
 ### Added
 
 - `--scrim` — the veil behind modals, at `color.app.scrim` / 50%.

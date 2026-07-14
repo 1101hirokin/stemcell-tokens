@@ -1096,46 +1096,48 @@
         "style": { "$type": "strokeStyle", "$value": "solid", "$description": "Focus ring line style (outline-style)." }
     },
     "motion": {
-        "none": {
-            "duration": {
-                "$value": "0ms",
-                "$type": "duration",
-                "$description": "Instant — use for prefers-reduced-motion"
-            },
-            "easing": {
-                "$value": [0.0, 0.0, 1.0, 1.0],
-                "$type": "cubicBezier"
-            }
+        "duration": {
+            "fast-01":     { "$value": "70ms",  "$type": "duration", "$description": "Carbon fast-01. Micro feedback." },
+            "fast-02":     { "$value": "110ms", "$type": "duration", "$description": "Carbon fast-02. Hover/press/toggle feedback." },
+            "moderate-01": { "$value": "150ms", "$type": "duration", "$description": "Carbon moderate-01. General transitions and exits." },
+            "moderate-02": { "$value": "240ms", "$type": "duration", "$description": "Carbon moderate-02. Entrances and expand/collapse." },
+            "slow-01":     { "$value": "400ms", "$type": "duration", "$description": "Carbon slow-01. Large surfaces." },
+            "slow-02":     { "$value": "700ms", "$type": "duration", "$description": "Carbon slow-02. Loops (spinner/skeleton)." }
         },
-        "standard": {
-            "duration": {
-                "$value": "200ms",
-                "$type": "duration"
-            },
-            "easing": {
-                "$value": [0.2, 0.0, 0.38, 0.9],
-                "$type": "cubicBezier"
-            }
+        "easing": {
+            "standard": { "$value": [0.2, 0.0, 0.38, 0.9], "$type": "cubicBezier", "$description": "ease-out. Entrances and general transitions; the spring fallback." },
+            "exit":     { "$value": [0.2, 0.0, 1.0, 1.0],  "$type": "cubicBezier", "$description": "accelerate. Dismissals." },
+            "linear":   { "$value": [0.0, 0.0, 1.0, 1.0],  "$type": "cubicBezier", "$description": "Linear. Loops and the none/reduced result." }
+        },
+        "scale": { "$value": 1, "$type": "number", "$description": "Ambient motion multiplier. Components multiply durations by this; reduced-motion sets it to 0 (Constitution Art.6)." },
+
+        "none": {
+            "duration": { "$value": "0ms", "$type": "duration", "$description": "Instant. The reduced-motion result." },
+            "easing":   { "$value": "{motion.easing.linear}", "$type": "cubicBezier" }
+        },
+        "feedback": {
+            "duration": { "$value": "{motion.duration.fast-02}", "$type": "duration", "$description": "Hover/press/toggle." },
+            "easing":   { "$value": "{motion.easing.standard}", "$type": "cubicBezier" }
+        },
+        "transition": {
+            "duration": { "$value": "{motion.duration.moderate-01}", "$type": "duration", "$description": "General property change." },
+            "easing":   { "$value": "{motion.easing.standard}", "$type": "cubicBezier" }
         },
         "entrance": {
-            "duration": {
-                "$value": "250ms",
-                "$type": "duration"
-            },
-            "easing": {
-                "$value": [0.0, 0.0, 0.38, 0.9],
-                "$type": "cubicBezier"
-            }
+            "duration": { "$value": "{motion.duration.moderate-02}", "$type": "duration", "$description": "Element appears." },
+            "easing":   { "$value": "{motion.easing.standard}", "$type": "cubicBezier" }
         },
         "exit": {
-            "duration": {
-                "$value": "200ms",
-                "$type": "duration"
-            },
-            "easing": {
-                "$value": [0.2, 0.0, 1.0, 1.0],
-                "$type": "cubicBezier"
-            }
+            "duration": { "$value": "{motion.duration.moderate-01}", "$type": "duration", "$description": "Element dismisses (faster than entrance)." },
+            "easing":   { "$value": "{motion.easing.exit}", "$type": "cubicBezier" }
+        },
+        "expand": {
+            "duration": { "$value": "{motion.duration.moderate-02}", "$type": "duration", "$description": "Accordion/collapse/disclosure height." },
+            "easing":   { "$value": "{motion.easing.standard}", "$type": "cubicBezier" }
+        },
+        "loop": {
+            "duration": { "$value": "{motion.duration.slow-02}", "$type": "duration", "$description": "Spinner/skeleton (infinite)." },
+            "easing":   { "$value": "{motion.easing.linear}", "$type": "cubicBezier" }
         }
     }
 }

@@ -1088,8 +1088,9 @@
         }
     },
     "focus-ring": {
-        "width": { "$type": "dimension", "$value": "2px" },
-        "gap": { "$type": "dimension", "$value": "0px" }
+        "width": { "$type": "dimension", "$value": "2px", "$description": "Focus ring thickness (outline-width). WCAG 2.2 minimum." },
+        "offset": { "$type": "dimension", "$value": "2px", "$description": "Focus ring offset (outline-offset). Gap between the element edge and the ring so the background shows through, improving visibility." },
+        "style": { "$type": "strokeStyle", "$value": "solid", "$description": "Focus ring line style (outline-style)." }
     },
     "motion": {
         "none": {

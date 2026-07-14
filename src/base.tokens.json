@@ -381,33 +381,29 @@
         }
     },
     "font-weight": {
-        "heading": { "$type": "fontWeight", "$value": 700 },
-        "subtitle": { "$type": "fontWeight", "$value": 600 },
-        "body": { "$type": "fontWeight", "$value": 400 },
-        "caption": { "$type": "fontWeight", "$value": 400 },
-        "overline": { "$type": "fontWeight", "$value": 500 },
-        "button": { "$type": "fontWeight", "$value": 600 },
-        "code": { "$type": "fontWeight", "$value": 500 }
+        "regular":  { "$type": "fontWeight", "$value": 400, "$description": "Regular." },
+        "medium":   { "$type": "fontWeight", "$value": 500, "$description": "Medium." },
+        "semibold": { "$type": "fontWeight", "$value": 600, "$description": "Semibold." },
+        "bold":     { "$type": "fontWeight", "$value": 700, "$description": "Bold." }
     },
 
     "font-size": {
-        "0": { "$type": "dimension", "$value": "42px" },
-        "1": { "$type": "dimension", "$value": "28px" },
-        "2": { "$type": "dimension", "$value": "21px" },
-        "3": { "$type": "dimension", "$value": "16.8px" },
-        "4": { "$type": "dimension", "$value": "14px" },
-        "5": { "$type": "dimension", "$value": "11.62px" },
-        "6": { "$type": "dimension", "$value": "10.5px" }
+        "0": { "$type": "dimension", "$value": "42px",   "$description": "Harmonic 84/(n+2), n=0 (max)." },
+        "1": { "$type": "dimension", "$value": "28px",   "$description": "n=1." },
+        "2": { "$type": "dimension", "$value": "21px",   "$description": "n=2." },
+        "3": { "$type": "dimension", "$value": "16.8px", "$description": "n=3." },
+        "4": { "$type": "dimension", "$value": "14px",   "$description": "n=4 (body base)." },
+        "5": { "$type": "dimension", "$value": "12px",   "$description": "n=5 (regularized 11.62 -> 84/7 = 12)." },
+        "6": { "$type": "dimension", "$value": "10.5px", "$description": "n=6." }
     },
 
-    "line-heights": {
-        "0": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.0 (42px × 1.334 ≈ 56px)" },
-        "1": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.1 (28px × 1.334 ≈ 37px)" },
-        "2": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.2 (21px × 1.334 ≈ 28px)" },
-        "3": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.3 (16.8px × 1.334 ≈ 22px)" },
-        "4": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.4 (14px × 1.334 ≈ 19px)" },
-        "5": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.5 (11.62px × 1.334 ≈ 16px)" },
-        "6": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio for font-size.6 (10.5px × 1.334 ≈ 14px)" }
+    "line-height": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio, fixed across all roles." },
+
+    "letter-spacing": {
+        "tight":  { "$type": "dimension", "$value": "-0.01em", "$description": "Large headings." },
+        "normal": { "$type": "dimension", "$value": "0em",     "$description": "Body." },
+        "wide":   { "$type": "dimension", "$value": "0.02em",  "$description": "Labels." },
+        "wider":  { "$type": "dimension", "$value": "0.08em",  "$description": "Overline / caps." }
     },
 
     "elevation": {
@@ -954,141 +950,22 @@
     },
 
     "typography": {
-        "title": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.0}",
-                "lineHeight": "{line-heights.0}"
-            }
-        },
-        "heading-1": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.1}",
-                "lineHeight": "{line-heights.1}"
-            }
-        },
-        "heading-2": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.2}",
-                "lineHeight": "{line-heights.2}"
-            }
-        },
-        "heading-3": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.3}",
-                "lineHeight": "{line-heights.3}"
-            }
-        },
-        "heading-4": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        },
-        "heading-5": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.5}",
-                "lineHeight": "{line-heights.5}"
-            }
-        },
-        "heading-6": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.heading}",
-                "fontSize": "{font-size.6}",
-                "lineHeight": "{line-heights.6}"
-            }
-        },
-        "subtitle-1": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.subtitle}",
-                "fontSize": "{font-size.3}",
-                "lineHeight": "{line-heights.3}"
-            }
-        },
-        "subtitle-2": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.subtitle}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        },
-        "body-1": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.body}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        },
-        "body-2": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.body}",
-                "fontSize": "{font-size.5}",
-                "lineHeight": "{line-heights.5}"
-            }
-        },
-        "caption": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.caption}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        },
-        "overline": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.overline}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        },
-        "button": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.normal}",
-                "fontWeight": "{font-weight.button}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        },
-        "code": {
-            "$type": "typography",
-            "$value": {
-                "fontFamily": "{font-family.code}",
-                "fontWeight": "{font-weight.code}",
-                "fontSize": "{font-size.4}",
-                "lineHeight": "{line-heights.4}"
-            }
-        }
+        "display-lg":  { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.0}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
+        "display-md":  { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.1}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
+        "headline-lg": { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.bold}", "fontSize": "{font-size.1}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
+        "headline-md": { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.bold}", "fontSize": "{font-size.2}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
+        "headline-sm": { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.bold}", "fontSize": "{font-size.3}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
+        "title-lg":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.2}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "title-md":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.3}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "title-sm":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.4}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "body-lg":     { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.3}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "body-md":     { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.4}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "body-sm":     { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.5}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "label-lg":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.medium}", "fontSize": "{font-size.4}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.wide}" } },
+        "label-md":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.medium}", "fontSize": "{font-size.5}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.wide}" } },
+        "label-sm":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.medium}", "fontSize": "{font-size.6}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.wide}" } },
+        "mono-md":     { "$type": "typography", "$value": { "fontFamily": "{font-family.code}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.4}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
+        "mono-sm":     { "$type": "typography", "$value": { "fontFamily": "{font-family.code}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.5}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } }
     },
     "focus-ring": {
         "width": { "$type": "dimension", "$value": "2px", "$description": "Focus ring thickness (outline-width). WCAG 2.2 minimum." },

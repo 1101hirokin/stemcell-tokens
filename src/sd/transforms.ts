@@ -44,6 +44,22 @@ export function registerTransforms(sd: typeof StyleDictionary): void {
       return String(val);
     },
   });
+
+  // px -> rem, but ONLY for px values. Leaves em / % / unitless untouched
+  // (e.g. letter-spacing in em keeps its intended relative unit).
+  sd.registerTransform({
+    name: 'stemcell/size/pxToRem',
+    type: 'value',
+    filter: (token, options) => {
+      const type = options.usesDtcg ? token.$type : token.type;
+      return type === 'dimension' || type === 'fontSize';
+    },
+    transform: (token, _, options) => {
+      const raw = String(options.usesDtcg ? token.$value : token.value).trim();
+      if (raw.endsWith('px')) return `${parseFloat(raw) / 16}rem`;
+      return raw;
+    },
+  });
 }
 
 export function registerTransformGroups(sd: typeof StyleDictionary): void {
@@ -55,7 +71,7 @@ export function registerTransformGroups(sd: typeof StyleDictionary): void {
       'fontFamily/css',
       'cubicBezier/css',
       'stemcell/shadow/css',
-      'size/pxToRem',
+      'stemcell/size/pxToRem',
     ],
   });
 }

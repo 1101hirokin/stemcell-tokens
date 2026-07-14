@@ -6,7 +6,6 @@
       "name": "stemcell-tokens",
       "devDependencies": {
         "@types/bun": "latest",
-        "@types/node": "^25.6.0",
         "style-dictionary": "^5.4.0",
         "typescript": "^5",
       },

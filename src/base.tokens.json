@@ -929,13 +929,16 @@
         "rounded-m": { "$type": "borderRadius", "$value": "6px",      "$description": "Standard rounding — buttons, inputs, cards." },
         "rounded-l": { "$type": "borderRadius", "$value": "10px",     "$description": "Large rounding — dialogs, sheets." },
         "angular":   { "$type": "borderRadius", "$value": "0px",      "$description": "No rounding." },
+        "smoothing": { "$type": "number", "$value": 0.6, "$description": "Continuous corner smoothing (superellipse). 0=plain arc; ~0.6 approximates iOS .continuous / Figma 60% / Compose 0.6f. Falls back to a plain arc where unsupported (Constitution Art.7)." },
 
         "semantic": {
-            "control": { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Button, input, select, checkbox, toggle." },
-            "card":    { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Card, panel, surface." },
-            "dialog":  { "$type": "borderRadius", "$value": "{shape.rounded-l}", "$description": "Modal, dialog, bottom sheet, drawer." },
-            "popover": { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Tooltip, dropdown menu, combobox popup." },
-            "pill":    { "$type": "borderRadius", "$value": "{shape.circular}",  "$description": "Badge, progress bar, avatar chip." }
+            "control":   { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Button, input, select, textarea." },
+            "selection": { "$type": "borderRadius", "$value": "{shape.rounded-s}", "$description": "Checkbox." },
+            "card":      { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Card, panel, alert, surface, image." },
+            "dialog":    { "$type": "borderRadius", "$value": "{shape.rounded-l}", "$description": "Modal, dialog, bottom sheet, drawer." },
+            "popover":   { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Tooltip, dropdown menu, combobox popup." },
+            "pill":      { "$type": "borderRadius", "$value": "{shape.circular}",  "$description": "Badge, progress bar, avatar, radio, switch." },
+            "tag":       { "$type": "borderRadius", "$value": "{shape.rounded-s}", "$description": "Tag, chip, small badge." }
         }
     },
 

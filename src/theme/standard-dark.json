@@ -143,5 +143,38 @@
                 "soft-border": { "$value": "{color.gray.700}", "$type": "color" }
             }
         }
+    },
+
+    "elevation": {
+        "flat": {
+            "surface": { "$value": "{color.app.background}", "$type": "color", "$description": "Ground plane. Dark expresses depth by lightening the surface facet rather than casting shadows; the ladder itself is owned by color (elevation.md §5)." },
+            "shadow":  { "$value": [], "$type": "shadow", "$description": "Dark draws depth tonally, so no level casts a shadow. The level is unchanged — only its expression is (Constitution Art.2)." }
+        },
+        "surface": {
+            "surface": { "$value": "{color.app.surface}", "$type": "color" },
+            "shadow":  { "$value": [], "$type": "shadow" }
+        },
+        "navigation": {
+            "surface": { "$value": "{color.app.surface}", "$type": "color" },
+            "shadow":  { "$value": [], "$type": "shadow" }
+        },
+        "popover": {
+            "surface": { "$value": "{color.app.surface-raised}", "$type": "color" },
+            "shadow":  { "$value": [], "$type": "shadow" }
+        },
+        "modal": {
+            "surface": { "$value": "{color.app.overlay}", "$type": "color" },
+            "shadow":  { "$value": [], "$type": "shadow" }
+        },
+        "notification": {
+            "surface": { "$value": "{color.app.overlay}", "$type": "color" },
+            "shadow":  { "$value": [], "$type": "shadow" }
+        }
+    },
+
+    "scrim": {
+        "$value": "color-mix(in srgb, {color.app.scrim} 50%, transparent)",
+        "$type": "color",
+        "$description": "Veil behind modal / dialog / drawer. Stacking order is --layer-scrim; this token carries the visual value only (elevation.md §6)."
     }
 }

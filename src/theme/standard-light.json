@@ -299,5 +299,53 @@
                 }
             }
         }
+    },
+
+    "elevation": {
+        "flat": {
+            "surface": { "$value": "{color.app.background}", "$type": "color", "$description": "Ground plane. Light keeps every level untinted, so the whole surface facet resolves to background here; the tonal ladder only opens up in dark (elevation.md §5)." },
+            "shadow":  { "$value": [], "$type": "shadow", "$description": "Flat sits on the ground plane and casts nothing." }
+        },
+        "surface": {
+            "surface": { "$value": "{color.app.surface}", "$type": "color" },
+            "shadow":  { "$value": [
+                { "color": "color-mix(in srgb, {color.app.shadow} 24%, transparent)", "offsetX": "0px", "offsetY": "1px", "blur": "1px" },
+                { "color": "color-mix(in srgb, {color.app.shadow} 14%, transparent)", "offsetX": "0px", "offsetY": "1px", "blur": "2px" }
+            ], "$type": "shadow", "$description": "Card / panel / alert / table. umbra (tight, dark) over penumbra (wide, soft), lit from directly above. The two-layer geometry is this platform's expression of the level, not the level itself — a platform that can only draw one shadow keeps the level and renders one (Constitution Art.7)." }
+        },
+        "navigation": {
+            "surface": { "$value": "{color.app.surface}", "$type": "color" },
+            "shadow":  { "$value": [
+                { "color": "color-mix(in srgb, {color.app.shadow} 24%, transparent)", "offsetX": "0px", "offsetY": "1px", "blur": "2px" },
+                { "color": "color-mix(in srgb, {color.app.shadow} 14%, transparent)", "offsetX": "0px", "offsetY": "2px", "blur": "4px" }
+            ], "$type": "shadow", "$description": "App bar / sidebar / sticky header / tab bar." }
+        },
+        "popover": {
+            "surface": { "$value": "{color.app.surface-raised}", "$type": "color" },
+            "shadow":  { "$value": [
+                { "color": "color-mix(in srgb, {color.app.shadow} 24%, transparent)", "offsetX": "0px", "offsetY": "2px", "blur": "3px" },
+                { "color": "color-mix(in srgb, {color.app.shadow} 14%, transparent)", "offsetX": "0px", "offsetY": "4px", "blur": "8px" }
+            ], "$type": "shadow", "$description": "Menu / dropdown / select / combobox / popover. Tooltip draws at this depth but stacks at --layer-tooltip." }
+        },
+        "modal": {
+            "surface": { "$value": "{color.app.overlay}", "$type": "color" },
+            "shadow":  { "$value": [
+                { "color": "color-mix(in srgb, {color.app.shadow} 24%, transparent)", "offsetX": "0px", "offsetY": "3px", "blur": "5px" },
+                { "color": "color-mix(in srgb, {color.app.shadow} 14%, transparent)", "offsetX": "0px", "offsetY": "8px", "blur": "16px" }
+            ], "$type": "shadow", "$description": "Modal / dialog / drawer / sheet." }
+        },
+        "notification": {
+            "surface": { "$value": "{color.app.overlay}", "$type": "color" },
+            "shadow":  { "$value": [
+                { "color": "color-mix(in srgb, {color.app.shadow} 24%, transparent)", "offsetX": "0px", "offsetY": "4px", "blur": "6px" },
+                { "color": "color-mix(in srgb, {color.app.shadow} 14%, transparent)", "offsetX": "0px", "offsetY": "12px", "blur": "24px" }
+            ], "$type": "shadow", "$description": "Toast / snackbar." }
+        }
+    },
+
+    "scrim": {
+        "$value": "color-mix(in srgb, {color.app.scrim} 50%, transparent)",
+        "$type": "color",
+        "$description": "Veil behind modal / dialog / drawer. Stacking order is --layer-scrim; this token carries the visual value only (elevation.md §6)."
     }
 }

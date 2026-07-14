@@ -6,6 +6,41 @@ export type StemcellDtcgToken<TType extends string, TValue> = {
 
 export type StemcellColorToken = StemcellDtcgToken<"color", string>;
 
+export type StemcellShadowLayer = {
+    color: string;
+    offsetX: string;
+    offsetY: string;
+    blur: string;
+    spread?: string;
+    inset?: boolean;
+};
+
+/** An empty layer list means "casts nothing" and emits `none`. */
+export type StemcellShadowToken = StemcellDtcgToken<"shadow", StemcellShadowLayer[]>;
+
+/**
+ * One elevation level, expressed as the two facets a theme swaps: the surface
+ * colour and the shadow. Light tints nothing and casts shadows; dark lightens the
+ * surface and casts none. Components read both facets and never branch on theme.
+ */
+export type StemcellElevationLevel = Partial<{
+    surface: StemcellColorToken;
+    shadow: StemcellShadowToken;
+}>;
+
+/**
+ * The level set is normative: themes choose how a level is drawn, never which
+ * levels exist or what order they sit in.
+ */
+export type StemcellElevationTokens = Partial<{
+    flat: StemcellElevationLevel;
+    surface: StemcellElevationLevel;
+    navigation: StemcellElevationLevel;
+    popover: StemcellElevationLevel;
+    modal: StemcellElevationLevel;
+    notification: StemcellElevationLevel;
+}>;
+
 export type StemcellAppColorTokens = Partial<{
     system: StemcellColorToken;
     background: StemcellColorToken;
@@ -66,4 +101,6 @@ export type StemcellTheme = {
             | StemcellColorScaleTokens
             | undefined;
     };
+    elevation?: StemcellElevationTokens;
+    scrim?: StemcellColorToken;
 };

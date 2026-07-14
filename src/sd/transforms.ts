@@ -27,10 +27,13 @@ function shadowToCSS(s: ShadowObject): string {
 }
 
 export function registerTransforms(sd: typeof StyleDictionary): void {
-  // Shadow: handle empty arrays (elevation 0) and convert to CSS box-shadow
+  // Shadow: handle empty arrays (elevation flat) and convert to CSS box-shadow.
+  // transitive: shadow colors alias {color.app.shadow}, and a non-transitive value
+  // transform would run before that reference resolves and leave raw objects behind.
   sd.registerTransform({
     name: 'stemcell/shadow/css',
     type: 'value',
+    transitive: true,
     filter: (token, options) => {
       const type = options.usesDtcg ? token.$type : token.type;
       return type === 'shadow';

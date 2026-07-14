@@ -1011,5 +1011,14 @@
             "duration": { "$value": "{motion.duration.slow-02}", "$type": "duration", "$description": "Spinner/skeleton (infinite)." },
             "easing":   { "$value": "{motion.easing.linear}", "$type": "cubicBezier" }
         }
+    },
+    "layer": {
+        "base":         { "$value": 0,    "$type": "number", "$description": "App ground plane: body / background / flat controls. Surface content (card, panel, alert, table) shares this z. Components must reference these tokens instead of writing raw z-index values (Constitution Art.3, structural layer)." },
+        "navigation":   { "$value": 10,   "$type": "number", "$description": "Persistent chrome: app bar / sidebar / sticky header / tab bar." },
+        "popover":      { "$value": 1000, "$type": "number", "$description": "Trigger-anchored transient surfaces: menu / dropdown / select / combobox / popover." },
+        "scrim":        { "$value": 1300, "$type": "number", "$description": "Dimming veil behind a modal; sits below the modal it belongs to. Stacking order only — the visual value (color/opacity) belongs to elevation." },
+        "modal":        { "$value": 1400, "$type": "number", "$description": "Focus-trapped surfaces: modal / dialog / drawer / sheet." },
+        "notification": { "$value": 1700, "$type": "number", "$description": "Frontmost transient messages: toast / snackbar." },
+        "tooltip":      { "$value": 1800, "$type": "number", "$description": "Above every other layer despite drawing at popover depth — visual depth and stacking order are separate axes." }
     }
 }

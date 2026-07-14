@@ -173,8 +173,9 @@
     },
 
     "scrim": {
-        "$value": "color-mix(in srgb, {color.app.scrim} 50%, transparent)",
+        "$value": "{color.app.scrim}",
         "$type": "color",
+        "$extensions": { "stemcell": { "alpha": 0.5 } },
         "$description": "Veil behind modal / dialog / drawer. Stacking order is --layer-scrim; this token carries the visual value only (elevation.md §6)."
     }
 }

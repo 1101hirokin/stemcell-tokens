@@ -86,9 +86,12 @@ CSS string.
 ### Added
 
 - `--scrim` — the veil behind modals, at `color.app.scrim` / 50%.
-- `--layer-*` — a seven-step z-index scale (`base` 0, `navigation` 10, `popover` 1000,
-  `scrim` 1300, `modal` 1400, `notification` 1700, `tooltip` 1800). Components should
-  reference these instead of writing raw z-index values.
+- `--layer-*-rank` / `--layer-*-z` — seven layers in a fixed order: `base`, `navigation`,
+  `popover`, `scrim`, `modal`, `notification`, `tooltip`. `rank` (0–6) is the order itself;
+  `z` (0, 10, 1000, 1300, 1400, 1700, 1800) is how CSS says it, gaps and all. Components
+  reference these instead of writing raw z-index values. The split mirrors elevation's
+  `level` vs facets: `1700` means nothing off the web, but "above notification, below
+  tooltip" means the same everywhere.
 - `--breakpoint-*` — `compact` 0, `medium` 600px, `expanded` 840px, `large` 1200px,
   `x-large` 1600px. These stay in device pixels to track native size classes. Note they
   cannot be read from CSS: custom properties are not substituted in `@media` or

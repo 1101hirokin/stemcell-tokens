@@ -548,13 +548,35 @@
         }
     },
     "layer": {
-        "base":         { "$value": 0,    "$type": "number", "$description": "App ground plane: body / background / flat controls. Surface content (card, panel, alert, table) shares this z. Components must reference these tokens instead of writing raw z-index values (Constitution Art.3, structural layer)." },
-        "navigation":   { "$value": 10,   "$type": "number", "$description": "Persistent chrome: app bar / sidebar / sticky header / tab bar." },
-        "popover":      { "$value": 1000, "$type": "number", "$description": "Trigger-anchored transient surfaces: menu / dropdown / select / combobox / popover." },
-        "scrim":        { "$value": 1300, "$type": "number", "$description": "Dimming veil behind a modal; sits below the modal it belongs to. Stacking order only — the visual value (color/opacity) belongs to elevation." },
-        "modal":        { "$value": 1400, "$type": "number", "$description": "Focus-trapped surfaces: modal / dialog / drawer / sheet." },
-        "notification": { "$value": 1700, "$type": "number", "$description": "Frontmost transient messages: toast / snackbar." },
-        "tooltip":      { "$value": 1800, "$type": "number", "$description": "Above every other layer despite drawing at popover depth — visual depth and stacking order are separate axes." }
+        "$description": "Seven layers in a fixed order. What is normative is the order, which every platform holds; `rank` states it. `z` is the Web's way of saying it, and the gaps in 0/10/1000/... are a CSS convention — headroom against third-party stacking contexts — not meaning. 1700 tells Compose and SwiftUI nothing; being above notification and below tooltip tells them everything. Components reference these tokens instead of writing raw z-index values (Constitution Art.3, structural layer). Same split as elevation's level vs facets (Art.2).",
+        "base":         {
+            "rank": { "$value": 0, "$type": "number", "$description": "App ground plane: body / background / flat controls. Surface content (card, panel, alert, table) shares this rank." },
+            "z":    { "$value": 0, "$type": "number" }
+        },
+        "navigation":   {
+            "rank": { "$value": 1, "$type": "number", "$description": "Persistent chrome: app bar / sidebar / sticky header / tab bar." },
+            "z":    { "$value": 10, "$type": "number" }
+        },
+        "popover":      {
+            "rank": { "$value": 2, "$type": "number", "$description": "Trigger-anchored transient surfaces: menu / dropdown / select / combobox / popover." },
+            "z":    { "$value": 1000, "$type": "number" }
+        },
+        "scrim":        {
+            "rank": { "$value": 3, "$type": "number", "$description": "Dimming veil behind a modal; sits below the modal it belongs to. Stacking order only — the visual value (color/opacity) belongs to elevation." },
+            "z":    { "$value": 1300, "$type": "number" }
+        },
+        "modal":        {
+            "rank": { "$value": 4, "$type": "number", "$description": "Focus-trapped surfaces: modal / dialog / drawer / sheet." },
+            "z":    { "$value": 1400, "$type": "number" }
+        },
+        "notification": {
+            "rank": { "$value": 5, "$type": "number", "$description": "Frontmost transient messages: toast / snackbar." },
+            "z":    { "$value": 1700, "$type": "number" }
+        },
+        "tooltip":      {
+            "rank": { "$value": 6, "$type": "number", "$description": "Above every other layer despite drawing at popover depth — visual depth and stacking order are separate axes." },
+            "z":    { "$value": 1800, "$type": "number" }
+        }
     },
     "breakpoint": {
         "compact":  { "$value": "0",      "$type": "breakpoint", "$description": "Handset. Page-skeleton structure only — components reflow on their own via container queries / intrinsic sizing, and consumers should not write breakpoint values (layout.md §3). Device-pixel by intent, and deliberately not converted to rem: the normative content is these five thresholds, which must mean the same width everywhere, and rem would move the Web ones under user font scaling (Constitution Art.2). The scale matches Material's window size classes as of BREAKPOINTS_V2 (WindowManager 1.5+); note that V1 stops at three. Apple has no equivalent — horizontalSizeClass is two-valued and is not a function of width — so iOS evaluates these thresholds against its own point width (1pt ~ 1 CSS px)." },

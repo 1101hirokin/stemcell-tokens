@@ -30,7 +30,8 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "bun run clean && bun run style-dictionary.config.ts && bunx tsc --project tsconfig.build.json",
-    "check": "bunx tsc --noEmit",
+    "check": "bunx tsc --noEmit && bun run check:palette",
+    "check:palette": "bun src/checks/run.ts",
     "prepublishOnly": "bun run build"
   },
   "devDependencies": {

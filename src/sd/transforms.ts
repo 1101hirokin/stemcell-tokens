@@ -99,6 +99,11 @@ export function registerTransforms(sd: typeof StyleDictionary): void {
     type: 'value',
     filter: (token, options) => {
       const type = options.usesDtcg ? token.$type : token.type;
+      // Only these two scale with the user's text. Every other type that carries a px
+      // value is opting out on purpose: `borderRadius` (a corner should not grow with
+      // the label), `breakpoint` (a threshold must mean the same width everywhere), and
+      // `strokeWidth` (an a11y floor expressed in CSS px stops being a floor the moment
+      // it can shrink — see foundations/focus-ring.md §4).
       return type === 'dimension' || type === 'fontSize';
     },
     transform: (token, _, options) => {

@@ -468,6 +468,7 @@
         "rounded-m": { "$type": "borderRadius", "$value": "6px",      "$description": "Standard rounding — buttons, inputs, cards." },
         "rounded-l": { "$type": "borderRadius", "$value": "10px",     "$description": "Large rounding — dialogs, sheets." },
         "angular":   { "$type": "borderRadius", "$value": "0px",      "$description": "No rounding." },
+        "border-width": { "$type": "strokeWidth", "$value": "1px", "$description": "The width of a component's outline, for the `outlined` emphasis step and for dividers (emphasis.md §3, color.md §6). 1px, not 2px: the focus ring is 2px, and a border of the same weight would be indistinguishable from it when both are present (state.md §3.3). It also has to stay under the smallest non-zero radius (`rounded-s` = 2px) or the corner is crushed. Not a `dimension`, so it does not become rem: the radius it has to stay under is fixed in px, and a border that grew with the user's text while the radius did not would eventually cross it." },
         "smoothing": { "$type": "number", "$value": 0.6, "$description": "Continuous corner smoothing (superellipse). 0=plain arc; ~0.6 approximates iOS .continuous / Figma 60% / Compose 0.6f. Falls back to a plain arc where unsupported (Constitution Art.7)." },
 
         "semantic": {
@@ -511,8 +512,8 @@
         "mono-sm":     { "$type": "typography", "$value": { "fontFamily": "{font-family.code}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.5}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } }
     },
     "focus-ring": {
-        "width": { "$type": "dimension", "$value": "2px", "$description": "Focus ring thickness (outline-width). WCAG 2.2 minimum." },
-        "offset": { "$type": "dimension", "$value": "2px", "$description": "Focus ring offset (outline-offset). Gap between the element edge and the ring so the background shows through, improving visibility." },
+        "width": { "$type": "strokeWidth", "$value": "2px", "$description": "Focus ring thickness (outline-width). WCAG 2.2 minimum." },
+        "offset": { "$type": "strokeWidth", "$value": "2px", "$description": "Focus ring offset (outline-offset). Gap between the element edge and the ring so the background shows through, improving visibility." },
         "style": { "$type": "strokeStyle", "$value": "solid", "$description": "Focus ring line style (outline-style)." }
     },
     "motion": {

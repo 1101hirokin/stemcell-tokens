@@ -5,18 +5,6 @@
         }
     },
     "color": {
-        "brand": {
-            "50":  { "$value": "#ebe9fb", "$type": "color" },
-            "100": { "$value": "#c1b9f2", "$type": "color" },
-            "200": { "$value": "#a398ec", "$type": "color" },
-            "300": { "$value": "#7868e4", "$type": "color" },
-            "400": { "$value": "#5e4bde", "$type": "color" },
-            "500": { "$value": "#361ed6", "$type": "color" },
-            "600": { "$value": "#311bc3", "$type": "color" },
-            "700": { "$value": "#261598", "$type": "color" },
-            "800": { "$value": "#1e1176", "$type": "color" },
-            "900": { "$value": "#170d5a", "$type": "color" }
-        },
         "app": {
             "system": {
                 "$value": "#0A84FF",

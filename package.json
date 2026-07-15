@@ -22,10 +22,17 @@
     "./base.css": "./dist/web/base.css",
     "./standard-light.css": "./dist/web/standard-light.css",
     "./standard-dark.css": "./dist/web/standard-dark.css",
-    "./standard.css": "./dist/web/standard.css"
+    "./standard.css": "./dist/web/standard.css",
+
+    "./dtcg/base": "./src/base.tokens.json",
+    "./dtcg/elevation": "./src/elevation.tokens.json",
+    "./dtcg/standard-light": "./src/theme/standard-light.json",
+    "./dtcg/standard-dark": "./src/theme/standard-dark.json",
+    "./dtcg/compact": "./src/density/compact.json"
   },
   "files": [
-    "dist/web/"
+    "dist/web/",
+    "src/**/*.json"
   ],
   "scripts": {
     "clean": "rm -rf dist",

@@ -47,11 +47,11 @@
                 "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
                 "bg-hover":        { "$value": "{color.brand.400}", "$type": "color" },
                 "bg-pressed":      { "$value": "{color.brand.300}", "$type": "color" },
-                "soft-bg":         { "$value": "{color.brand.900}", "$type": "color" },
-                "soft-fg":         { "$value": "{color.brand.200}", "$type": "color" },
+                "soft-bg":         { "$value": "{color.brand.800}", "$type": "color" },
+                "soft-fg":         { "$value": "{color.brand.100}", "$type": "color" },
                 "soft-border":     { "$value": "{color.brand.700}", "$type": "color" },
-                "soft-bg-hover":   { "$value": "{color.brand.800}", "$type": "color" },
-                "soft-bg-pressed": { "$value": "{color.brand.700}", "$type": "color" }
+                "soft-bg-hover":   { "$value": "{color.brand.700}", "$type": "color" },
+                "soft-bg-pressed": { "$value": "{color.brand.600}", "$type": "color" }
             },
             "danger": {
                 "bg":              { "$value": "{color.red.500}",   "$type": "color" },
@@ -61,11 +61,11 @@
                 "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
                 "bg-hover":        { "$value": "{color.red.400}",   "$type": "color" },
                 "bg-pressed":      { "$value": "{color.red.300}",   "$type": "color" },
-                "soft-bg":         { "$value": "{color.red.900}",   "$type": "color" },
-                "soft-fg":         { "$value": "{color.red.200}",   "$type": "color" },
+                "soft-bg":         { "$value": "{color.red.800}",   "$type": "color" },
+                "soft-fg":         { "$value": "{color.red.100}",   "$type": "color" },
                 "soft-border":     { "$value": "{color.red.700}",   "$type": "color" },
-                "soft-bg-hover":   { "$value": "{color.red.800}",   "$type": "color" },
-                "soft-bg-pressed": { "$value": "{color.red.700}",   "$type": "color" }
+                "soft-bg-hover":   { "$value": "{color.red.700}",   "$type": "color" },
+                "soft-bg-pressed": { "$value": "{color.red.600}",   "$type": "color" }
             },
             "warning": {
                 "bg":              { "$value": "{color.yellow.500}", "$type": "color" },
@@ -75,11 +75,11 @@
                 "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
                 "bg-hover":        { "$value": "{color.yellow.400}", "$type": "color" },
                 "bg-pressed":      { "$value": "{color.yellow.300}", "$type": "color" },
-                "soft-bg":         { "$value": "{color.yellow.900}", "$type": "color" },
-                "soft-fg":         { "$value": "{color.yellow.200}", "$type": "color" },
+                "soft-bg":         { "$value": "{color.yellow.800}", "$type": "color" },
+                "soft-fg":         { "$value": "{color.yellow.100}", "$type": "color" },
                 "soft-border":     { "$value": "{color.yellow.700}", "$type": "color" },
-                "soft-bg-hover":   { "$value": "{color.yellow.800}", "$type": "color" },
-                "soft-bg-pressed": { "$value": "{color.yellow.700}", "$type": "color" }
+                "soft-bg-hover":   { "$value": "{color.yellow.700}", "$type": "color" },
+                "soft-bg-pressed": { "$value": "{color.yellow.600}", "$type": "color" }
             },
             "success": {
                 "bg":              { "$value": "{color.green.500}", "$type": "color" },
@@ -89,11 +89,11 @@
                 "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
                 "bg-hover":        { "$value": "{color.green.400}", "$type": "color" },
                 "bg-pressed":      { "$value": "{color.green.300}", "$type": "color" },
-                "soft-bg":         { "$value": "{color.green.900}", "$type": "color" },
-                "soft-fg":         { "$value": "{color.green.200}", "$type": "color" },
+                "soft-bg":         { "$value": "{color.green.800}", "$type": "color" },
+                "soft-fg":         { "$value": "{color.green.100}", "$type": "color" },
                 "soft-border":     { "$value": "{color.green.700}", "$type": "color" },
-                "soft-bg-hover":   { "$value": "{color.green.800}", "$type": "color" },
-                "soft-bg-pressed": { "$value": "{color.green.700}", "$type": "color" }
+                "soft-bg-hover":   { "$value": "{color.green.700}", "$type": "color" },
+                "soft-bg-pressed": { "$value": "{color.green.600}", "$type": "color" }
             },
             "info": {
                 "bg":              { "$value": "{color.blue.500}", "$type": "color" },
@@ -103,11 +103,11 @@
                 "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
                 "bg-hover":        { "$value": "{color.blue.400}", "$type": "color" },
                 "bg-pressed":      { "$value": "{color.blue.300}", "$type": "color" },
-                "soft-bg":         { "$value": "{color.blue.900}", "$type": "color" },
-                "soft-fg":         { "$value": "{color.blue.200}", "$type": "color" },
+                "soft-bg":         { "$value": "{color.blue.800}", "$type": "color" },
+                "soft-fg":         { "$value": "{color.blue.100}", "$type": "color" },
                 "soft-border":     { "$value": "{color.blue.700}", "$type": "color" },
-                "soft-bg-hover":   { "$value": "{color.blue.800}", "$type": "color" },
-                "soft-bg-pressed": { "$value": "{color.blue.700}", "$type": "color" }
+                "soft-bg-hover":   { "$value": "{color.blue.700}", "$type": "color" },
+                "soft-bg-pressed": { "$value": "{color.blue.600}", "$type": "color" }
             },
             "plain": {
                 "bg":              { "$value": "{color.gray.500}",  "$type": "color" },
@@ -118,7 +118,7 @@
                 "bg-hover":        { "$value": "{color.gray.400}",  "$type": "color" },
                 "bg-pressed":      { "$value": "{color.gray.300}",  "$type": "color" },
                 "soft-bg":         { "$value": "{color.gray.800}",  "$type": "color" },
-                "soft-fg":         { "$value": "{color.gray.200}",  "$type": "color" },
+                "soft-fg":         { "$value": "{color.gray.100}",  "$type": "color" },
                 "soft-border":     { "$value": "{color.gray.600}",  "$type": "color" },
                 "soft-bg-hover":   { "$value": "{color.gray.700}",  "$type": "color" },
                 "soft-bg-pressed": { "$value": "{color.gray.600}",  "$type": "color" }

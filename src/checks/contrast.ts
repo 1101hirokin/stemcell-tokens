@@ -30,7 +30,7 @@
  * a scale that holds carries them.
  */
 
-type Rgb = readonly [number, number, number];
+export type Rgb = readonly [number, number, number];
 
 const AA_BODY = 4.5;
 /** Rungs five apart, over the 50/100/…/900 ladder. */
@@ -62,7 +62,7 @@ const STAIRCASE = [1.11, 1.28, 1.22, 1.29, 2.18, 1.20, 1.21, 1.34, 1.30] as cons
  */
 const STAIRCASE_TOLERANCE = 0.15;
 
-function parseHex(hex: string): Rgb {
+export function parseHex(hex: string): Rgb {
   const h = hex.trim().replace(/^#/, '');
   const full = h.length === 3 ? h.replace(/./g, c => c + c) : h;
   if (!/^[0-9a-f]{6}$/i.test(full)) throw new Error(`Not a hex colour: ${hex}`);
@@ -70,7 +70,7 @@ function parseHex(hex: string): Rgb {
 }
 
 /** WCAG 2.x relative luminance. */
-function relativeLuminance([r, g, b]: Rgb): number {
+export function relativeLuminance([r, g, b]: Rgb): number {
   const f = (v: number) => {
     const c = v / 255;
     return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
@@ -78,7 +78,7 @@ function relativeLuminance([r, g, b]: Rgb): number {
   return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
 }
 
-function contrast(a: Rgb, b: Rgb): number {
+export function contrast(a: Rgb, b: Rgb): number {
   const la = relativeLuminance(a);
   const lb = relativeLuminance(b);
   return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);

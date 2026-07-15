@@ -42,14 +42,7 @@
             "primary": {
                 "bg": { "$value": "{color.brand.600}", "$type": "color" },
                 "fg": { "$value": "#ffffff", "$type": "color" },
-                "border": {
-                    "$value": "{color.semantic.primary.bg}",
-                    "$type": "color"
-                },
-                "icon": {
-                    "$value": "{color.semantic.primary.fg}",
-                    "$type": "color"
-                },
+                "border": { "$value": "{color.brand.600}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be." },
                 "focus-ring": {
                     "$value": "{color.semantic.focus-ring}",
                     "$type": "color"
@@ -64,10 +57,6 @@
                 },
                 "soft-bg": { "$value": "{color.brand.50}", "$type": "color" },
                 "soft-fg": { "$value": "{color.brand.800}", "$type": "color" },
-                "soft-border": {
-                    "$value": "{color.brand.300}",
-                    "$type": "color"
-                },
                 "soft-bg-hover": {
                     "$value": "{color.brand.100}",
                     "$type": "color"
@@ -80,14 +69,7 @@
             "danger": {
                 "bg": { "$value": "{color.red.600}", "$type": "color" },
                 "fg": { "$value": "#ffffff", "$type": "color" },
-                "border": {
-                    "$value": "{color.semantic.danger.bg}",
-                    "$type": "color"
-                },
-                "icon": {
-                    "$value": "{color.semantic.danger.fg}",
-                    "$type": "color"
-                },
+                "border": { "$value": "{color.red.600}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be." },
                 "focus-ring": {
                     "$value": "{color.semantic.focus-ring}",
                     "$type": "color"
@@ -105,10 +87,6 @@
                     "$value": "{color.red.800}",
                     "$type": "color"
                 },
-                "soft-border": {
-                    "$value": "{color.red.300}",
-                    "$type": "color"
-                },
                 "soft-bg-hover": {
                     "$value": "{color.red.100}",
                     "$type": "color"
@@ -121,14 +99,7 @@
             "warning": {
                 "bg": { "$value": "{color.yellow.600}", "$type": "color" },
                 "fg": { "$value": "#ffffff", "$type": "color" },
-                "border": {
-                    "$value": "{color.semantic.warning.bg}",
-                    "$type": "color"
-                },
-                "icon": {
-                    "$value": "{color.semantic.warning.fg}",
-                    "$type": "color"
-                },
+                "border": { "$value": "{color.yellow.600}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be." },
                 "focus-ring": {
                     "$value": "{color.semantic.focus-ring}",
                     "$type": "color"
@@ -149,10 +120,6 @@
                     "$value": "{color.yellow.800}",
                     "$type": "color"
                 },
-                "soft-border": {
-                    "$value": "{color.yellow.300}",
-                    "$type": "color"
-                },
                 "soft-bg-hover": {
                     "$value": "{color.yellow.100}",
                     "$type": "color"
@@ -165,14 +132,7 @@
             "success": {
                 "bg": { "$value": "{color.green.600}", "$type": "color" },
                 "fg": { "$value": "#ffffff", "$type": "color" },
-                "border": {
-                    "$value": "{color.semantic.success.bg}",
-                    "$type": "color"
-                },
-                "icon": {
-                    "$value": "{color.semantic.success.fg}",
-                    "$type": "color"
-                },
+                "border": { "$value": "{color.green.600}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be." },
                 "focus-ring": {
                     "$value": "{color.semantic.focus-ring}",
                     "$type": "color"
@@ -193,10 +153,6 @@
                     "$value": "{color.green.800}",
                     "$type": "color"
                 },
-                "soft-border": {
-                    "$value": "{color.green.300}",
-                    "$type": "color"
-                },
                 "soft-bg-hover": {
                     "$value": "{color.green.100}",
                     "$type": "color"
@@ -209,28 +165,19 @@
             "info": {
                 "bg":              { "$value": "{color.blue.600}", "$type": "color" },
                 "fg":              { "$value": "#ffffff",          "$type": "color" },
-                "border":          { "$value": "{color.semantic.info.bg}", "$type": "color" },
-                "icon":            { "$value": "{color.semantic.info.fg}", "$type": "color" },
+                "border": { "$value": "{color.blue.600}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be." },
                 "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
                 "bg-hover":        { "$value": "{color.blue.700}", "$type": "color" },
                 "bg-pressed":      { "$value": "{color.blue.800}", "$type": "color" },
                 "soft-bg":         { "$value": "{color.blue.50}",  "$type": "color" },
                 "soft-fg":         { "$value": "{color.blue.800}", "$type": "color" },
-                "soft-border":     { "$value": "{color.blue.300}", "$type": "color" },
                 "soft-bg-hover":   { "$value": "{color.blue.100}", "$type": "color" },
                 "soft-bg-pressed": { "$value": "{color.blue.200}", "$type": "color" }
             },
             "plain": {
                 "bg": { "$value": "{color.gray.600}", "$type": "color" },
                 "fg": { "$value": "#ffffff", "$type": "color" },
-                "border": {
-                    "$value": "{color.semantic.plain.bg}",
-                    "$type": "color"
-                },
-                "icon": {
-                    "$value": "{color.semantic.plain.fg}",
-                    "$type": "color"
-                },
+                "border": { "$value": "{color.gray.600}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be." },
                 "focus-ring": {
                     "$value": "{color.semantic.focus-ring}",
                     "$type": "color"
@@ -251,10 +198,6 @@
                     "$value": "{color.gray.800}",
                     "$type": "color"
                 },
-                "soft-border": {
-                    "$value": "{color.gray.300}",
-                    "$type": "color"
-                },
                 "soft-bg-hover": {
                     "$value": "{color.gray.100}",
                     "$type": "color"
@@ -271,20 +214,12 @@
                     "$value": "{color.semantic.disabled.bg}",
                     "$type": "color"
                 },
-                "icon": {
-                    "$value": "{color.semantic.disabled.fg}",
-                    "$type": "color"
-                },
                 "soft-bg": {
                     "$value": "{color.gray.100}",
                     "$type": "color"
                 },
                 "soft-fg": {
                     "$value": "{color.gray.300}",
-                    "$type": "color"
-                },
-                "soft-border": {
-                    "$value": "{color.gray.200}",
                     "$type": "color"
                 }
             }

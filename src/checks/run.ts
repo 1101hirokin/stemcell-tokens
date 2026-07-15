@@ -1,6 +1,6 @@
 /**
  * Runs the palette constraint checker over every scale in the sources, and the
- * WCAG 1.4.11 checker over every intent's border.
+ * WCAG 2.2 SC 1.4.11 checker over every intent's border.
  *
  * Scales are discovered, not listed. A hard-coded list would silently stop
  * covering a hue the moment someone adds one, which is the failure mode this
@@ -81,7 +81,7 @@ for (const theme of ['standard-light', 'standard-dark']) {
 
 if (violations.length === 0 && borders.length === 0) {
   console.log(`palette: ${checked} scales, no violations`);
-  console.log('border: every intent clears 3:1 on every elevation surface (WCAG 1.4.11)');
+  console.log('border: every intent clears 3:1 on every elevation surface (WCAG 2.2 SC 1.4.11)');
   process.exit(0);
 }
 
@@ -95,7 +95,7 @@ if (violations.length) {
 }
 
 if (borders.length) {
-  console.error(`\nborder: ${borders.length} violations of WCAG 1.4.11\n`);
+  console.error(`\nborder: ${borders.length} violations of WCAG 2.2 SC 1.4.11\n`);
   for (const b of borders) console.error(`  ${b.theme} / ${b.intent}\n    ${b.detail}`);
   console.error(
     "\nA border is the boundary of a component, so it needs 3:1 against whatever it sits on." +

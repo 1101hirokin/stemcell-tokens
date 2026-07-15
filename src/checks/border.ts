@@ -1,5 +1,5 @@
 /**
- * WCAG 1.4.11 for component boundaries.
+ * WCAG 2.2 SC 1.4.11 for component boundaries.
  *
  * `border` is the outline `outlined` draws (emphasis.md), so it is the boundary of a
  * user interface component, and 1.4.11 Non-text Contrast asks for 3:1 against what is
@@ -87,7 +87,7 @@ export function checkBorders(
           surface: name,
           detail:
             `border is ${c.toFixed(2)}:1 against the ${name} surface (${surface}), ` +
-            `below ${NON_TEXT} (WCAG 1.4.11 Non-text Contrast)`,
+            `below ${NON_TEXT} (WCAG 2.2 SC 1.4.11 Non-text Contrast)`,
         });
       }
     }

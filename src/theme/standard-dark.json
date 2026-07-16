@@ -7,9 +7,9 @@
     "color": {
         "app": {
             "system": {
-                "$value": "#0A84FF",
+                "$value": "{color.blue.100}",
                 "$type": "color",
-                "$description": "General-purpose system accent color. macOS-style blue for dark mode."
+                "$description": "General-purpose system accent color. Both link and the focus ring point here. The previous value, iOS dark system blue #0A84FF, failed both consumers: as link text it measured 3.70:1 on the flat surface and 1.76:1 on the modal (AA needs 4.5:1), and as the focus ring it cleared 3:1 on only one of the four dark surfaces. Dark's four surfaces are the gray 600-900 rungs, so the same squeeze that calibrated border to 300 applies, but text is stricter: 100 is the darkest rung that clears 4.5:1 on every surface (5.24:1 on modal; 200 fails at 4.11). The hue stays blue; the rung is what the floor forces."
             },
             "background": {
                 "$value": "{color.gray.900}",

@@ -7,9 +7,9 @@
     "color": {
         "app": {
             "system": {
-                "$value": "#007AFF",
+                "$value": "{color.blue.600}",
                 "$type": "color",
-                "$description": "General-purpose system accent color. Defaults to a neutral blue; override in each theme to match platform conventions."
+                "$description": "General-purpose system accent color. Both link and the focus ring point here, so the binding constraint is the stricter of the two: link is text and needs WCAG 2.2 AA 4.5:1 against every elevation surface it can sit on (all white in light), while the ring needs 3:1 (SC 1.4.11 / focus-ring.md). The previous value, iOS system blue #007AFF, measured 4.02:1 against white and failed AA for the link. 600 is the light theme's interactive calibration (bg and border both sit at 600), and blue.600 clears 6.49:1. 500 (5.38:1) also passes if a lighter accent is preferred; the floor is what CI enforces, the exact rung is a seed."
             },
             "background": {
                 "$value": "#FFFFFF",

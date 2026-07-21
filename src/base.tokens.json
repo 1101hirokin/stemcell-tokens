@@ -1,609 +1,1341 @@
 {
-    "$schema": "https://design-tokens.org/schema.json",
-    "color": {
-        "red": {
-            "50": {
-                "$value": "#FFF0ED",
-                "$type": "color"
-            },
-            "100": {
-                "$value": "#FFE2DC",
-                "$type": "color"
-            },
-            "200": {
-                "$value": "#FFC0B4",
-                "$type": "color"
-            },
-            "300": {
-                "$value": "#FFA496",
-                "$type": "color"
-            },
-            "400": {
-                "$value": "#FF7F70",
-                "$type": "color"
-            },
-            "500": {
-                "$value": "#D21A27",
-                "$type": "color"
-            },
-            "600": {
-                "$value": "#B91C24",
-                "$type": "color"
-            },
-            "700": {
-                "$value": "#A01D20",
-                "$type": "color"
-            },
-            "800": {
-                "$value": "#7A1C1B",
-                "$type": "color"
-            },
-            "900": {
-                "$value": "#561915",
-                "$type": "color"
-            }
-        },
-        "orange": {
-            "50": {
-                "$value": "#FFF1E8",
-                "$type": "color"
-            },
-            "100": {
-                "$value": "#FFE3D0",
-                "$type": "color"
-            },
-            "200": {
-                "$value": "#FFC29A",
-                "$type": "color"
-            },
-            "300": {
-                "$value": "#FEA770",
-                "$type": "color"
-            },
-            "400": {
-                "$value": "#F4893E",
-                "$type": "color"
-            },
-            "500": {
-                "$value": "#A65419",
-                "$type": "color"
-            },
-            "600": {
-                "$value": "#924B18",
-                "$type": "color"
-            },
-            "700": {
-                "$value": "#7F4217",
-                "$type": "color"
-            },
-            "800": {
-                "$value": "#623415",
-                "$type": "color"
-            },
-            "900": {
-                "$value": "#462612",
-                "$type": "color"
-            }
-        },
-        "yellow": {
-            "50": {
-                "$value": "#FAF5CE",
-                "$type": "color"
-            },
-            "100": {
-                "$value": "#F5EA9D",
-                "$type": "color"
-            },
-            "200": {
-                "$value": "#E1D22F",
-                "$type": "color"
-            },
-            "300": {
-                "$value": "#D2BC2C",
-                "$type": "color"
-            },
-            "400": {
-                "$value": "#BDA42A",
-                "$type": "color"
-            },
-            "500": {
-                "$value": "#7D6921",
-                "$type": "color"
-            },
-            "600": {
-                "$value": "#715C1F",
-                "$type": "color"
-            },
-            "700": {
-                "$value": "#64501D",
-                "$type": "color"
-            },
-            "800": {
-                "$value": "#4F3D19",
-                "$type": "color"
-            },
-            "900": {
-                "$value": "#3A2C15",
-                "$type": "color"
-            }
-        },
-        "green": {
-            "50": {
-                "$value": "#E1FAE8",
-                "$type": "color"
-            },
-            "100": {
-                "$value": "#C3F4D1",
-                "$type": "color"
-            },
-            "200": {
-                "$value": "#75E59F",
-                "$type": "color"
-            },
-            "300": {
-                "$value": "#0DD77B",
-                "$type": "color"
-            },
-            "400": {
-                "$value": "#19BD6D",
-                "$type": "color"
-            },
-            "500": {
-                "$value": "#207948",
-                "$type": "color"
-            },
-            "600": {
-                "$value": "#1F6B40",
-                "$type": "color"
-            },
-            "700": {
-                "$value": "#1E5E39",
-                "$type": "color"
-            },
-            "800": {
-                "$value": "#1B482D",
-                "$type": "color"
-            },
-            "900": {
-                "$value": "#173422",
-                "$type": "color"
-            }
-        },
-        "teal": {
-            "50": {
-                "$value": "#E6F7F6",
-                "$type": "color"
-            },
-            "100": {
-                "$value": "#CDEFEE",
-                "$type": "color"
-            },
-            "200": {
-                "$value": "#92DCD9",
-                "$type": "color"
-            },
-            "300": {
-                "$value": "#61CCC9",
-                "$type": "color"
-            },
-            "400": {
-                "$value": "#3EB6B2",
-                "$type": "color"
-            },
-            "500": {
-                "$value": "#287673",
-                "$type": "color"
-            },
-            "600": {
-                "$value": "#236866",
-                "$type": "color"
-            },
-            "700": {
-                "$value": "#1F5B59",
-                "$type": "color"
-            },
-            "800": {
-                "$value": "#184745",
-                "$type": "color"
-            },
-            "900": {
-                "$value": "#113332",
-                "$type": "color"
-            }
-        },
-        "blue": {
-            "50": {
-                "$value": "#F3F3FF",
-                "$type": "color"
-            },
-            "100": {
-                "$value": "#E6E6FF",
-                "$type": "color"
-            },
-            "200": {
-                "$value": "#C8CBFF",
-                "$type": "color"
-            },
-            "300": {
-                "$value": "#B0B6FF",
-                "$type": "color"
-            },
-            "400": {
-                "$value": "#8F9EFF",
-                "$type": "color"
-            },
-            "500": {
-                "$value": "#1C63E1",
-                "$type": "color"
-            },
-            "600": {
-                "$value": "#2157C5",
-                "$type": "color"
-            },
-            "700": {
-                "$value": "#244CAA",
-                "$type": "color"
-            },
-            "800": {
-                "$value": "#233B81",
-                "$type": "color"
-            },
-            "900": {
-                "$value": "#1F2B59",
-                "$type": "color"
-            }
-        },
-        "purple": {
-            "50": {
-                "$value": "#FBF0FF",
-                "$type": "color"
-            },
-            "100": {
-                "$value": "#F6E1FE",
-                "$type": "color"
-            },
-            "200": {
-                "$value": "#EBBFFD",
-                "$type": "color"
-            },
-            "300": {
-                "$value": "#E1A5FB",
-                "$type": "color"
-            },
-            "400": {
-                "$value": "#D385F9",
-                "$type": "color"
-            },
-            "500": {
-                "$value": "#A608EF",
-                "$type": "color"
-            },
-            "600": {
-                "$value": "#9312D2",
-                "$type": "color"
-            },
-            "700": {
-                "$value": "#8017B5",
-                "$type": "color"
-            },
-            "800": {
-                "$value": "#621988",
-                "$type": "color"
-            },
-            "900": {
-                "$value": "#46175E",
-                "$type": "color"
-            }
-        },
-        "pink": {
-            "50": {
-                "$value": "#FFF0F7",
-                "$type": "color"
-            },
-            "100": {
-                "$value": "#FFE0EF",
-                "$type": "color"
-            },
-            "200": {
-                "$value": "#FFBBDD",
-                "$type": "color"
-            },
-            "300": {
-                "$value": "#FC9FCF",
-                "$type": "color"
-            },
-            "400": {
-                "$value": "#F77ABE",
-                "$type": "color"
-            },
-            "500": {
-                "$value": "#BD2F85",
-                "$type": "color"
-            },
-            "600": {
-                "$value": "#A62D75",
-                "$type": "color"
-            },
-            "700": {
-                "$value": "#902966",
-                "$type": "color"
-            },
-            "800": {
-                "$value": "#6E244E",
-                "$type": "color"
-            },
-            "900": {
-                "$value": "#4D1D38",
-                "$type": "color"
-            }
-        },
-        "gray": {
-            "50": {
-                "$value": "#F2F4F6",
-                "$type": "color"
-            },
-            "100": {
-                "$value": "#E6E8EC",
-                "$type": "color"
-            },
-            "200": {
-                "$value": "#C9CFD8",
-                "$type": "color"
-            },
-            "300": {
-                "$value": "#B4BCC8",
-                "$type": "color"
-            },
-            "400": {
-                "$value": "#9BA6B5",
-                "$type": "color"
-            },
-            "500": {
-                "$value": "#5C6C80",
-                "$type": "color"
-            },
-            "600": {
-                "$value": "#526071",
-                "$type": "color"
-            },
-            "700": {
-                "$value": "#485362",
-                "$type": "color"
-            },
-            "800": {
-                "$value": "#38414B",
-                "$type": "color"
-            },
-            "900": {
-                "$value": "#292F36",
-                "$type": "color"
-            }
-        },
-        "brand": {
-            "$description": "The consumer's brand colour. A slot, not Stemcell's identity — Art.3 lists colour among the things a third party may override, and says the MEME survives as the immutable framework rather than as a hue. It defaults to Stemcell's own purple so the system is complete out of the box (Art.4-1), and a consumer replaces these ten rungs with their own. Whatever replaces them must satisfy the palette contract; `bun run check:palette` enforces it (color.md §3).",
-            "50": { "$value": "{color.purple.50}", "$type": "color" },
-            "100": { "$value": "{color.purple.100}", "$type": "color" },
-            "200": { "$value": "{color.purple.200}", "$type": "color" },
-            "300": { "$value": "{color.purple.300}", "$type": "color" },
-            "400": { "$value": "{color.purple.400}", "$type": "color" },
-            "500": { "$value": "{color.purple.500}", "$type": "color" },
-            "600": { "$value": "{color.purple.600}", "$type": "color" },
-            "700": { "$value": "{color.purple.700}", "$type": "color" },
-            "800": { "$value": "{color.purple.800}", "$type": "color" },
-            "900": { "$value": "{color.purple.900}", "$type": "color" }
-        }
+  "$schema": "https://design-tokens.org/schema.json",
+  "color": {
+    "red": {
+      "50": {
+        "$value": "#FFF0ED",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#FFE2DC",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#FFC0B4",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#FFA496",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#FF7F70",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#D21A27",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#B91C24",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#A01D20",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#7A1C1B",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#561915",
+        "$type": "color"
+      }
     },
-    "font-weight": {
-        "regular":  { "$type": "fontWeight", "$value": 400, "$description": "Regular." },
-        "medium":   { "$type": "fontWeight", "$value": 500, "$description": "Medium." },
-        "semibold": { "$type": "fontWeight", "$value": 600, "$description": "Semibold." },
-        "bold":     { "$type": "fontWeight", "$value": 700, "$description": "Bold." }
+    "orange": {
+      "50": {
+        "$value": "#FFF1E8",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#FFE3D0",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#FFC29A",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#FEA770",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#F4893E",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#A65419",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#924B18",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#7F4217",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#623415",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#462612",
+        "$type": "color"
+      }
     },
-
-    "font-size": {
-        "0": { "$type": "fontSize", "$value": "42px",   "$description": "Harmonic 84/(n+2), n=0 (max). fontSize type -> web rem / native sp / iOS Dynamic Type." },
-        "1": { "$type": "fontSize", "$value": "28px",   "$description": "n=1." },
-        "2": { "$type": "fontSize", "$value": "21px",   "$description": "n=2." },
-        "3": { "$type": "fontSize", "$value": "16.8px", "$description": "n=3." },
-        "4": { "$type": "fontSize", "$value": "14px",   "$description": "n=4 (body base)." },
-        "5": { "$type": "fontSize", "$value": "12px",   "$description": "n=5 (regularized 11.62 -> 84/7 = 12)." },
-        "6": { "$type": "fontSize", "$value": "10.5px", "$description": "n=6." }
+    "yellow": {
+      "50": {
+        "$value": "#FAF5CE",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#F5EA9D",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#E1D22F",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#D2BC2C",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#BDA42A",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#7D6921",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#715C1F",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#64501D",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#4F3D19",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#3A2C15",
+        "$type": "color"
+      }
     },
-
-    "line-height": { "$type": "number", "$value": 1.334, "$description": "Line-height ratio, fixed across all roles." },
-
-    "letter-spacing": {
-        "tight":  { "$type": "dimension", "$value": "-0.01em", "$description": "Large headings." },
-        "normal": { "$type": "dimension", "$value": "0em",     "$description": "Body." },
-        "wide":   { "$type": "dimension", "$value": "0.02em",  "$description": "Labels." },
-        "wider":  { "$type": "dimension", "$value": "0.08em",  "$description": "Overline / caps." }
+    "green": {
+      "50": {
+        "$value": "#E1FAE8",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#C3F4D1",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#75E59F",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#0DD77B",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#19BD6D",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#207948",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#1F6B40",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#1E5E39",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#1B482D",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#173422",
+        "$type": "color"
+      }
     },
-
-    "elevation": {
-        "$description": "The level is normative and theme-invariant, so it lives here. The facets that draw a level are in elevation.tokens.json — also Stemcell's, never a theme's (Constitution Art.3) — and are emitted into each theme so they resolve against that theme's colours at the scope the theme is applied (Art.6).",
-        "flat": { "level": { "$value": 0, "$type": "number", "$description": "Depth of the ground plane. The level is the normative datum — the ordering and the assignment of components to levels hold on every platform, while how a level is drawn (shadow / tonal / glass) is expressive (Constitution Art.2). Platforms that render from the level itself rather than from CSS geometry (Compose shadowElevation, SwiftUI) consume this token." } },
-        "surface": { "level": { "$value": 1, "$type": "number", "$description": "Card / panel / alert / table." } },
-        "navigation": { "level": { "$value": 2, "$type": "number", "$description": "App bar / sidebar / sticky header / tab bar." } },
-        "popover": { "level": { "$value": 3, "$type": "number", "$description": "Menu / dropdown / select / combobox / popover. Tooltip draws at this depth but stacks at --layer-tooltip." } },
-        "modal": { "level": { "$value": 4, "$type": "number", "$description": "Modal / dialog / drawer / sheet." } },
-        "notification": { "level": { "$value": 5, "$type": "number", "$description": "Toast / snackbar." } }
+    "teal": {
+      "50": {
+        "$value": "#E6F7F6",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#CDEFEE",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#92DCD9",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#61CCC9",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#3EB6B2",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#287673",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#236866",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#1F5B59",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#184745",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#113332",
+        "$type": "color"
+      }
     },
-
-    "spacing": {
-        "0":  { "$type": "dimension", "$value": "0px",  "$description": "4*0 px." },
-        "1":  { "$type": "dimension", "$value": "4px",  "$description": "4*1 px." },
-        "2":  { "$type": "dimension", "$value": "8px",  "$description": "4*2 px." },
-        "3":  { "$type": "dimension", "$value": "12px", "$description": "4*3 px." },
-        "4":  { "$type": "dimension", "$value": "16px", "$description": "4*4 px." },
-        "5":  { "$type": "dimension", "$value": "20px", "$description": "4*5 px." },
-        "6":  { "$type": "dimension", "$value": "24px", "$description": "4*6 px." },
-        "7":  { "$type": "dimension", "$value": "28px", "$description": "4*7 px." },
-        "8":  { "$type": "dimension", "$value": "32px", "$description": "4*8 px." },
-        "9":  { "$type": "dimension", "$value": "36px", "$description": "4*9 px." },
-        "10": { "$type": "dimension", "$value": "40px", "$description": "4*10 px." },
-        "11": { "$type": "dimension", "$value": "44px", "$description": "4*11 px." },
-        "12": { "$type": "dimension", "$value": "48px", "$description": "4*12 px." },
-        "13": { "$type": "dimension", "$value": "52px", "$description": "4*13 px." },
-        "14": { "$type": "dimension", "$value": "56px", "$description": "4*14 px." },
-        "15": { "$type": "dimension", "$value": "60px", "$description": "4*15 px." },
-        "16": { "$type": "dimension", "$value": "64px", "$description": "4*16 px." },
-        "17": { "$type": "dimension", "$value": "68px", "$description": "4*17 px." },
-        "18": { "$type": "dimension", "$value": "72px", "$description": "4*18 px." },
-        "19": { "$type": "dimension", "$value": "76px", "$description": "4*19 px." },
-        "20": { "$type": "dimension", "$value": "80px", "$description": "4*20 px." },
-        "21": { "$type": "dimension", "$value": "84px", "$description": "4*21 px." },
-        "22": { "$type": "dimension", "$value": "88px", "$description": "4*22 px." },
-        "23": { "$type": "dimension", "$value": "92px", "$description": "4*23 px." },
-        "24": { "$type": "dimension", "$value": "96px", "$description": "4*24 px." },
-
-        "inset":  { "sm": { "$type": "dimension", "$value": "{spacing.2}", "$description": "8px." },  "md": { "$type": "dimension", "$value": "{spacing.4}", "$description": "16px." }, "lg": { "$type": "dimension", "$value": "{spacing.6}", "$description": "24px." } },
-        "stack":  { "sm": { "$type": "dimension", "$value": "{spacing.2}", "$description": "8px." },  "md": { "$type": "dimension", "$value": "{spacing.4}", "$description": "16px." }, "lg": { "$type": "dimension", "$value": "{spacing.6}", "$description": "24px." } },
-        "inline": { "sm": { "$type": "dimension", "$value": "{spacing.1}", "$description": "4px." },  "md": { "$type": "dimension", "$value": "{spacing.2}", "$description": "8px." },  "lg": { "$type": "dimension", "$value": "{spacing.3}", "$description": "12px." } },
-        "gap":    { "sm": { "$type": "dimension", "$value": "{spacing.2}", "$description": "8px." },  "md": { "$type": "dimension", "$value": "{spacing.4}", "$description": "16px." }, "lg": { "$type": "dimension", "$value": "{spacing.6}", "$description": "24px." } }
+    "blue": {
+      "50": {
+        "$value": "#F3F3FF",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#E6E6FF",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#C8CBFF",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#B0B6FF",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#8F9EFF",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#1C63E1",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#2157C5",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#244CAA",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#233B81",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#1F2B59",
+        "$type": "color"
+      }
     },
-
-    "shape": {
-        "circular":  { "$type": "borderRadius", "$value": "999999px", "$description": "Full pill." },
-        "rounded-s": { "$type": "borderRadius", "$value": "2px",      "$description": "Subtle rounding — tags, badges." },
-        "rounded-m": { "$type": "borderRadius", "$value": "6px",      "$description": "Standard rounding — buttons, inputs, cards." },
-        "rounded-l": { "$type": "borderRadius", "$value": "10px",     "$description": "Large rounding — dialogs, sheets." },
-        "angular":   { "$type": "borderRadius", "$value": "0px",      "$description": "No rounding." },
-        "border-width": { "$type": "strokeWidth", "$value": "1px", "$description": "The width of a component's outline, for the `outlined` emphasis step and for dividers (emphasis.md §3, color.md §6). 1px, not 2px: the focus ring is 2px, and a border of the same weight would be indistinguishable from it when both are present (state.md §3.3). It also has to stay under the smallest non-zero radius (`rounded-s` = 2px) or the corner is crushed. Not a `dimension`, so it does not become rem: the radius it has to stay under is fixed in px, and a border that grew with the user's text while the radius did not would eventually cross it." },
-        "smoothing": { "$type": "number", "$value": 0.6, "$description": "Continuous corner smoothing (superellipse). 0=plain arc; ~0.6 approximates iOS .continuous / Figma 60% / Compose 0.6f. Falls back to a plain arc where unsupported (Constitution Art.7)." },
-
-        "semantic": {
-            "control":   { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Button, input, select, textarea." },
-            "selection": { "$type": "borderRadius", "$value": "{shape.rounded-s}", "$description": "Checkbox." },
-            "card":      { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Card, panel, alert, surface, image." },
-            "dialog":    { "$type": "borderRadius", "$value": "{shape.rounded-l}", "$description": "Modal, dialog, bottom sheet, drawer." },
-            "popover":   { "$type": "borderRadius", "$value": "{shape.rounded-m}", "$description": "Tooltip, dropdown menu, combobox popup." },
-            "pill":      { "$type": "borderRadius", "$value": "{shape.circular}",  "$description": "Badge, progress bar, avatar, radio, switch." },
-            "tag":       { "$type": "borderRadius", "$value": "{shape.rounded-s}", "$description": "Tag, chip, small badge." }
-        }
+    "purple": {
+      "50": {
+        "$value": "#FBF0FF",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#F6E1FE",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#EBBFFD",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#E1A5FB",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#D385F9",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#A608EF",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#9312D2",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#8017B5",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#621988",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#46175E",
+        "$type": "color"
+      }
     },
-
-    "font-family": {
-        "normal": {
-            "$type": "fontFamily",
-            "$value": "\"Segoe UI\", -apple-system, BlinkMacSystemFont, Roboto, \"Noto Sans\", \"BIZ UDゴシック\", system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
-        },
-        "code": {
-            "$type": "fontFamily",
-            "$value": "\"Source Code Pro\", Menlo, Monaco, \"Ubuntu Mono\", \"Fira Code\", Consolas, \"Courier New\", \"Segoe UI\", \"Helvetica Neue\", \"BIZ UDPゴシック\", sans-serif, system-ui, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\", monospace"
-        }
+    "pink": {
+      "50": {
+        "$value": "#FFF0F7",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#FFE0EF",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#FFBBDD",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#FC9FCF",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#F77ABE",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#BD2F85",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#A62D75",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#902966",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#6E244E",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#4D1D38",
+        "$type": "color"
+      }
     },
-
-    "typography": {
-        "display-lg":  { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.0}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
-        "display-md":  { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.1}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
-        "headline-lg": { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.bold}", "fontSize": "{font-size.1}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
-        "headline-md": { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.bold}", "fontSize": "{font-size.2}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
-        "headline-sm": { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.bold}", "fontSize": "{font-size.3}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.tight}" } },
-        "title-lg":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.2}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
-        "title-md":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.3}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
-        "title-sm":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.semibold}", "fontSize": "{font-size.4}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
-        "body-lg":     { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.3}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
-        "body-md":     { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.4}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
-        "body-sm":     { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.5}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
-        "label-lg":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.medium}", "fontSize": "{font-size.4}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.wide}" } },
-        "label-md":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.medium}", "fontSize": "{font-size.5}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.wide}" } },
-        "label-sm":    { "$type": "typography", "$value": { "fontFamily": "{font-family.normal}", "fontWeight": "{font-weight.medium}", "fontSize": "{font-size.6}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.wide}" } },
-        "mono-md":     { "$type": "typography", "$value": { "fontFamily": "{font-family.code}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.4}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } },
-        "mono-sm":     { "$type": "typography", "$value": { "fontFamily": "{font-family.code}", "fontWeight": "{font-weight.regular}", "fontSize": "{font-size.5}", "lineHeight": "{line-height}", "letterSpacing": "{letter-spacing.normal}" } }
+    "gray": {
+      "50": {
+        "$value": "#F2F4F6",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#E6E8EC",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#C9CFD8",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#B4BCC8",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#9BA6B5",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#5C6C80",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#526071",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#485362",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#38414B",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#292F36",
+        "$type": "color"
+      }
     },
-    "focus-ring": {
-        "width": { "$type": "strokeWidth", "$value": "2px", "$description": "Focus ring thickness (outline-width). WCAG 2.2 minimum." },
-        "offset": { "$type": "strokeWidth", "$value": "2px", "$description": "Focus ring offset (outline-offset). Gap between the element edge and the ring so the background shows through, improving visibility." },
-        "style": { "$type": "strokeStyle", "$value": "solid", "$description": "Focus ring line style (outline-style)." }
-    },
-    "motion": {
-        "duration": {
-            "fast-01":     { "$value": "70ms",  "$type": "duration", "$description": "Carbon fast-01. Micro feedback." },
-            "fast-02":     { "$value": "110ms", "$type": "duration", "$description": "Carbon fast-02. Hover/press/toggle feedback." },
-            "moderate-01": { "$value": "150ms", "$type": "duration", "$description": "Carbon moderate-01. General transitions and exits." },
-            "moderate-02": { "$value": "240ms", "$type": "duration", "$description": "Carbon moderate-02. Entrances and expand/collapse." },
-            "slow-01":     { "$value": "400ms", "$type": "duration", "$description": "Carbon slow-01. Large surfaces." },
-            "slow-02":     { "$value": "700ms", "$type": "duration", "$description": "Carbon slow-02. Loops (spinner/skeleton)." }
-        },
-        "easing": {
-            "standard": { "$value": [0.2, 0.0, 0.38, 0.9], "$type": "cubicBezier", "$description": "ease-out. Entrances and general transitions; the spring fallback." },
-            "exit":     { "$value": [0.2, 0.0, 1.0, 1.0],  "$type": "cubicBezier", "$description": "accelerate. Dismissals." },
-            "linear":   { "$value": [0.0, 0.0, 1.0, 1.0],  "$type": "cubicBezier", "$description": "Linear. Loops and the none/reduced result." }
-        },
-        "scale": { "$value": 1, "$type": "number", "$description": "Ambient motion multiplier. Components multiply durations by this; reduced-motion sets it to 0 (Constitution Art.6)." },
-
-        "none": {
-            "duration": { "$value": "0ms", "$type": "duration", "$description": "Instant. The reduced-motion result." },
-            "easing":   { "$value": "{motion.easing.linear}", "$type": "cubicBezier" }
-        },
-        "feedback": {
-            "duration": { "$value": "{motion.duration.fast-02}", "$type": "duration", "$description": "Hover/press/toggle." },
-            "easing":   { "$value": "{motion.easing.standard}", "$type": "cubicBezier" }
-        },
-        "transition": {
-            "duration": { "$value": "{motion.duration.moderate-01}", "$type": "duration", "$description": "General property change." },
-            "easing":   { "$value": "{motion.easing.standard}", "$type": "cubicBezier" }
-        },
-        "entrance": {
-            "duration": { "$value": "{motion.duration.moderate-02}", "$type": "duration", "$description": "Element appears." },
-            "easing":   { "$value": "{motion.easing.standard}", "$type": "cubicBezier" }
-        },
-        "exit": {
-            "duration": { "$value": "{motion.duration.moderate-01}", "$type": "duration", "$description": "Element dismisses (faster than entrance)." },
-            "easing":   { "$value": "{motion.easing.exit}", "$type": "cubicBezier" }
-        },
-        "expand": {
-            "duration": { "$value": "{motion.duration.moderate-02}", "$type": "duration", "$description": "Accordion/collapse/disclosure height." },
-            "easing":   { "$value": "{motion.easing.standard}", "$type": "cubicBezier" }
-        },
-        "loop": {
-            "duration": { "$value": "{motion.duration.slow-02}", "$type": "duration", "$description": "Spinner/skeleton (infinite)." },
-            "easing":   { "$value": "{motion.easing.linear}", "$type": "cubicBezier" }
-        }
-    },
-    "layer": {
-        "$description": "Seven layers in a fixed order. What is normative is the order, which every platform holds; `rank` states it. `z` is the Web's way of saying it, and the gaps in 0/10/1000/... are a CSS convention — headroom against third-party stacking contexts — not meaning. 1700 tells Compose and SwiftUI nothing; being above notification and below tooltip tells them everything. Components reference these tokens instead of writing raw z-index values (Constitution Art.3, structural layer). Same split as elevation's level vs facets (Art.2).",
-        "base":         {
-            "rank": { "$value": 0, "$type": "number", "$description": "App ground plane: body / background / flat controls. Surface content (card, panel, alert, table) shares this rank." },
-            "z":    { "$value": 0, "$type": "number" }
-        },
-        "navigation":   {
-            "rank": { "$value": 1, "$type": "number", "$description": "Persistent chrome: app bar / sidebar / sticky header / tab bar." },
-            "z":    { "$value": 10, "$type": "number" }
-        },
-        "popover":      {
-            "rank": { "$value": 2, "$type": "number", "$description": "Trigger-anchored transient surfaces: menu / dropdown / select / combobox / popover." },
-            "z":    { "$value": 1000, "$type": "number" }
-        },
-        "scrim":        {
-            "rank": { "$value": 3, "$type": "number", "$description": "Dimming veil behind a modal; sits below the modal it belongs to. Stacking order only — the visual value (color/opacity) belongs to elevation." },
-            "z":    { "$value": 1300, "$type": "number" }
-        },
-        "modal":        {
-            "rank": { "$value": 4, "$type": "number", "$description": "Focus-trapped surfaces: modal / dialog / drawer / sheet." },
-            "z":    { "$value": 1400, "$type": "number" }
-        },
-        "notification": {
-            "rank": { "$value": 5, "$type": "number", "$description": "Frontmost transient messages: toast / snackbar." },
-            "z":    { "$value": 1700, "$type": "number" }
-        },
-        "tooltip":      {
-            "rank": { "$value": 6, "$type": "number", "$description": "Above every other layer despite drawing at popover depth — visual depth and stacking order are separate axes." },
-            "z":    { "$value": 1800, "$type": "number" }
-        }
-    },
-    "breakpoint": {
-        "compact":  { "$value": "0",      "$type": "breakpoint", "$description": "Handset. Page-skeleton structure only — components reflow on their own via container queries / intrinsic sizing, and consumers should not write breakpoint values (layout.md §3). Device-pixel by intent, and deliberately not converted to rem: the normative content is these five thresholds, which must mean the same width everywhere, and rem would move the Web ones under user font scaling (Constitution Art.2). The scale matches Material's window size classes as of BREAKPOINTS_V2 (WindowManager 1.5+); note that V1 stops at three. Apple has no equivalent — horizontalSizeClass is two-valued and is not a function of width — so iOS evaluates these thresholds against its own point width (1pt ~ 1 CSS px)." },
-        "medium":   { "$value": "600px",  "$type": "breakpoint", "$description": "Tablet portrait and up." },
-        "expanded": { "$value": "840px",  "$type": "breakpoint", "$description": "Tablet landscape and up." },
-        "large":    { "$value": "1200px", "$type": "breakpoint", "$description": "Desktop." },
-        "x-large":  { "$value": "1600px", "$type": "breakpoint", "$description": "Large desktop." }
-    },
-    "container": {
-        "sm":    { "$value": "640px",  "$type": "dimension", "$description": "Page-width constraint, small. Unlike breakpoints these scale with the root font size, since a width cap should grow when the reader enlarges text (Constitution Art.1)." },
-        "md":    { "$value": "768px",  "$type": "dimension", "$description": "Page-width constraint, medium." },
-        "lg":    { "$value": "1024px", "$type": "dimension", "$description": "Page-width constraint, large." },
-        "xl":    { "$value": "1280px", "$type": "dimension", "$description": "Page-width constraint, extra large." },
-        "prose": { "$value": "66ch",   "$type": "dimension", "$description": "Measure. Body text stops at ~66ch however wide its container is — the single explicit exception to fill-by-default, because readability outranks full width (layout.md §2)." }
+    "brand": {
+      "$description": "The consumer's brand colour. A slot, not Stemcell's identity — Art.3 lists colour among the things a third party may override, and says the MEME survives as the immutable framework rather than as a hue. It defaults to Stemcell's own purple so the system is complete out of the box (Art.4-1), and a consumer replaces these ten rungs with their own. Whatever replaces them must satisfy the palette contract; `bun run check:palette` enforces it (color.md §3).",
+      "50": {
+        "$value": "{color.purple.50}",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "{color.purple.100}",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "{color.purple.200}",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "{color.purple.300}",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "{color.purple.400}",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "{color.purple.500}",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "{color.purple.600}",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "{color.purple.700}",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "{color.purple.800}",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "{color.purple.900}",
+        "$type": "color"
+      }
     }
+  },
+  "font-weight": {
+    "regular": {
+      "$type": "fontWeight",
+      "$value": 400,
+      "$description": "Regular."
+    },
+    "medium": {
+      "$type": "fontWeight",
+      "$value": 500,
+      "$description": "Medium."
+    },
+    "semibold": {
+      "$type": "fontWeight",
+      "$value": 600,
+      "$description": "Semibold."
+    },
+    "bold": {
+      "$type": "fontWeight",
+      "$value": 700,
+      "$description": "Bold."
+    }
+  },
+  "font-size": {
+    "0": {
+      "$type": "fontSize",
+      "$value": "42px",
+      "$description": "Harmonic 84/(n+2), n=0 (max). fontSize type -> web rem / native sp / iOS Dynamic Type."
+    },
+    "1": {
+      "$type": "fontSize",
+      "$value": "28px",
+      "$description": "n=1."
+    },
+    "2": {
+      "$type": "fontSize",
+      "$value": "21px",
+      "$description": "n=2."
+    },
+    "3": {
+      "$type": "fontSize",
+      "$value": "16.8px",
+      "$description": "n=3."
+    },
+    "4": {
+      "$type": "fontSize",
+      "$value": "14px",
+      "$description": "n=4 (body base)."
+    },
+    "5": {
+      "$type": "fontSize",
+      "$value": "12px",
+      "$description": "n=5 (regularized 11.62 -> 84/7 = 12)."
+    },
+    "6": {
+      "$type": "fontSize",
+      "$value": "10.5px",
+      "$description": "n=6."
+    }
+  },
+  "line-height": {
+    "$type": "number",
+    "$value": 1.334,
+    "$description": "Line-height ratio, fixed across all roles."
+  },
+  "letter-spacing": {
+    "tight": {
+      "$type": "dimension",
+      "$value": "-0.01em",
+      "$description": "Large headings."
+    },
+    "normal": {
+      "$type": "dimension",
+      "$value": "0em",
+      "$description": "Body."
+    },
+    "wide": {
+      "$type": "dimension",
+      "$value": "0.02em",
+      "$description": "Labels."
+    },
+    "wider": {
+      "$type": "dimension",
+      "$value": "0.08em",
+      "$description": "Overline / caps."
+    }
+  },
+  "elevation": {
+    "$description": "The level is normative and theme-invariant, so it lives here. The facets that draw a level are in elevation.tokens.json — also Stemcell's, never a theme's (Constitution Art.3) — and are emitted into each theme so they resolve against that theme's colours at the scope the theme is applied (Art.6).",
+    "flat": {
+      "level": {
+        "$value": 0,
+        "$type": "number",
+        "$description": "Depth of the ground plane. The level is the normative datum — the ordering and the assignment of components to levels hold on every platform, while how a level is drawn (shadow / tonal / glass) is expressive (Constitution Art.2). Platforms that render from the level itself rather than from CSS geometry (Compose shadowElevation, SwiftUI) consume this token."
+      }
+    },
+    "surface": {
+      "level": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "Card / panel / alert / table."
+      }
+    },
+    "navigation": {
+      "level": {
+        "$value": 2,
+        "$type": "number",
+        "$description": "App bar / sidebar / sticky header / tab bar."
+      }
+    },
+    "popover": {
+      "level": {
+        "$value": 3,
+        "$type": "number",
+        "$description": "Menu / dropdown / select / combobox / popover. Tooltip draws at this depth but stacks at --layer-tooltip."
+      }
+    },
+    "modal": {
+      "level": {
+        "$value": 4,
+        "$type": "number",
+        "$description": "Modal / dialog / drawer / sheet."
+      }
+    },
+    "notification": {
+      "level": {
+        "$value": 5,
+        "$type": "number",
+        "$description": "Toast / snackbar."
+      }
+    }
+  },
+  "spacing": {
+    "0": {
+      "$type": "dimension",
+      "$value": "0px",
+      "$description": "4*0 px."
+    },
+    "1": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "4*1 px."
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "8px",
+      "$description": "4*2 px."
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "12px",
+      "$description": "4*3 px."
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$description": "4*4 px."
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "20px",
+      "$description": "4*5 px."
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "24px",
+      "$description": "4*6 px."
+    },
+    "7": {
+      "$type": "dimension",
+      "$value": "28px",
+      "$description": "4*7 px."
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "32px",
+      "$description": "4*8 px."
+    },
+    "9": {
+      "$type": "dimension",
+      "$value": "36px",
+      "$description": "4*9 px."
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "40px",
+      "$description": "4*10 px."
+    },
+    "11": {
+      "$type": "dimension",
+      "$value": "44px",
+      "$description": "4*11 px."
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": "48px",
+      "$description": "4*12 px."
+    },
+    "13": {
+      "$type": "dimension",
+      "$value": "52px",
+      "$description": "4*13 px."
+    },
+    "14": {
+      "$type": "dimension",
+      "$value": "56px",
+      "$description": "4*14 px."
+    },
+    "15": {
+      "$type": "dimension",
+      "$value": "60px",
+      "$description": "4*15 px."
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": "64px",
+      "$description": "4*16 px."
+    },
+    "17": {
+      "$type": "dimension",
+      "$value": "68px",
+      "$description": "4*17 px."
+    },
+    "18": {
+      "$type": "dimension",
+      "$value": "72px",
+      "$description": "4*18 px."
+    },
+    "19": {
+      "$type": "dimension",
+      "$value": "76px",
+      "$description": "4*19 px."
+    },
+    "20": {
+      "$type": "dimension",
+      "$value": "80px",
+      "$description": "4*20 px."
+    },
+    "21": {
+      "$type": "dimension",
+      "$value": "84px",
+      "$description": "4*21 px."
+    },
+    "22": {
+      "$type": "dimension",
+      "$value": "88px",
+      "$description": "4*22 px."
+    },
+    "23": {
+      "$type": "dimension",
+      "$value": "92px",
+      "$description": "4*23 px."
+    },
+    "24": {
+      "$type": "dimension",
+      "$value": "96px",
+      "$description": "4*24 px."
+    },
+    "inset": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{spacing.2}",
+        "$description": "8px."
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{spacing.4}",
+        "$description": "16px."
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{spacing.6}",
+        "$description": "24px."
+      }
+    },
+    "stack": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{spacing.2}",
+        "$description": "8px."
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{spacing.4}",
+        "$description": "16px."
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{spacing.6}",
+        "$description": "24px."
+      }
+    },
+    "inline": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{spacing.1}",
+        "$description": "4px."
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{spacing.2}",
+        "$description": "8px."
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{spacing.3}",
+        "$description": "12px."
+      }
+    },
+    "gap": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{spacing.2}",
+        "$description": "8px."
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{spacing.4}",
+        "$description": "16px."
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{spacing.6}",
+        "$description": "24px."
+      }
+    }
+  },
+  "shape": {
+    "circular": {
+      "$type": "borderRadius",
+      "$value": "999999px",
+      "$description": "Full pill."
+    },
+    "rounded-s": {
+      "$type": "borderRadius",
+      "$value": "2px",
+      "$description": "Subtle rounding — tags, badges."
+    },
+    "rounded-m": {
+      "$type": "borderRadius",
+      "$value": "6px",
+      "$description": "Standard rounding — buttons, inputs, cards."
+    },
+    "rounded-l": {
+      "$type": "borderRadius",
+      "$value": "10px",
+      "$description": "Large rounding — dialogs, sheets."
+    },
+    "angular": {
+      "$type": "borderRadius",
+      "$value": "0px",
+      "$description": "No rounding."
+    },
+    "border-width": {
+      "$type": "strokeWidth",
+      "$value": "1px",
+      "$description": "The width of a component's outline, for the `outlined` emphasis step and for dividers (emphasis.md §3, color.md §6). 1px, not 2px: the focus ring is 2px, and a border of the same weight would be indistinguishable from it when both are present (state.md §3.3). It also has to stay under the smallest non-zero radius (`rounded-s` = 2px) or the corner is crushed. Not a `dimension`, so it does not become rem: the radius it has to stay under is fixed in px, and a border that grew with the user's text while the radius did not would eventually cross it."
+    },
+    "smoothing": {
+      "$type": "number",
+      "$value": 0.6,
+      "$description": "Continuous corner smoothing (superellipse). 0=plain arc; ~0.6 approximates iOS .continuous / Figma 60% / Compose 0.6f. Falls back to a plain arc where unsupported (Constitution Art.7)."
+    },
+    "semantic": {
+      "control": {
+        "$type": "borderRadius",
+        "$value": "{shape.rounded-m}",
+        "$description": "Button, input, select, textarea."
+      },
+      "selection": {
+        "$type": "borderRadius",
+        "$value": "{shape.rounded-s}",
+        "$description": "Checkbox."
+      },
+      "card": {
+        "$type": "borderRadius",
+        "$value": "{shape.rounded-m}",
+        "$description": "Card, panel, alert, surface, image."
+      },
+      "dialog": {
+        "$type": "borderRadius",
+        "$value": "{shape.rounded-l}",
+        "$description": "Modal, dialog, bottom sheet, drawer."
+      },
+      "popover": {
+        "$type": "borderRadius",
+        "$value": "{shape.rounded-m}",
+        "$description": "Tooltip, dropdown menu, combobox popup."
+      },
+      "pill": {
+        "$type": "borderRadius",
+        "$value": "{shape.circular}",
+        "$description": "Badge, progress bar, avatar, radio, switch."
+      },
+      "tag": {
+        "$type": "borderRadius",
+        "$value": "{shape.rounded-s}",
+        "$description": "Tag, chip, small badge."
+      }
+    }
+  },
+  "font-family": {
+    "normal": {
+      "$type": "fontFamily",
+      "$value": "\"Segoe UI\", -apple-system, BlinkMacSystemFont, Roboto, \"Noto Sans\", \"BIZ UDゴシック\", system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+    },
+    "code": {
+      "$type": "fontFamily",
+      "$value": "\"Source Code Pro\", Menlo, Monaco, \"Ubuntu Mono\", \"Fira Code\", Consolas, \"Courier New\", \"Segoe UI\", \"Helvetica Neue\", \"BIZ UDPゴシック\", sans-serif, system-ui, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\", monospace"
+    }
+  },
+  "typography": {
+    "display-lg": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.semibold}",
+        "fontSize": "{font-size.0}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.tight}"
+      }
+    },
+    "display-md": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.semibold}",
+        "fontSize": "{font-size.1}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.tight}"
+      }
+    },
+    "headline-lg": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.bold}",
+        "fontSize": "{font-size.1}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.tight}"
+      }
+    },
+    "headline-md": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.bold}",
+        "fontSize": "{font-size.2}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.tight}"
+      }
+    },
+    "headline-sm": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.bold}",
+        "fontSize": "{font-size.3}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.tight}"
+      }
+    },
+    "title-lg": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.semibold}",
+        "fontSize": "{font-size.2}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.normal}"
+      }
+    },
+    "title-md": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.semibold}",
+        "fontSize": "{font-size.3}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.normal}"
+      }
+    },
+    "title-sm": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.semibold}",
+        "fontSize": "{font-size.4}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.normal}"
+      }
+    },
+    "body-lg": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.regular}",
+        "fontSize": "{font-size.3}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.normal}"
+      }
+    },
+    "body-md": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.regular}",
+        "fontSize": "{font-size.4}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.normal}"
+      }
+    },
+    "body-sm": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.regular}",
+        "fontSize": "{font-size.5}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.normal}"
+      }
+    },
+    "label-lg": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.medium}",
+        "fontSize": "{font-size.4}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.wide}"
+      }
+    },
+    "label-md": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.medium}",
+        "fontSize": "{font-size.5}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.wide}"
+      }
+    },
+    "label-sm": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.normal}",
+        "fontWeight": "{font-weight.medium}",
+        "fontSize": "{font-size.6}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.wide}"
+      }
+    },
+    "mono-md": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.code}",
+        "fontWeight": "{font-weight.regular}",
+        "fontSize": "{font-size.4}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.normal}"
+      }
+    },
+    "mono-sm": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font-family.code}",
+        "fontWeight": "{font-weight.regular}",
+        "fontSize": "{font-size.5}",
+        "lineHeight": "{line-height}",
+        "letterSpacing": "{letter-spacing.normal}"
+      }
+    }
+  },
+  "focus-ring": {
+    "width": {
+      "$type": "strokeWidth",
+      "$value": "2px",
+      "$description": "Focus ring thickness (outline-width). WCAG 2.2 minimum."
+    },
+    "offset": {
+      "$type": "strokeWidth",
+      "$value": "2px",
+      "$description": "Focus ring offset (outline-offset). Gap between the element edge and the ring so the background shows through, improving visibility."
+    },
+    "style": {
+      "$type": "strokeStyle",
+      "$value": "solid",
+      "$description": "Focus ring line style (outline-style)."
+    }
+  },
+  "motion": {
+    "duration": {
+      "fast-01": {
+        "$value": "70ms",
+        "$type": "duration",
+        "$description": "Carbon fast-01. Micro feedback."
+      },
+      "fast-02": {
+        "$value": "110ms",
+        "$type": "duration",
+        "$description": "Carbon fast-02. Hover/press/toggle feedback."
+      },
+      "moderate-01": {
+        "$value": "150ms",
+        "$type": "duration",
+        "$description": "Carbon moderate-01. General transitions and exits."
+      },
+      "moderate-02": {
+        "$value": "240ms",
+        "$type": "duration",
+        "$description": "Carbon moderate-02. Entrances and expand/collapse."
+      },
+      "slow-01": {
+        "$value": "400ms",
+        "$type": "duration",
+        "$description": "Carbon slow-01. Large surfaces."
+      },
+      "slow-02": {
+        "$value": "700ms",
+        "$type": "duration",
+        "$description": "Carbon slow-02. Loops (spinner/skeleton)."
+      }
+    },
+    "easing": {
+      "standard": {
+        "$value": [
+          0.2,
+          0.0,
+          0.38,
+          0.9
+        ],
+        "$type": "cubicBezier",
+        "$description": "ease-out. Entrances and general transitions; the spring fallback."
+      },
+      "exit": {
+        "$value": [
+          0.2,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "$type": "cubicBezier",
+        "$description": "accelerate. Dismissals."
+      },
+      "linear": {
+        "$value": [
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "$type": "cubicBezier",
+        "$description": "Linear. Loops and the none/reduced result."
+      }
+    },
+    "scale": {
+      "$value": 1,
+      "$type": "number",
+      "$description": "Ambient motion multiplier. Components multiply durations by this; reduced-motion sets it to 0 (Constitution Art.6)."
+    },
+    "none": {
+      "duration": {
+        "$value": "0ms",
+        "$type": "duration",
+        "$description": "Instant. The reduced-motion result."
+      },
+      "easing": {
+        "$value": "{motion.easing.linear}",
+        "$type": "cubicBezier"
+      }
+    },
+    "feedback": {
+      "duration": {
+        "$value": "{motion.duration.fast-02}",
+        "$type": "duration",
+        "$description": "Hover/press/toggle."
+      },
+      "easing": {
+        "$value": "{motion.easing.standard}",
+        "$type": "cubicBezier"
+      }
+    },
+    "transition": {
+      "duration": {
+        "$value": "{motion.duration.moderate-01}",
+        "$type": "duration",
+        "$description": "General property change."
+      },
+      "easing": {
+        "$value": "{motion.easing.standard}",
+        "$type": "cubicBezier"
+      }
+    },
+    "entrance": {
+      "duration": {
+        "$value": "{motion.duration.moderate-02}",
+        "$type": "duration",
+        "$description": "Element appears."
+      },
+      "easing": {
+        "$value": "{motion.easing.standard}",
+        "$type": "cubicBezier"
+      }
+    },
+    "exit": {
+      "duration": {
+        "$value": "{motion.duration.moderate-01}",
+        "$type": "duration",
+        "$description": "Element dismisses (faster than entrance)."
+      },
+      "easing": {
+        "$value": "{motion.easing.exit}",
+        "$type": "cubicBezier"
+      }
+    },
+    "expand": {
+      "duration": {
+        "$value": "{motion.duration.moderate-02}",
+        "$type": "duration",
+        "$description": "Accordion/collapse/disclosure height."
+      },
+      "easing": {
+        "$value": "{motion.easing.standard}",
+        "$type": "cubicBezier"
+      }
+    },
+    "loop": {
+      "duration": {
+        "$value": "{motion.duration.slow-02}",
+        "$type": "duration",
+        "$description": "Spinner/skeleton (infinite)."
+      },
+      "easing": {
+        "$value": "{motion.easing.linear}",
+        "$type": "cubicBezier"
+      }
+    }
+  },
+  "layer": {
+    "$description": "Seven layers in a fixed order. What is normative is the order, which every platform holds; `rank` states it. `z` is the Web's way of saying it, and the gaps in 0/10/1000/... are a CSS convention — headroom against third-party stacking contexts — not meaning. 1700 tells Compose and SwiftUI nothing; being above notification and below tooltip tells them everything. Components reference these tokens instead of writing raw z-index values (Constitution Art.3, structural layer). Same split as elevation's level vs facets (Art.2).",
+    "base": {
+      "rank": {
+        "$value": 0,
+        "$type": "number",
+        "$description": "App ground plane: body / background / flat controls. Surface content (card, panel, alert, table) shares this rank."
+      },
+      "z": {
+        "$value": 0,
+        "$type": "number"
+      }
+    },
+    "navigation": {
+      "rank": {
+        "$value": 1,
+        "$type": "number",
+        "$description": "Persistent chrome: app bar / sidebar / sticky header / tab bar."
+      },
+      "z": {
+        "$value": 10,
+        "$type": "number"
+      }
+    },
+    "popover": {
+      "rank": {
+        "$value": 2,
+        "$type": "number",
+        "$description": "Trigger-anchored transient surfaces: menu / dropdown / select / combobox / popover."
+      },
+      "z": {
+        "$value": 1000,
+        "$type": "number"
+      }
+    },
+    "scrim": {
+      "rank": {
+        "$value": 3,
+        "$type": "number",
+        "$description": "Dimming veil behind a modal; sits below the modal it belongs to. Stacking order only — the visual value (color/opacity) belongs to elevation."
+      },
+      "z": {
+        "$value": 1300,
+        "$type": "number"
+      }
+    },
+    "modal": {
+      "rank": {
+        "$value": 4,
+        "$type": "number",
+        "$description": "Focus-trapped surfaces: modal / dialog / drawer / sheet."
+      },
+      "z": {
+        "$value": 1400,
+        "$type": "number"
+      }
+    },
+    "notification": {
+      "rank": {
+        "$value": 5,
+        "$type": "number",
+        "$description": "Frontmost transient messages: toast / snackbar."
+      },
+      "z": {
+        "$value": 1700,
+        "$type": "number"
+      }
+    },
+    "tooltip": {
+      "rank": {
+        "$value": 6,
+        "$type": "number",
+        "$description": "Above every other layer despite drawing at popover depth — visual depth and stacking order are separate axes."
+      },
+      "z": {
+        "$value": 1800,
+        "$type": "number"
+      }
+    }
+  },
+  "breakpoint": {
+    "compact": {
+      "$value": "0",
+      "$type": "breakpoint",
+      "$description": "Handset. Page-skeleton structure only — components reflow on their own via container queries / intrinsic sizing, and consumers should not write breakpoint values (layout.md §3). Device-pixel by intent, and deliberately not converted to rem: the normative content is these five thresholds, which must mean the same width everywhere, and rem would move the Web ones under user font scaling (Constitution Art.2). The scale matches Material's window size classes as of BREAKPOINTS_V2 (WindowManager 1.5+); note that V1 stops at three. Apple has no equivalent — horizontalSizeClass is two-valued and is not a function of width — so iOS evaluates these thresholds against its own point width (1pt ~ 1 CSS px)."
+    },
+    "medium": {
+      "$value": "600px",
+      "$type": "breakpoint",
+      "$description": "Tablet portrait and up."
+    },
+    "expanded": {
+      "$value": "840px",
+      "$type": "breakpoint",
+      "$description": "Tablet landscape and up."
+    },
+    "large": {
+      "$value": "1200px",
+      "$type": "breakpoint",
+      "$description": "Desktop."
+    },
+    "x-large": {
+      "$value": "1600px",
+      "$type": "breakpoint",
+      "$description": "Large desktop."
+    }
+  },
+  "container": {
+    "sm": {
+      "$value": "640px",
+      "$type": "dimension",
+      "$description": "Page-width constraint, small. Unlike breakpoints these scale with the root font size, since a width cap should grow when the reader enlarges text (Constitution Art.1)."
+    },
+    "md": {
+      "$value": "768px",
+      "$type": "dimension",
+      "$description": "Page-width constraint, medium."
+    },
+    "lg": {
+      "$value": "1024px",
+      "$type": "dimension",
+      "$description": "Page-width constraint, large."
+    },
+    "xl": {
+      "$value": "1280px",
+      "$type": "dimension",
+      "$description": "Page-width constraint, extra large."
+    },
+    "prose": {
+      "$value": "66ch",
+      "$type": "dimension",
+      "$description": "Measure. Body text stops at ~66ch however wide its container is — the single explicit exception to fill-by-default, because readability outranks full width (layout.md §2)."
+    }
+  },
+  "avatar": {
+    "$description": "Avatar の表示寸法。値は spacing 原始のエイリアス(4px 格子・rem 建て。ユーザーの文字拡大で顔も育つ)。段が何を引くかの配線は foundations/size.rules.json の avatar チャンネル(size.md §2)。相互作用しないので最低標的(size.md §4)の対象外。",
+    "sm": {
+      "$type": "dimension",
+      "$value": "{spacing.6}",
+      "$description": "24px。密なリスト・コメント欄。"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$description": "32px。既定。"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "{spacing.10}",
+      "$description": "40px。プロフィールヘッダ等の主役。"
+    }
+  },
+  "loader": {
+    "$description": "円形の進行表示(CircularLoader / CircularProgress)の径。spacing 原始のエイリアス(4px 格子・rem 建て)。配線は foundations/size.rules.json の loader チャンネル(size.md §2)。線形(Linear 系)は径を持たず器いっぱいに広がるので、このスケールを引かない。",
+    "sm": {
+      "$type": "dimension",
+      "$value": "{spacing.4}",
+      "$description": "16px。文字と並ぶインライン表示。"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "{spacing.6}",
+      "$description": "24px。既定。"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$description": "32px。領域の中央に置く待機表示。"
+    }
+  },
+  "progress": {
+    "$description": "進行表示の共有ジオメトリ。",
+    "track-thickness": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "線形の帯と円形の輪の太さ。size 段に乗せない: 太さが段で変わる要求は未立証で、業界の事実標準(Material の 4dp)も固定である(消費者の居ない軸を作らない)。rem 建てで文字拡大に追従する。"
+    }
+  }
 }

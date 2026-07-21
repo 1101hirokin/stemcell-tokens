@@ -1311,5 +1311,31 @@
       "$value": "{spacing.10}",
       "$description": "40px。プロフィールヘッダ等の主役。"
     }
+  },
+  "loader": {
+    "$description": "円形の進行表示(CircularLoader / CircularProgress)の径。spacing 原始のエイリアス(4px 格子・rem 建て)。配線は foundations/size.rules.json の loader チャンネル(size.md §2)。線形(Linear 系)は径を持たず器いっぱいに広がるので、このスケールを引かない。",
+    "sm": {
+      "$type": "dimension",
+      "$value": "{spacing.4}",
+      "$description": "16px。文字と並ぶインライン表示。"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "{spacing.6}",
+      "$description": "24px。既定。"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$description": "32px。領域の中央に置く待機表示。"
+    }
+  },
+  "progress": {
+    "$description": "進行表示の共有ジオメトリ。",
+    "track-thickness": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "線形の帯と円形の輪の太さ。size 段に乗せない: 太さが段で変わる要求は未立証で、業界の事実標準(Material の 4dp)も固定である(消費者の居ない軸を作らない)。rem 建てで文字拡大に追従する。"
+    }
   }
 }

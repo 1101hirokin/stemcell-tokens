@@ -1,6 +1,6 @@
 {
   "name": "@stemcell/tokens",
-  "version": "0.0.0-alpha.0",
+  "version": "0.0.0-alpha.1",
   "type": "module",
   "exports": {
     ".": {
@@ -19,10 +19,15 @@
       "import": "./dist/web/types.js",
       "types": "./dist/web/types.d.ts"
     },
+    "./density-compact": {
+      "import": "./dist/web/density-compact.js",
+      "types": "./dist/web/density-compact.d.ts"
+    },
     "./base.css": "./dist/web/base.css",
     "./standard-light.css": "./dist/web/standard-light.css",
     "./standard-dark.css": "./dist/web/standard-dark.css",
     "./standard.css": "./dist/web/standard.css",
+    "./density-compact.css": "./dist/web/density-compact.css",
 
     "./dtcg/base": "./src/base.tokens.json",
     "./dtcg/elevation": "./src/elevation.tokens.json",

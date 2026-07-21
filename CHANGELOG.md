@@ -4,6 +4,17 @@ Versioning is suspended until the first release: pins stay at `0.0.0-alpha.N` an
 breaking changes are not expressed as major bumps. This file carries what the version
 number no longer says. See `GOVERNANCE.md` §3 in `stemcell-component-prompts`.
 
+## 0.0.0-alpha.1
+
+### Fixed — package exports
+
+`density-compact` was shipped in the tarball but missing from the `exports` map, so
+`import '@stemcell/tokens/density-compact.css'` (and the `./density-compact` JS subpath)
+was blocked for any consumer — `exports` closes every subpath it does not list. Found by
+the first publish to the local registry: the svelte playground consumes this file and could
+not resolve it. Both subpaths are now exported. Token values are unchanged; this is a
+packaging fix only.
+
 ## 0.0.0-alpha.0
 
 Renumbered from `0.1.2`. The package has never been published, so nothing downstream

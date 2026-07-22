@@ -71,13 +71,9 @@ export function checkBorders(
   }
   if (surfaces.size === 0) throw new Error(`${theme}: found no elevation surfaces. The discovery is broken.`);
 
-  const semantic = get(themeTree, 'color.semantic') ?? {};
-  for (const [intent, node] of Object.entries(semantic)) {
-    if (intent.startsWith('$') || EXEMPT.has(intent)) continue;
-    const border = (node as Node)['border'] as Node | undefined;
-    if (!border || typeof border.$value !== 'string') continue;
+  const checkOne = (intent: string, border: Node | undefined) => {
+    if (!border || typeof border.$value !== 'string') return;
     const colour = parseHex(resolve(border.$value, trees));
-
     for (const [name, surface] of surfaces) {
       const c = contrast(colour, parseHex(surface));
       if (c < NON_TEXT) {
@@ -91,7 +87,22 @@ export function checkBorders(
         });
       }
     }
+  };
+
+  const semantic = get(themeTree, 'color.semantic') ?? {};
+  for (const [intent, node] of Object.entries(semantic)) {
+    if (intent.startsWith('$') || EXEMPT.has(intent)) continue;
+    checkOne(intent, (node as Node)['border'] as Node | undefined);
   }
+
+  // The neutral border is also a component boundary (the resting outline of inputs and
+  // cards), so 1.4.11 applies to it just as it does to the semantic outlines. It used to
+  // be out of scope here (only color.semantic was walked), which let it alias a gray rung
+  // that vanished against the ground — light 1.57:1, dark 1.33:1 (color.md §10, found by a
+  // Card review). divider is excluded: it is decorative separation, which 1.4.11 exempts.
+  const app = get(themeTree, 'color.app') ?? {};
+  checkOne('app.border', (app as Node)['border'] as Node | undefined);
+
   return out;
 }
 

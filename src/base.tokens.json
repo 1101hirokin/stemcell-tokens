@@ -380,45 +380,45 @@
       }
     },
     "brand": {
-      "$description": "The consumer's brand colour. A slot, not Stemcell's identity — Art.3 lists colour among the things a third party may override, and says the MEME survives as the immutable framework rather than as a hue. It defaults to Stemcell's own purple so the system is complete out of the box (Art.4-1), and a consumer replaces these ten rungs with their own. Whatever replaces them must satisfy the palette contract; `bun run check:palette` enforces it (color.md §3).",
+      "$description": "The consumer's brand colour. A slot, not Stemcell's identity — Art.3 lists colour among the things a third party may override, and says the MEME survives as the immutable framework rather than as a hue. It defaults to Stemcell's own blue (#1C42FF at 600) so the system is complete out of the box (Art.4-1), and a consumer replaces these ten rungs with their own. This is a literal scale, so the palette contract runs on it directly; the ten rungs were generated to hold the same contrast staircase as the primitive hues (600 anchored to #1C42FF, whose luminance matches the staircase's 600 rung). Whatever replaces them must satisfy the contract; `bun run check:palette` enforces it (color.md §3).",
       "50": {
-        "$value": "{color.purple.50}",
+        "$value": "#F3F4FB",
         "$type": "color"
       },
       "100": {
-        "$value": "{color.purple.100}",
+        "$value": "#E4E8FC",
         "$type": "color"
       },
       "200": {
-        "$value": "{color.purple.200}",
+        "$value": "#C2CDFF",
         "$type": "color"
       },
       "300": {
-        "$value": "{color.purple.300}",
+        "$value": "#AAB9FF",
         "$type": "color"
       },
       "400": {
-        "$value": "{color.purple.400}",
+        "$value": "#8CA0FF",
         "$type": "color"
       },
       "500": {
-        "$value": "{color.purple.500}",
+        "$value": "#3557FF",
         "$type": "color"
       },
       "600": {
-        "$value": "{color.purple.600}",
+        "$value": "#1C42FF",
         "$type": "color"
       },
       "700": {
-        "$value": "{color.purple.700}",
+        "$value": "#0A31F0",
         "$type": "color"
       },
       "800": {
-        "$value": "{color.purple.800}",
+        "$value": "#132DAF",
         "$type": "color"
       },
       "900": {
-        "$value": "{color.purple.900}",
+        "$value": "#162573",
         "$type": "color"
       }
     }
@@ -688,13 +688,13 @@
       },
       "md": {
         "$type": "dimension",
-        "$value": "{spacing.4}",
-        "$description": "16px."
+        "$value": "{spacing.3}",
+        "$description": "12px."
       },
       "lg": {
         "$type": "dimension",
-        "$value": "{spacing.6}",
-        "$description": "24px."
+        "$value": "{spacing.4}",
+        "$description": "16px."
       }
     },
     "stack": {
@@ -705,13 +705,13 @@
       },
       "md": {
         "$type": "dimension",
-        "$value": "{spacing.4}",
-        "$description": "16px."
+        "$value": "{spacing.3}",
+        "$description": "12px."
       },
       "lg": {
         "$type": "dimension",
-        "$value": "{spacing.6}",
-        "$description": "24px."
+        "$value": "{spacing.4}",
+        "$description": "16px."
       }
     },
     "inline": {
@@ -727,8 +727,8 @@
       },
       "lg": {
         "$type": "dimension",
-        "$value": "{spacing.3}",
-        "$description": "12px."
+        "$value": "{spacing.2}",
+        "$description": "8px."
       }
     },
     "gap": {
@@ -739,13 +739,13 @@
       },
       "md": {
         "$type": "dimension",
-        "$value": "{spacing.4}",
-        "$description": "16px."
+        "$value": "{spacing.3}",
+        "$description": "12px."
       },
       "lg": {
         "$type": "dimension",
-        "$value": "{spacing.6}",
-        "$description": "24px."
+        "$value": "{spacing.4}",
+        "$description": "16px."
       }
     }
   },

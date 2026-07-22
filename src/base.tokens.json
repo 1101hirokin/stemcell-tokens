@@ -688,13 +688,13 @@
       },
       "md": {
         "$type": "dimension",
-        "$value": "{spacing.4}",
-        "$description": "16px."
+        "$value": "{spacing.3}",
+        "$description": "12px."
       },
       "lg": {
         "$type": "dimension",
-        "$value": "{spacing.6}",
-        "$description": "24px."
+        "$value": "{spacing.4}",
+        "$description": "16px."
       }
     },
     "stack": {
@@ -705,13 +705,13 @@
       },
       "md": {
         "$type": "dimension",
-        "$value": "{spacing.4}",
-        "$description": "16px."
+        "$value": "{spacing.3}",
+        "$description": "12px."
       },
       "lg": {
         "$type": "dimension",
-        "$value": "{spacing.6}",
-        "$description": "24px."
+        "$value": "{spacing.4}",
+        "$description": "16px."
       }
     },
     "inline": {
@@ -727,8 +727,8 @@
       },
       "lg": {
         "$type": "dimension",
-        "$value": "{spacing.3}",
-        "$description": "12px."
+        "$value": "{spacing.2}",
+        "$description": "8px."
       }
     },
     "gap": {
@@ -739,13 +739,13 @@
       },
       "md": {
         "$type": "dimension",
-        "$value": "{spacing.4}",
-        "$description": "16px."
+        "$value": "{spacing.3}",
+        "$description": "12px."
       },
       "lg": {
         "$type": "dimension",
-        "$value": "{spacing.6}",
-        "$description": "24px."
+        "$value": "{spacing.4}",
+        "$description": "16px."
       }
     }
   },

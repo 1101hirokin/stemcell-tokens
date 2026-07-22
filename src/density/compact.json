@@ -1,9 +1,73 @@
 {
-    "$description": "Compact density overrides for spacing semantic tokens. Emitted under [data-density=\"compact\"]. Overrides the comfortable defaults in base.tokens.json; base primitives are included only for alias resolution.",
-    "spacing": {
-        "inset":  { "sm": { "$type": "dimension", "$value": "{spacing.1}", "$description": "4px (compact)." },  "md": { "$type": "dimension", "$value": "{spacing.3}", "$description": "12px (compact)." }, "lg": { "$type": "dimension", "$value": "{spacing.5}", "$description": "20px (compact)." } },
-        "stack":  { "sm": { "$type": "dimension", "$value": "{spacing.1}", "$description": "4px (compact)." },  "md": { "$type": "dimension", "$value": "{spacing.3}", "$description": "12px (compact)." }, "lg": { "$type": "dimension", "$value": "{spacing.5}", "$description": "20px (compact)." } },
-        "inline": { "sm": { "$type": "dimension", "$value": "{spacing.1}", "$description": "4px (compact)." },  "md": { "$type": "dimension", "$value": "{spacing.1}", "$description": "4px (compact)." },  "lg": { "$type": "dimension", "$value": "{spacing.2}", "$description": "8px (compact)." } },
-        "gap":    { "sm": { "$type": "dimension", "$value": "{spacing.1}", "$description": "4px (compact)." },  "md": { "$type": "dimension", "$value": "{spacing.3}", "$description": "12px (compact)." }, "lg": { "$type": "dimension", "$value": "{spacing.5}", "$description": "20px (compact)." } }
+  "$description": "Compact density overrides for spacing semantic tokens. Emitted under [data-density=\"compact\"]. Overrides the comfortable defaults in base.tokens.json; base primitives are included only for alias resolution.",
+  "spacing": {
+    "inset": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{spacing.1}",
+        "$description": "4px (compact)."
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{spacing.2}",
+        "$description": "8px (compact)."
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{spacing.3}",
+        "$description": "12px (compact)."
+      }
+    },
+    "stack": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{spacing.1}",
+        "$description": "4px (compact)."
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{spacing.2}",
+        "$description": "8px (compact)."
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{spacing.3}",
+        "$description": "12px (compact)."
+      }
+    },
+    "inline": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{spacing.1}",
+        "$description": "4px (compact)."
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{spacing.1}",
+        "$description": "4px (compact)."
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{spacing.1}",
+        "$description": "4px (compact)."
+      }
+    },
+    "gap": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{spacing.1}",
+        "$description": "4px (compact)."
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{spacing.2}",
+        "$description": "8px (compact)."
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{spacing.3}",
+        "$description": "12px (compact)."
+      }
     }
+  }
 }

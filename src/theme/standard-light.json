@@ -26,7 +26,7 @@
             "fg-subtle":      { "$value": "{color.gray.500}", "$type": "color", "$description": "Supplementary text." },
             "fg-disabled":    { "$value": "{color.gray.400}", "$type": "color", "$description": "Disabled text." },
             "link":           { "$value": "{color.app.system}", "$type": "color", "$description": "Hyperlink text." },
-            "border":         { "$value": "{color.gray.200}", "$type": "color", "$description": "Neutral border." },
+            "border":         { "$value": "#8592A2", "$type": "color", "$description": "Neutral border, for the resting outline of inputs and cards. Its own authored rung, not a gray alias: the gray staircase jumps from 400 (2.47:1 on white) to 500 (5.37:1), and neither lands near the 3:1 that WCAG 2.2 SC 1.4.11 asks of a component boundary. #8592A2 is 3.17:1 against white (every light elevation surface is white), the lightest value that still clears the bar. Same principle as the semantic borders (their own rung, calibrated to the ground). Provisional (2026-07); the palette-wide author will revisit." },
             "divider":        { "$value": "{color.gray.100}", "$type": "color", "$description": "Neutral divider." },
             "shadow":         { "$value": "{color.gray.900}", "$type": "color", "$description": "Elevation shadow color (slightly-blue near-black)." },
             "shadow-umbra":    { "$value": "{color.app.shadow}", "$type": "color", "$extensions": { "stemcell": { "alpha": 0.24 } }, "$description": "The near, hard shadow. Light draws depth with shadows over an untinted surface, so this is the heavier of the two. Elevation's geometry points at this colour; the colour is a theme's to set, the geometry is not." },

@@ -4,6 +4,40 @@ Versioning is suspended until the first release: pins stay at `0.0.0-alpha.N` an
 breaking changes are not expressed as major bumps. This file carries what the version
 number no longer says. See `GOVERNANCE.md` §3 in `stemcell-component-prompts`.
 
+## 0.0.0-alpha.2
+
+### Fixed — neutral border contrast (WCAG 2.2 SC 1.4.11)
+
+`color.app.border` is the resting outline of inputs and cards, so it is a component
+boundary and 1.4.11 asks for 3:1 against the ground. It aliased gray rungs that vanished:
+light 1.57:1 (gray.200 on white), dark as low as 1.0:1 (gray.700 equalled the raised
+surface), and 1.33:1 on the card surface, 1.73:1 on the flat one. This was documented as an open hole in color.md §10,
+found during the Card outlined review.
+
+- Light `border` → `#8592A2`, its own authored value at 3.17:1 against white. The gray
+  staircase has no rung near 3:1 (400 is 2.47:1, 500 is 5.37:1), so it is authored, exactly
+  as the semantic borders are.
+- Dark `border` → `{color.gray.300}`, 3.35:1 on the lightest dark surface (modal). Dark's
+  staircase does land a rung in the 3:1 zone, so it stays an alias.
+
+The border check (`bun run check:palette`) now covers `color.app.border`, not only
+`color.semantic.*.border`. It was out of scope before, which is how the weak value went
+unnoticed. `divider` stays excluded: decorative separation, which 1.4.11 exempts.
+
+Provisional. Token values are otherwise unchanged; the palette-wide author (color.md §10)
+will revisit. No token names added or removed.
+
+## 0.0.0-alpha.1
+
+### Fixed — package exports
+
+`density-compact` was shipped in the tarball but missing from the `exports` map, so
+`import '@stemcell/tokens/density-compact.css'` (and the `./density-compact` JS subpath)
+was blocked for any consumer — `exports` closes every subpath it does not list. Found by
+the first publish to the local registry: the svelte playground consumes this file and could
+not resolve it. Both subpaths are now exported. Token values are unchanged; this is a
+packaging fix only.
+
 ## 0.0.0-alpha.0
 
 Renumbered from `0.1.2`. The package has never been published, so nothing downstream

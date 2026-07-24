@@ -31,7 +31,7 @@
             "shadow":         { "$value": "{color.gray.900}", "$type": "color", "$description": "Elevation shadow color (slightly-blue near-black)." },
             "shadow-umbra":    { "$value": "{color.app.shadow}", "$type": "color", "$extensions": { "stemcell": { "alpha": 0.24 } }, "$description": "The near, hard shadow. Light draws depth with shadows over an untinted surface, so this is the heavier of the two. Elevation's geometry points at this colour; the colour is a theme's to set, the geometry is not." },
             "shadow-penumbra": { "$value": "{color.app.shadow}", "$type": "color", "$extensions": { "stemcell": { "alpha": 0.14 } }, "$description": "The far, soft shadow. Lighter and wider than the umbra." },
-            "scrim":          { "$value": "{color.gray.900}", "$type": "color", "$description": "Modal scrim color (used at ~0.5 opacity)." }
+            "scrim":          { "$value": "{color.gray.900}", "$type": "color", "$description": "Modal scrim base color (opaque). The veil applies it at ~0.4 opacity via the `scrim` token." }
         },
         "semantic": {
             "focus-ring": {
@@ -229,7 +229,7 @@
     "scrim": {
         "$value": "{color.app.scrim}",
         "$type": "color",
-        "$extensions": { "stemcell": { "alpha": 0.5 } },
-        "$description": "Veil behind modal / dialog / drawer. Stacking order is --layer-scrim; this token carries the visual value only (elevation.md §6)."
+        "$extensions": { "stemcell": { "alpha": 0.4 } },
+        "$description": "Veil behind modal / dialog / drawer. Stacking order is --layer-scrim; this token carries the visual value only (elevation.md §6). Opacity is a seed; 0.4 leans to the revealing side so the user keeps context of what's behind the modal (Art.1, elevation.md §6)."
     }
 }

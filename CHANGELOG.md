@@ -4,6 +4,22 @@ Versioning is suspended until the first release: pins stay at `0.0.0-alpha.N` an
 breaking changes are not expressed as major bumps. This file carries what the version
 number no longer says. See `GOVERNANCE.md` §3 in `stemcell-component-prompts`.
 
+## 0.0.0-alpha.7
+
+### Added — slider geometry
+
+`Slider` gets its own track thickness and thumb size rather than borrowing the progress family's.
+The two are different geometries: Material 3 puts the linear progress track at 4dp and the slider
+track at 16dp, and this design system already separates them — the progress groove uses
+`plain.soft-bg` while the slider groove uses `plain.bg`. Reusing `progress.track-thickness` would
+make that name untrue, since the `progress` group is scoped to progress indicators.
+
+- `--slider-track-thickness` (0.25rem) and `--slider-thumb-size` (1rem).
+- Neither is a scale. A per-size axis is unproven, the same reasoning `progress.track-thickness`
+  records. The thumb is a box whose size cannot come from its content, so the size itself is the
+  value (`size.md` §2's enumerated exceptions).
+- Both values are seeds, to be confirmed on device.
+
 ## 0.0.0-alpha.6
 
 ### Added — continuous-curvature radius step (RFC 0015)

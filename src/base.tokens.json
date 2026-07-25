@@ -1388,5 +1388,18 @@
       "$value": "4px",
       "$description": "線形の帯と円形の輪の太さ。size 段に乗せない: 太さが段で変わる要求は未立証で、業界の事実標準(Material の 4dp)も固定である(消費者の居ない軸を作らない)。rem 建てで文字拡大に追従する。"
     }
+  },
+  "slider": {
+    "$description": "Slider の幾何。進行表示(progress)とは別物として持つ。Material 3 は線形の進行表示のトラックを 4dp、Slider のトラックを 16dp と定めており(4倍差)、本 DS も溝の中立段を別に引いている(進行表示は plain.soft-bg、Slider は plain.bg)。段(scale)にはしない: 段で変わる要求が未立証(size.md §2)。",
+    "track-thickness": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "トラック(値の位置を示す線)の太さ。種の値であり実機で確認して確定する。"
+    },
+    "thumb-size": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$description": "サム(つまみ)の径。内容から導けない箱なので寸法そのものが値になる(size.md §2 の例外列挙)。見た目の径であり、当たり判定(size.rules.json の hit-region。Web は 24px 下限)とは別である。種の値であり実機で確認して確定する。"
+    }
   }
 }

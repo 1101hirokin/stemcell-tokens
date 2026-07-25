@@ -821,6 +821,57 @@
         "$value": "{shape.rounded-s}",
         "$description": "Tag, chip, small badge."
       }
+    },
+    "continuous": {
+      "$description": "Continuous-curvature step. Used where superellipse corners are available; falls back to the arc step above (shape.md §3, RFC 0015). angular and circular are identical in both steps, so they are not repeated here.",
+      "rounded-s": {
+        "$type": "borderRadius",
+        "$value": "6px",
+        "$description": "Subtle rounding — tags, badges. Continuous-curvature step."
+      },
+      "rounded-m": {
+        "$type": "borderRadius",
+        "$value": "14px",
+        "$description": "Standard rounding — buttons, inputs, cards. Continuous-curvature step."
+      },
+      "rounded-l": {
+        "$type": "borderRadius",
+        "$value": "20px",
+        "$description": "Large rounding — dialogs, sheets. Continuous-curvature step."
+      },
+      "semantic": {
+        "$description": "Category assignments are identical in both steps (shape.md §6); only the step values differ. pill maps to circular, which is the same in both steps, so it is not repeated here.",
+        "control": {
+          "$type": "borderRadius",
+          "$value": "{shape.continuous.rounded-m}",
+          "$description": "control. Continuous-curvature step."
+        },
+        "selection": {
+          "$type": "borderRadius",
+          "$value": "{shape.continuous.rounded-s}",
+          "$description": "selection. Continuous-curvature step."
+        },
+        "card": {
+          "$type": "borderRadius",
+          "$value": "{shape.continuous.rounded-m}",
+          "$description": "card. Continuous-curvature step."
+        },
+        "dialog": {
+          "$type": "borderRadius",
+          "$value": "{shape.continuous.rounded-l}",
+          "$description": "dialog. Continuous-curvature step."
+        },
+        "popover": {
+          "$type": "borderRadius",
+          "$value": "{shape.continuous.rounded-m}",
+          "$description": "popover. Continuous-curvature step."
+        },
+        "tag": {
+          "$type": "borderRadius",
+          "$value": "{shape.continuous.rounded-s}",
+          "$description": "tag. Continuous-curvature step."
+        }
+      }
     }
   },
   "font-family": {

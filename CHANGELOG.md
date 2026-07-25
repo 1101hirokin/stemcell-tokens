@@ -4,6 +4,35 @@ Versioning is suspended until the first release: pins stay at `0.0.0-alpha.N` an
 breaking changes are not expressed as major bumps. This file carries what the version
 number no longer says. See `GOVERNANCE.md` §3 in `stemcell-component-prompts`.
 
+## 0.0.0-alpha.6
+
+### Added — continuous-curvature radius step (RFC 0015)
+
+The SSOT now carries the radius ladder in two steps (`shape.md` §3). Environments that can
+draw continuous curvature use the larger step; environments that fall back to plain arcs keep
+the current one. Same radius reads tighter with continuous curvature and puffier without it, so
+holding the amount fixed does not preserve the intended shape — the constitution's Article 7 was
+amended accordingly.
+
+- Existing names (`--shape-rounded-*`, `--shape-semantic-*`) stay on the fallback step with
+  unchanged values. Nothing that consumes them today changes.
+- The continuous step ships alongside as `--shape-continuous-rounded-*` and
+  `--shape-continuous-semantic-*`. Each implementation picks a step from what the environment
+  can do; the values are not the implementation's to choose.
+- `angular` and `circular` are identical in both steps and are not repeated. `semantic.pill`
+  resolves to `circular`, so it is not repeated either. Category assignments are the same in
+  both steps (`shape.md` §6).
+
+DTCG cannot express a conditional value, so the condition itself is not shipped: both steps go
+out under separate names and the selection is left to the consumer. On the web that is
+`@supports (corner-shape: superellipse(1.8))`.
+
+### Fixed — `circular` matched to the SSOT
+
+`circular` shipped as `999999px` while the SSOT said `9999px`. Both are effectively a full pill,
+so nothing looks different, but the two disagreed. Now `9999px`, and `--shape-semantic-pill`
+follows.
+
 ## 0.0.0-alpha.2
 
 ### Fixed — neutral border contrast (WCAG 2.2 SC 1.4.11)

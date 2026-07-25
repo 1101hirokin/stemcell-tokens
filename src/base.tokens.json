@@ -752,7 +752,7 @@
   "shape": {
     "circular": {
       "$type": "borderRadius",
-      "$value": "999999px",
+      "$value": "9999px",
       "$description": "Full pill."
     },
     "rounded-s": {

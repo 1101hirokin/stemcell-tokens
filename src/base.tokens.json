@@ -1389,6 +1389,19 @@
       "$description": "線形の帯と円形の輪の太さ。size 段に乗せない: 太さが段で変わる要求は未立証で、業界の事実標準(Material の 4dp)も固定である(消費者の居ない軸を作らない)。rem 建てで文字拡大に追従する。"
     }
   },
+  "selection": {
+    "$description": "選択の箱(Checkbox の四角、Radio の丸)の幾何。内容から導けない箱なので寸法そのものが値になる(size.md §2 の例外列挙。Slider のサムと同型)。見た目の寸法であり、当たり判定(size.rules.json の hit-region。Web は 24px 下限)とは別である: 箱を小さくしても押せる範囲は縮めない。16px は業界の常態で、shadcn/ui(size-4)、Carbon、Ant Design、Fluent がこの値、Material 3 は 18dp、Spectrum は 14〜16px である。段(scale)にはしない: 段で変わる要求が未立証(size.md §2)。",
+    "size": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$description": "選択の箱の一辺(Radio では直径)。"
+    },
+    "mark-size": {
+      "$type": "dimension",
+      "$value": "8px",
+      "$description": "Radio の内側の点の直径。箱の半分。Checkbox のチェックは線で描くので寸法を持たない(円形の進行表示が半径を持たないのと同じ理由)。"
+    }
+  },
   "slider": {
     "$description": "Slider の幾何。進行表示(progress)とは別物として持つ。Material 3 は線形の進行表示のトラックを 4dp、Slider のトラックを 16dp と定めており(4倍差)、本 DS も溝の中立段を別に引いている(進行表示は plain.soft-bg、Slider は plain.bg)。段(scale)にはしない: 段で変わる要求が未立証(size.md §2)。",
     "track-thickness": {

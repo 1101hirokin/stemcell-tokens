@@ -33,6 +33,39 @@
             "shadow-penumbra": { "$value": "{color.app.shadow}", "$type": "color", "$extensions": { "stemcell": { "alpha": 0.14 } }, "$description": "The far, soft shadow. Lighter and wider than the umbra." },
             "scrim":          { "$value": "{color.gray.900}", "$type": "color", "$description": "Modal scrim base color (opaque). The veil applies it at ~0.4 opacity via the `scrim` token." }
         },
+        "code": {
+            "$description": "コードの構文の色(color.md §10。RFC 0018)。intent でも app でもない三つ目の家族で、閉じた6役だけを持つ。識別子・演算子・区切りは塗らず color.app.foreground のままにする。面は color.app.surface に固定し、明暗どちらでも 4.5:1 を満たす(コードは本文である。WCAG 2.2 SC 1.4.3)。 明るいテーマは 600 段(白に対し 6.4〜6.5:1)。",
+            "comment": {
+                "$value": "{color.gray.600}",
+                "$type": "color",
+                "$description": "注釈。地に沈ませない(色の役の中で最も控えめだが、本文と同じ 4.5:1 を満たす)。"
+            },
+            "keyword": {
+                "$value": "{color.purple.600}",
+                "$type": "color",
+                "$description": "予約語(if / return / class / import)。"
+            },
+            "string": {
+                "$value": "{color.green.600}",
+                "$type": "color",
+                "$description": "文字列とその中の逃避。"
+            },
+            "number": {
+                "$value": "{color.orange.600}",
+                "$type": "color",
+                "$description": "数値・真偽値・null のような字句の定数。"
+            },
+            "function": {
+                "$value": "{color.blue.600}",
+                "$type": "color",
+                "$description": "呼び出しと定義の名前。"
+            },
+            "type": {
+                "$value": "{color.teal.600}",
+                "$type": "color",
+                "$description": "型・クラス・組み込みの名前。VS Code の既定テーマが型に teal を当てるのに揃えた。"
+            }
+        },
         "semantic": {
             "focus-ring": {
                 "$value": "{color.app.system}",

@@ -15,6 +15,7 @@ import { checkScale, type Violation } from './contrast.ts';
 import { checkBorders, type BorderViolation } from './border.ts';
 import { checkFocusRing, type FocusRingViolation } from './focus-ring.ts';
 import { checkCode, type CodeViolation } from './code.ts';
+import { checkText, type TextViolation, type TextNote } from './text.ts';
 
 const LADDER = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'];
 
@@ -78,18 +79,29 @@ const elevation = (await Bun.file('src/elevation.tokens.json').json()) as Dtcg;
 const borders: BorderViolation[] = [];
 const rings: FocusRingViolation[] = [];
 const codes: CodeViolation[] = [];
+const texts: TextViolation[] = [];
+const textNotes: TextNote[] = [];
 for (const theme of ['standard-light', 'standard-dark']) {
   const tree = (await Bun.file(`src/theme/${theme}.json`).json()) as Dtcg;
   borders.push(...checkBorders(theme, tree as never, base as never, elevation as never));
   rings.push(...checkFocusRing(theme, tree as never, base as never, elevation as never));
   codes.push(...checkCode(theme, tree as never, base as never));
+  const text = checkText(theme, tree as never, base as never);
+  texts.push(...text.violations);
+  textNotes.push(...text.notes);
 }
 
-if (violations.length === 0 && borders.length === 0 && rings.length === 0 && codes.length === 0) {
+if (violations.length === 0 && borders.length === 0 && rings.length === 0 && codes.length === 0 && texts.length === 0) {
   console.log(`palette: ${checked} scales, no violations`);
   console.log('border: every intent clears 3:1 on every elevation surface (WCAG 2.2 SC 1.4.11)');
   console.log('focus-ring: every ring clears 3:1, and the link clears 4.5:1, on every elevation surface');
   console.log('code: every syntax role clears 4.5:1 on the code surface (WCAG 2.2 SC 1.4.3)');
+  console.log(
+    'text: foreground and link clear 4.5:1 on every plane; fg-muted and fg-subtle clear it on the two that carry them',
+  );
+  for (const n of textNotes) {
+    console.log(`  note: ${n.theme} / ${n.role} is ${n.ratio.toFixed(2)}:1 on the ${n.plane} plane (not enforced; color.md §11)`);
+  }
   process.exit(0);
 }
 
@@ -108,6 +120,15 @@ if (rings.length) {
   console.error(
     '\nThe ring sits on the page surface (2px offset), and a link is text that can sit on any surface.' +
       '\nSee foundations/focus-ring.md §6 in stemcell-component-prompts.',
+  );
+}
+
+if (texts.length) {
+  console.error(`\ntext: ${texts.length} violations of WCAG 2.2 SC 1.4.3\n`);
+  for (const t of texts) console.error(`  ${t.theme} / ${t.role}\n    ${t.detail}`);
+  console.error(
+    '\nSecondary text is still text. Every plane a role sits on counts, not just the flat one.' +
+      '\nSee foundations/color.md §6 in stemcell-component-prompts.',
   );
 }
 

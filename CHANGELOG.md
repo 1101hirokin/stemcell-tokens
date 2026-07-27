@@ -4,6 +4,28 @@ Versioning is suspended until the first release: pins stay at `0.0.0-alpha.N` an
 breaking changes are not expressed as major bumps. This file carries what the version
 number no longer says. See `GOVERNANCE.md` §3 in `stemcell-component-prompts`.
 
+## 0.0.0-alpha.10
+
+### Fixed — dark secondary text was below the floor
+
+`border` was calibrated against every elevation plane in alpha.2 because dark has four
+different greys. Text never got the same treatment, and it is the stricter floor (4.5:1
+rather than 3:1) with far more of it on screen.
+
+- `fg-subtle` held `gray.500` — the light theme's value. It measured 2.52:1 against the
+  darkest plane, so it failed everywhere, including the ground. Now `gray.300`
+  (7.06:1 on background, 5.41:1 on surface).
+- `fg-muted` measured 4.20:1 on the surface plane, the one every card and table uses, and
+  3.17:1 on the raised one. Now `gray.200` (8.62:1 / 6.61:1, and 4.98:1 on raised).
+- Expect dark secondary text to read visibly brighter. That is what the floor costs, the
+  same way the `border` calibration made resting outlines visibly darker.
+- `check:palette` gained a text check. `foreground` and `link` are enforced on all four
+  planes; `fg-muted` and `fg-subtle` on the two that carry secondary text in practice.
+  The remaining measurements are printed rather than enforced: dark's planes climb to
+  gray.600, and on that lightest one no rung except 50/100 clears 4.5:1, so enforcing it
+  would be satisfied only by making three roles the same colour. That residue belongs to
+  the palette-wide re-author (color.md §11), and printing it keeps it from becoming folklore.
+
 ## 0.0.0-alpha.9
 
 ### Added — syntax colours for code (RFC 0018)

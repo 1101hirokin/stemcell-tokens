@@ -4,6 +4,36 @@ Versioning is suspended until the first release: pins stay at `0.0.0-alpha.N` an
 breaking changes are not expressed as major bumps. This file carries what the version
 number no longer says. See `GOVERNANCE.md` §3 in `stemcell-component-prompts`.
 
+## 0.0.0-alpha.9
+
+### Added — syntax colours for code (RFC 0018)
+
+A third colour family alongside `app` and `semantic`. Not "what happens if you press this"
+(intent) and not the ground/text hierarchy (app), but which lexical role a run of code plays.
+`CodeBlock` needs the design system to own the theme: left to whichever highlighter an app
+picks, the calibration happens outside this system's rules, and the usual casualty is the
+comment colour going faint enough to sink into a dark background.
+
+- `--color-code-comment` / `-keyword` / `-string` / `-number` / `-function` / `-type`.
+- The set is closed at six. Identifiers, operators, punctuation and whitespace stay on
+  `app.foreground`. Every role added has to stay distinguishable from its neighbours while
+  clearing 4.5:1 on the code surface, and both get harder as the set grows (Art. 3).
+- No new primitives. Light aliases the 600 rungs, dark the 300 rungs. That is what the
+  staircase allows: 600 is 6.4–6.5:1 on white, 300 is 5.4:1 on the dark surface, and dark's
+  400 is 4.2:1 — below the floor and not obviously so by eye.
+- `check:palette` gained a code check. Code is body text, so every role needs 4.5:1 against
+  `color.app.surface` (WCAG 2.2 SC 1.4.3) in both themes. Roles are discovered, not listed:
+  a seventh role would be checked without editing the checker. Verified it fails by pointing
+  dark's comment at the 400 rung.
+- Perceptual separation between roles is 21.4 ΔE at the closest pair in light
+  (comment/type) and 22.9 in dark (keyword/function). Not enforced by the checker — a
+  threshold would need authoring judgement the checker does not have — but recorded here
+  so a future re-author knows what the current set holds.
+- Portable by construction: the values are DTCG aliases onto the primitive scales, so any
+  platform that consumes the sources gets them. Applying them is another matter — the Web
+  highlighters map through CSS variables, and native has no standard code component — but
+  nothing in the axis is Web-specific.
+
 ## 0.0.0-alpha.7
 
 ### Added — slider geometry

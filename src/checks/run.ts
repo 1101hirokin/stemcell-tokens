@@ -14,6 +14,7 @@
 import { checkScale, type Violation } from './contrast.ts';
 import { checkBorders, type BorderViolation } from './border.ts';
 import { checkFocusRing, type FocusRingViolation } from './focus-ring.ts';
+import { checkCode, type CodeViolation } from './code.ts';
 
 const LADDER = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'];
 
@@ -76,16 +77,19 @@ const base = (await Bun.file('src/base.tokens.json').json()) as Dtcg;
 const elevation = (await Bun.file('src/elevation.tokens.json').json()) as Dtcg;
 const borders: BorderViolation[] = [];
 const rings: FocusRingViolation[] = [];
+const codes: CodeViolation[] = [];
 for (const theme of ['standard-light', 'standard-dark']) {
   const tree = (await Bun.file(`src/theme/${theme}.json`).json()) as Dtcg;
   borders.push(...checkBorders(theme, tree as never, base as never, elevation as never));
   rings.push(...checkFocusRing(theme, tree as never, base as never, elevation as never));
+  codes.push(...checkCode(theme, tree as never, base as never));
 }
 
-if (violations.length === 0 && borders.length === 0 && rings.length === 0) {
+if (violations.length === 0 && borders.length === 0 && rings.length === 0 && codes.length === 0) {
   console.log(`palette: ${checked} scales, no violations`);
   console.log('border: every intent clears 3:1 on every elevation surface (WCAG 2.2 SC 1.4.11)');
   console.log('focus-ring: every ring clears 3:1, and the link clears 4.5:1, on every elevation surface');
+  console.log('code: every syntax role clears 4.5:1 on the code surface (WCAG 2.2 SC 1.4.3)');
   process.exit(0);
 }
 
@@ -104,6 +108,15 @@ if (rings.length) {
   console.error(
     '\nThe ring sits on the page surface (2px offset), and a link is text that can sit on any surface.' +
       '\nSee foundations/focus-ring.md §6 in stemcell-component-prompts.',
+  );
+}
+
+if (codes.length) {
+  console.error(`\ncode: ${codes.length} violations of WCAG 2.2 SC 1.4.3\n`);
+  for (const c of codes) console.error(`  ${c.theme} / ${c.role}\n    ${c.detail}`);
+  console.error(
+    '\nCode is body text. Syntax colours sit on color.app.surface and need 4.5:1 there.' +
+      '\nSee foundations/color.md §10 in stemcell-component-prompts.',
   );
 }
 

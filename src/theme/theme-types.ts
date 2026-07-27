@@ -27,6 +27,23 @@ export type StemcellAppColorTokens = Partial<{
     scrim: StemcellColorToken;
 }>;
 
+/**
+ * Syntax colours for code (color.md §10, RFC 0018). A third family alongside app and
+ * semantic: not "what happens if you press this" (intent) and not the ground/text
+ * hierarchy (app), but which lexical role a run of code plays. The set is closed at six
+ * — identifiers, operators and punctuation stay on `app.foreground` — because every role
+ * added has to stay distinguishable from its neighbours while clearing 4.5:1 on the code
+ * surface, and both get harder as the set grows.
+ */
+export type StemcellCodeColorTokens = Partial<{
+    comment: StemcellColorToken;
+    keyword: StemcellColorToken;
+    string: StemcellColorToken;
+    number: StemcellColorToken;
+    function: StemcellColorToken;
+    type: StemcellColorToken;
+}>;
+
 export type StemcellSemanticColorTokens = Partial<{
     bg: StemcellColorToken;
     fg: StemcellColorToken;
@@ -63,9 +80,11 @@ export type StemcellTheme = {
     };
     color?: {
         app?: StemcellAppColorTokens;
+        code?: StemcellCodeColorTokens;
         semantic?: Record<string, StemcellSemanticColorTokens>;
         [colorName: string]:
             | StemcellAppColorTokens
+            | StemcellCodeColorTokens
             | Record<string, StemcellSemanticColorTokens>
             | StemcellColorScaleTokens
             | undefined;

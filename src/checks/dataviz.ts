@@ -67,6 +67,11 @@ export const distance = (a: Rgb, b: Rgb): number => {
 };
 
 /** 色覚の型の模擬(Viénot 1999)。LMS で欠けている錐体を残りから復元する。 */
+/** 色覚の型を模擬する（Viénot / Brettel 1999）。テーマの道具（theme/check-theme.ts）も引く。 */
+export function simulateOne(rgb: Rgb, kind: 'deuteranopia' | 'protanopia'): Rgb {
+  return simulate(rgb, kind);
+}
+
 function simulate(rgb: Rgb, kind: 'deuteranopia' | 'protanopia'): Rgb {
   const [r, g, b] = rgb.map((v) => srgbToLinear(v / 255)) as [number, number, number];
   // linear sRGB → LMS

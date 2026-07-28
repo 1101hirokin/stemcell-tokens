@@ -81,7 +81,9 @@ try {
 
 const input = loaded.input;
 if (!input || typeof input !== 'object' || !input.colors) {
-  console.error('stemcell-theme: テーマの形が違う。{ scheme?, colors: { brand: { "600": "#…" } } } を渡す');
+  console.error(
+    'stemcell-theme: テーマの形が違う。{ scheme?, colors: { brand: { "600": "#…" }, dataviz: { categorical: { "1": "#…" } } } } を渡す',
+  );
   process.exit(2);
 }
 
@@ -98,7 +100,9 @@ if (args.json) {
   console.log(`stemcell-theme  ${loaded.from} を検査（合成後の 10 段）\n`);
   for (const v of report.violations) {
     const floor = v.floor ? `床 ${v.floor}` : v.rule;
-    console.log(`  ✗ ${v.scheme.padEnd(5)} ${v.where}  ${v.ratio}:1  (${floor})`);
+    // 図の見分けは比ではなく距離で測る(単位が違うので : 1 を付けない)
+    const value = v.layer === 'dataviz' && v.where.includes('↔') ? `${v.ratio}` : `${v.ratio}:1`;
+    console.log(`  ✗ ${v.scheme.padEnd(5)} ${v.where}  ${value}  (${floor})`);
     console.log(`    ${v.hint}\n`);
   }
   console.log(

@@ -419,34 +419,34 @@
       "$description": "Chart palette (foundations/dataviz.md §3). Three scales with three different promises: categorical separates series, sequential shows order, diverging shows distance from a middle. checks/dataviz.ts enforces them, including under simulated deuteranopia and protanopia.",
       "categorical": {
         "1": {
-          "$value": "{color.blue.300}",
+          "$value": "{color.viz.azure.300}",
           "$type": "color",
-          "$description": "Categorical rung 1 (blue.300)."
+          "$description": "Categorical rung 1 (viz.azure.300)."
         },
         "2": {
-          "$value": "{color.orange.400}",
+          "$value": "{color.viz.magenta.300}",
           "$type": "color",
-          "$description": "Categorical rung 2 (orange.400)."
+          "$description": "Categorical rung 2 (viz.magenta.300)."
         },
         "3": {
-          "$value": "{color.teal.300}",
+          "$value": "{color.viz.teal.300}",
           "$type": "color",
-          "$description": "Categorical rung 3 (teal.300)."
+          "$description": "Categorical rung 3 (viz.teal.300)."
         },
         "4": {
-          "$value": "{color.pink.400}",
+          "$value": "{color.viz.gold.300}",
           "$type": "color",
-          "$description": "Categorical rung 4 (pink.400)."
+          "$description": "Categorical rung 4 (viz.gold.300)."
         },
         "5": {
-          "$value": "{color.green.400}",
+          "$value": "{color.viz.violet.300}",
           "$type": "color",
-          "$description": "Categorical rung 5 (green.400)."
+          "$description": "Categorical rung 5 (viz.violet.300)."
         },
         "6": {
-          "$value": "{color.yellow.300}",
+          "$value": "{color.viz.green.300}",
           "$type": "color",
-          "$description": "Categorical rung 6 (yellow.300)."
+          "$description": "Categorical rung 6 (viz.green.300)."
         }
       },
       "sequential": {

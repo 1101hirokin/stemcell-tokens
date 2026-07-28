@@ -1,163 +1,543 @@
 {
-    "$extensions": {
-        "stemcell": {
-            "scheme": "dark"
-        }
-    },
-    "color": {
-        "app": {
-            "system": {
-                "$value": "{color.blue.100}",
-                "$type": "color",
-                "$description": "General-purpose system accent color. Both link and the focus ring point here. The previous value, iOS dark system blue #0A84FF, failed both consumers: as link text it measured 3.70:1 on the flat surface and 1.76:1 on the modal (AA needs 4.5:1), and as the focus ring it cleared 3:1 on only one of the four dark surfaces. Dark's four surfaces are the gray 600-900 rungs, so the same squeeze that calibrated border to 300 applies, but text is stricter: 100 is the darkest rung that clears 4.5:1 on every surface (5.24:1 on modal; 200 fails at 4.11). The hue stays blue; the rung is what the floor forces."
-            },
-            "background": {
-                "$value": "{color.gray.900}",
-                "$type": "color"
-            },
-            "foreground": {
-                "$value": "{color.gray.50}",
-                "$type": "color"
-            },
-            "surface":        { "$value": "{color.gray.800}", "$type": "color", "$description": "Raised surface (card/panel). Dark: tonal gray ladder." },
-            "surface-raised": { "$value": "{color.gray.700}", "$type": "color", "$description": "Nested raised surface." },
-            "overlay":        { "$value": "{color.gray.600}", "$type": "color", "$description": "Popover/modal surface." },
-            "fg-muted":       { "$value": "{color.gray.200}", "$type": "color", "$description": "Secondary text. Calibrated 2026-07-27: gray.400 measured 4.20:1 on the surface plane and 3.17:1 on the raised one, below the 4.5:1 that body text needs (WCAG 2.2 SC 1.4.3). Secondary text is still text. gray.200 clears the floor on the two planes that carry it (background 8.62:1, surface 6.61:1) and reaches 4.98:1 on raised. The modal plane (4.10:1) is the residue documented in color.md — dark surfaces climb to gray.600, and no rung except 50/100 clears the floor there without collapsing the muted/subtle/foreground hierarchy. Expect this text to read visibly brighter than before; that is what the floor costs." },
-            "fg-subtle":      { "$value": "{color.gray.300}", "$type": "color", "$description": "Supplementary text. Calibrated 2026-07-27: it used to hold gray.500, which is the light theme's value and measured 2.52:1 against the darkest plane — failing everywhere, including the ground. gray.300 clears the floor on background (7.06:1) and surface (5.41:1) and stays a rung below fg-muted so the hierarchy survives." },
-            "fg-disabled":    { "$value": "{color.gray.600}", "$type": "color", "$description": "Disabled text." },
-            "link":           { "$value": "{color.app.system}", "$type": "color", "$description": "Hyperlink text." },
-            "border":         { "$value": "{color.gray.300}", "$type": "color", "$description": "Neutral border, calibrated to the ground plane like the semantic borders. It used to alias gray.700, which equalled the raised surface (1.0:1), and was 1.33:1 on the card surface and 1.73:1 on the flat one. gray.300 clears WCAG 2.2 SC 1.4.11 (3:1) on every dark elevation surface, worst case 3.35:1 on the lightest (modal, gray.600). Dark's staircase does have a rung in the 3:1 zone, so this can stay an alias, unlike light. Provisional (2026-07)." },
-            "divider":        { "$value": "{color.gray.800}", "$type": "color", "$description": "Neutral divider." },
-            "shadow":         { "$value": "#000000", "$type": "color", "$description": "Elevation shadow color. Black, not gray.900 as in light: dark's own surfaces run from gray.900 up, so a gray.900 shadow lands on a surface it barely differs from — 1.30:1 against gray.800, and 1.45:1 against gray.600 even at half opacity. A shadow has to be darker than what it falls on." },
-            "shadow-umbra":    { "$value": "{color.app.shadow}", "$type": "color", "$extensions": { "stemcell": { "alpha": 0.3 } }, "$description": "The near, hard shadow. Dark draws depth tonally and the shadow only separates what the tonal ladder cannot: the ladder tops out at gray.600, so modal and notification share a surface and a toast would otherwise vanish into the dialog under it. 0.3 black gives a 1.56:1 edge there — legible, and still slight next to light's lift (Art.1, elevation.md §3 'ごく僅か')." },
-            "shadow-penumbra": { "$value": "{color.app.shadow}", "$type": "color", "$extensions": { "stemcell": { "alpha": 0.18 } }, "$description": "The far, soft shadow. Holds roughly light's umbra:penumbra ratio." },
-            "scrim":          { "$value": "{color.gray.900}", "$type": "color", "$description": "Modal scrim base color (opaque). The veil applies it at ~0.4 opacity via the `scrim` token." }
-        },
-        "code": {
-            "$description": "コードの構文の色(color.md §10。RFC 0018)。intent でも app でもない三つ目の家族で、閉じた6役だけを持つ。識別子・演算子・区切りは塗らず color.app.foreground のままにする。面は color.app.surface に固定し、明暗どちらでも 4.5:1 を満たす(コードは本文である。WCAG 2.2 SC 1.4.3)。 暗いテーマは 300 段(app.surface に対し 5.4:1)。400 段は 4.2:1 で床を割る。",
-            "comment": {
-                "$value": "{color.gray.300}",
-                "$type": "color",
-                "$description": "注釈。地に沈ませない(色の役の中で最も控えめだが、本文と同じ 4.5:1 を満たす)。"
-            },
-            "keyword": {
-                "$value": "{color.purple.300}",
-                "$type": "color",
-                "$description": "予約語(if / return / class / import)。"
-            },
-            "string": {
-                "$value": "{color.green.300}",
-                "$type": "color",
-                "$description": "文字列とその中の逃避。"
-            },
-            "number": {
-                "$value": "{color.orange.300}",
-                "$type": "color",
-                "$description": "数値・真偽値・null のような字句の定数。"
-            },
-            "function": {
-                "$value": "{color.blue.300}",
-                "$type": "color",
-                "$description": "呼び出しと定義の名前。"
-            },
-            "type": {
-                "$value": "{color.teal.300}",
-                "$type": "color",
-                "$description": "型・クラス・組み込みの名前。VS Code の既定テーマが型に teal を当てるのに揃えた。"
-            }
-        },
-        "semantic": {
-            "focus-ring": {
-                "$value": "{color.app.system}",
-                "$type": "color",
-                "$description": "Global focus ring color. Defaults to app.system; override per theme."
-            },
-            "primary": {
-                "bg":              { "$value": "{color.brand.500}", "$type": "color" },
-                "fg":              { "$value": "#ffffff",           "$type": "color" },
-                "border": { "$value": "{color.brand.300}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). 300, not an alias of `bg`. `bg` is 500 in dark so white text clears AA on it (color.md), and 500 sits at 2.51:1 against the flat surface, below WCAG 1.4.11's 3:1 for a component boundary, and worse on the lighter ones (1.93 / 1.45 / 1.19). Dark's four surfaces span #292F36-#526071; 300 is the darkest rung clearing 3:1 on all four (7.06 / 5.42 / 4.08 / 3.36). Unlike soft-bg (color.md §8), this one has a solution." },
-                "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
-                "bg-hover":        { "$value": "{color.brand.600}", "$type": "color" },
-                "bg-pressed":      { "$value": "{color.brand.700}", "$type": "color" },
-                "soft-bg":         { "$value": "{color.brand.800}", "$type": "color" },
-                "soft-fg":         { "$value": "{color.brand.100}", "$type": "color" },
-                "soft-bg-hover":   { "$value": "{color.brand.700}", "$type": "color" },
-                "soft-bg-pressed": { "$value": "{color.brand.600}", "$type": "color" }
-            },
-            "danger": {
-                "bg":              { "$value": "{color.red.500}",   "$type": "color" },
-                "fg":              { "$value": "#ffffff",           "$type": "color" },
-                "border": { "$value": "{color.red.300}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). 300, not an alias of `bg`. `bg` is 500 in dark so white text clears AA on it (color.md), and 500 sits at 2.51:1 against the flat surface, below WCAG 1.4.11's 3:1 for a component boundary, and worse on the lighter ones (1.93 / 1.45 / 1.19). Dark's four surfaces span #292F36-#526071; 300 is the darkest rung clearing 3:1 on all four (7.06 / 5.42 / 4.08 / 3.36). Unlike soft-bg (color.md §8), this one has a solution." },
-                "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
-                "bg-hover":        { "$value": "{color.red.600}",   "$type": "color" },
-                "bg-pressed":      { "$value": "{color.red.700}",   "$type": "color" },
-                "soft-bg":         { "$value": "{color.red.800}",   "$type": "color" },
-                "soft-fg":         { "$value": "{color.red.100}",   "$type": "color" },
-                "soft-bg-hover":   { "$value": "{color.red.700}",   "$type": "color" },
-                "soft-bg-pressed": { "$value": "{color.red.600}",   "$type": "color" }
-            },
-            "warning": {
-                "bg":              { "$value": "{color.yellow.500}", "$type": "color" },
-                "fg":              { "$value": "#ffffff",            "$type": "color" },
-                "border": { "$value": "{color.yellow.300}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). 300, not an alias of `bg`. `bg` is 500 in dark so white text clears AA on it (color.md), and 500 sits at 2.51:1 against the flat surface, below WCAG 1.4.11's 3:1 for a component boundary, and worse on the lighter ones (1.93 / 1.45 / 1.19). Dark's four surfaces span #292F36-#526071; 300 is the darkest rung clearing 3:1 on all four (7.06 / 5.42 / 4.08 / 3.36). Unlike soft-bg (color.md §8), this one has a solution." },
-                "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
-                "bg-hover":        { "$value": "{color.yellow.600}", "$type": "color" },
-                "bg-pressed":      { "$value": "{color.yellow.700}", "$type": "color" },
-                "soft-bg":         { "$value": "{color.yellow.800}", "$type": "color" },
-                "soft-fg":         { "$value": "{color.yellow.100}", "$type": "color" },
-                "soft-bg-hover":   { "$value": "{color.yellow.700}", "$type": "color" },
-                "soft-bg-pressed": { "$value": "{color.yellow.600}", "$type": "color" }
-            },
-            "success": {
-                "bg":              { "$value": "{color.green.500}", "$type": "color" },
-                "fg":              { "$value": "#ffffff",           "$type": "color" },
-                "border": { "$value": "{color.green.300}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). 300, not an alias of `bg`. `bg` is 500 in dark so white text clears AA on it (color.md), and 500 sits at 2.51:1 against the flat surface, below WCAG 1.4.11's 3:1 for a component boundary, and worse on the lighter ones (1.93 / 1.45 / 1.19). Dark's four surfaces span #292F36-#526071; 300 is the darkest rung clearing 3:1 on all four (7.06 / 5.42 / 4.08 / 3.36). Unlike soft-bg (color.md §8), this one has a solution." },
-                "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
-                "bg-hover":        { "$value": "{color.green.600}", "$type": "color" },
-                "bg-pressed":      { "$value": "{color.green.700}", "$type": "color" },
-                "soft-bg":         { "$value": "{color.green.800}", "$type": "color" },
-                "soft-fg":         { "$value": "{color.green.100}", "$type": "color" },
-                "soft-bg-hover":   { "$value": "{color.green.700}", "$type": "color" },
-                "soft-bg-pressed": { "$value": "{color.green.600}", "$type": "color" }
-            },
-            "info": {
-                "bg":              { "$value": "{color.blue.500}", "$type": "color" },
-                "fg":              { "$value": "#ffffff",          "$type": "color" },
-                "border": { "$value": "{color.blue.300}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). 300, not an alias of `bg`. `bg` is 500 in dark so white text clears AA on it (color.md), and 500 sits at 2.51:1 against the flat surface, below WCAG 1.4.11's 3:1 for a component boundary, and worse on the lighter ones (1.93 / 1.45 / 1.19). Dark's four surfaces span #292F36-#526071; 300 is the darkest rung clearing 3:1 on all four (7.06 / 5.42 / 4.08 / 3.36). Unlike soft-bg (color.md §8), this one has a solution." },
-                "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
-                "bg-hover":        { "$value": "{color.blue.600}", "$type": "color" },
-                "bg-pressed":      { "$value": "{color.blue.700}", "$type": "color" },
-                "soft-bg":         { "$value": "{color.blue.800}", "$type": "color" },
-                "soft-fg":         { "$value": "{color.blue.100}", "$type": "color" },
-                "soft-bg-hover":   { "$value": "{color.blue.700}", "$type": "color" },
-                "soft-bg-pressed": { "$value": "{color.blue.600}", "$type": "color" }
-            },
-            "plain": {
-                "bg":              { "$value": "{color.gray.500}",  "$type": "color" },
-                "fg":              { "$value": "#ffffff",           "$type": "color" },
-                "border": { "$value": "{color.gray.300}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). 300, not an alias of `bg`. `bg` is 500 in dark so white text clears AA on it (color.md), and 500 sits at 2.51:1 against the flat surface, below WCAG 1.4.11's 3:1 for a component boundary, and worse on the lighter ones (1.93 / 1.45 / 1.19). Dark's four surfaces span #292F36-#526071; 300 is the darkest rung clearing 3:1 on all four (7.06 / 5.42 / 4.08 / 3.36). Unlike soft-bg (color.md §8), this one has a solution." },
-                "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
-                "bg-hover":        { "$value": "{color.gray.600}",  "$type": "color" },
-                "bg-pressed":      { "$value": "{color.gray.700}",  "$type": "color" },
-                "soft-bg":         { "$value": "{color.gray.800}",  "$type": "color" },
-                "soft-fg":         { "$value": "{color.gray.100}",  "$type": "color" },
-                "soft-bg-hover":   { "$value": "{color.gray.700}",  "$type": "color" },
-                "soft-bg-pressed": { "$value": "{color.gray.600}",  "$type": "color" }
-            },
-            "disabled": {
-                "bg":          { "$value": "{color.gray.700}", "$type": "color" },
-                "fg":          { "$value": "{color.gray.500}", "$type": "color" },
-                "border":      { "$value": "{color.semantic.disabled.bg}", "$type": "color" },
-                "soft-bg":     { "$value": "{color.gray.800}", "$type": "color" },
-                "soft-fg":     { "$value": "{color.gray.600}", "$type": "color" }
-            }
-        }
-    },
-
-    "scrim": {
-        "$value": "{color.app.scrim}",
-        "$type": "color",
-        "$extensions": { "stemcell": { "alpha": 0.4 } },
-        "$description": "Veil behind modal / dialog / drawer. Stacking order is --layer-scrim; this token carries the visual value only (elevation.md §6). Opacity is a seed; 0.4 leans to the revealing side so the user keeps context of what's behind the modal (Art.1, elevation.md §6)."
+  "$extensions": {
+    "stemcell": {
+      "scheme": "dark"
     }
+  },
+  "color": {
+    "app": {
+      "system": {
+        "$value": "{color.blue.100}",
+        "$type": "color",
+        "$description": "General-purpose system accent color. Both link and the focus ring point here. The previous value, iOS dark system blue #0A84FF, failed both consumers: as link text it measured 3.70:1 on the flat surface and 1.76:1 on the modal (AA needs 4.5:1), and as the focus ring it cleared 3:1 on only one of the four dark surfaces. Dark's four surfaces are the gray 600-900 rungs, so the same squeeze that calibrated border to 300 applies, but text is stricter: 100 is the darkest rung that clears 4.5:1 on every surface (5.24:1 on modal; 200 fails at 4.11). The hue stays blue; the rung is what the floor forces."
+      },
+      "background": {
+        "$value": "{color.gray.900}",
+        "$type": "color"
+      },
+      "foreground": {
+        "$value": "{color.gray.50}",
+        "$type": "color"
+      },
+      "surface": {
+        "$value": "{color.gray.800}",
+        "$type": "color",
+        "$description": "Raised surface (card/panel). Dark: tonal gray ladder."
+      },
+      "surface-raised": {
+        "$value": "{color.gray.700}",
+        "$type": "color",
+        "$description": "Nested raised surface."
+      },
+      "overlay": {
+        "$value": "{color.gray.600}",
+        "$type": "color",
+        "$description": "Popover/modal surface."
+      },
+      "fg-muted": {
+        "$value": "{color.gray.200}",
+        "$type": "color",
+        "$description": "Secondary text. Calibrated 2026-07-27: gray.400 measured 4.20:1 on the surface plane and 3.17:1 on the raised one, below the 4.5:1 that body text needs (WCAG 2.2 SC 1.4.3). Secondary text is still text. gray.200 clears the floor on the two planes that carry it (background 8.62:1, surface 6.61:1) and reaches 4.98:1 on raised. The modal plane (4.10:1) is the residue documented in color.md — dark surfaces climb to gray.600, and no rung except 50/100 clears the floor there without collapsing the muted/subtle/foreground hierarchy. Expect this text to read visibly brighter than before; that is what the floor costs."
+      },
+      "fg-subtle": {
+        "$value": "{color.gray.300}",
+        "$type": "color",
+        "$description": "Supplementary text. Calibrated 2026-07-27: it used to hold gray.500, which is the light theme's value and measured 2.52:1 against the darkest plane — failing everywhere, including the ground. gray.300 clears the floor on background (7.06:1) and surface (5.41:1) and stays a rung below fg-muted so the hierarchy survives."
+      },
+      "fg-disabled": {
+        "$value": "{color.gray.600}",
+        "$type": "color",
+        "$description": "Disabled text."
+      },
+      "link": {
+        "$value": "{color.app.system}",
+        "$type": "color",
+        "$description": "Hyperlink text."
+      },
+      "border": {
+        "$value": "{color.gray.300}",
+        "$type": "color",
+        "$description": "Neutral border, calibrated to the ground plane like the semantic borders. It used to alias gray.700, which equalled the raised surface (1.0:1), and was 1.33:1 on the card surface and 1.73:1 on the flat one. gray.300 clears WCAG 2.2 SC 1.4.11 (3:1) on every dark elevation surface, worst case 3.35:1 on the lightest (modal, gray.600). Dark's staircase does have a rung in the 3:1 zone, so this can stay an alias, unlike light. Provisional (2026-07)."
+      },
+      "divider": {
+        "$value": "{color.gray.800}",
+        "$type": "color",
+        "$description": "Neutral divider."
+      },
+      "shadow": {
+        "$value": "#000000",
+        "$type": "color",
+        "$description": "Elevation shadow color. Black, not gray.900 as in light: dark's own surfaces run from gray.900 up, so a gray.900 shadow lands on a surface it barely differs from — 1.30:1 against gray.800, and 1.45:1 against gray.600 even at half opacity. A shadow has to be darker than what it falls on."
+      },
+      "shadow-umbra": {
+        "$value": "{color.app.shadow}",
+        "$type": "color",
+        "$extensions": {
+          "stemcell": {
+            "alpha": 0.3
+          }
+        },
+        "$description": "The near, hard shadow. Dark draws depth tonally and the shadow only separates what the tonal ladder cannot: the ladder tops out at gray.600, so modal and notification share a surface and a toast would otherwise vanish into the dialog under it. 0.3 black gives a 1.56:1 edge there — legible, and still slight next to light's lift (Art.1, elevation.md §3 'ごく僅か')."
+      },
+      "shadow-penumbra": {
+        "$value": "{color.app.shadow}",
+        "$type": "color",
+        "$extensions": {
+          "stemcell": {
+            "alpha": 0.18
+          }
+        },
+        "$description": "The far, soft shadow. Holds roughly light's umbra:penumbra ratio."
+      },
+      "scrim": {
+        "$value": "{color.gray.900}",
+        "$type": "color",
+        "$description": "Modal scrim base color (opaque). The veil applies it at ~0.4 opacity via the `scrim` token."
+      }
+    },
+    "code": {
+      "$description": "コードの構文の色(color.md §10。RFC 0018)。intent でも app でもない三つ目の家族で、閉じた6役だけを持つ。識別子・演算子・区切りは塗らず color.app.foreground のままにする。面は color.app.surface に固定し、明暗どちらでも 4.5:1 を満たす(コードは本文である。WCAG 2.2 SC 1.4.3)。 暗いテーマは 300 段(app.surface に対し 5.4:1)。400 段は 4.2:1 で床を割る。",
+      "comment": {
+        "$value": "{color.gray.300}",
+        "$type": "color",
+        "$description": "注釈。地に沈ませない(色の役の中で最も控えめだが、本文と同じ 4.5:1 を満たす)。"
+      },
+      "keyword": {
+        "$value": "{color.purple.300}",
+        "$type": "color",
+        "$description": "予約語(if / return / class / import)。"
+      },
+      "string": {
+        "$value": "{color.green.300}",
+        "$type": "color",
+        "$description": "文字列とその中の逃避。"
+      },
+      "number": {
+        "$value": "{color.orange.300}",
+        "$type": "color",
+        "$description": "数値・真偽値・null のような字句の定数。"
+      },
+      "function": {
+        "$value": "{color.blue.300}",
+        "$type": "color",
+        "$description": "呼び出しと定義の名前。"
+      },
+      "type": {
+        "$value": "{color.teal.300}",
+        "$type": "color",
+        "$description": "型・クラス・組み込みの名前。VS Code の既定テーマが型に teal を当てるのに揃えた。"
+      }
+    },
+    "semantic": {
+      "focus-ring": {
+        "$value": "{color.app.system}",
+        "$type": "color",
+        "$description": "Global focus ring color. Defaults to app.system; override per theme."
+      },
+      "primary": {
+        "bg": {
+          "$value": "{color.brand.500}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.brand.300}",
+          "$type": "color",
+          "$description": "The component's outline, for `outlined` (emphasis.md). 300, not an alias of `bg`. `bg` is 500 in dark so white text clears AA on it (color.md), and 500 sits at 2.51:1 against the flat surface, below WCAG 1.4.11's 3:1 for a component boundary, and worse on the lighter ones (1.93 / 1.45 / 1.19). Dark's four surfaces span #292F36-#526071; 300 is the darkest rung clearing 3:1 on all four (7.06 / 5.42 / 4.08 / 3.36). Unlike soft-bg (color.md §8), this one has a solution."
+        },
+        "focus-ring": {
+          "$value": "{color.semantic.focus-ring}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.brand.600}",
+          "$type": "color"
+        },
+        "bg-pressed": {
+          "$value": "{color.brand.700}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.brand.800}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.brand.100}",
+          "$type": "color"
+        },
+        "soft-bg-hover": {
+          "$value": "{color.brand.700}",
+          "$type": "color"
+        },
+        "soft-bg-pressed": {
+          "$value": "{color.brand.600}",
+          "$type": "color"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{color.red.500}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.red.300}",
+          "$type": "color",
+          "$description": "The component's outline, for `outlined` (emphasis.md). 300, not an alias of `bg`. `bg` is 500 in dark so white text clears AA on it (color.md), and 500 sits at 2.51:1 against the flat surface, below WCAG 1.4.11's 3:1 for a component boundary, and worse on the lighter ones (1.93 / 1.45 / 1.19). Dark's four surfaces span #292F36-#526071; 300 is the darkest rung clearing 3:1 on all four (7.06 / 5.42 / 4.08 / 3.36). Unlike soft-bg (color.md §8), this one has a solution."
+        },
+        "focus-ring": {
+          "$value": "{color.semantic.focus-ring}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.red.600}",
+          "$type": "color"
+        },
+        "bg-pressed": {
+          "$value": "{color.red.700}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.red.800}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.red.100}",
+          "$type": "color"
+        },
+        "soft-bg-hover": {
+          "$value": "{color.red.700}",
+          "$type": "color"
+        },
+        "soft-bg-pressed": {
+          "$value": "{color.red.600}",
+          "$type": "color"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$value": "{color.yellow.500}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.yellow.300}",
+          "$type": "color",
+          "$description": "The component's outline, for `outlined` (emphasis.md). 300, not an alias of `bg`. `bg` is 500 in dark so white text clears AA on it (color.md), and 500 sits at 2.51:1 against the flat surface, below WCAG 1.4.11's 3:1 for a component boundary, and worse on the lighter ones (1.93 / 1.45 / 1.19). Dark's four surfaces span #292F36-#526071; 300 is the darkest rung clearing 3:1 on all four (7.06 / 5.42 / 4.08 / 3.36). Unlike soft-bg (color.md §8), this one has a solution."
+        },
+        "focus-ring": {
+          "$value": "{color.semantic.focus-ring}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.yellow.600}",
+          "$type": "color"
+        },
+        "bg-pressed": {
+          "$value": "{color.yellow.700}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.yellow.800}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.yellow.100}",
+          "$type": "color"
+        },
+        "soft-bg-hover": {
+          "$value": "{color.yellow.700}",
+          "$type": "color"
+        },
+        "soft-bg-pressed": {
+          "$value": "{color.yellow.600}",
+          "$type": "color"
+        }
+      },
+      "success": {
+        "bg": {
+          "$value": "{color.green.500}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.green.300}",
+          "$type": "color",
+          "$description": "The component's outline, for `outlined` (emphasis.md). 300, not an alias of `bg`. `bg` is 500 in dark so white text clears AA on it (color.md), and 500 sits at 2.51:1 against the flat surface, below WCAG 1.4.11's 3:1 for a component boundary, and worse on the lighter ones (1.93 / 1.45 / 1.19). Dark's four surfaces span #292F36-#526071; 300 is the darkest rung clearing 3:1 on all four (7.06 / 5.42 / 4.08 / 3.36). Unlike soft-bg (color.md §8), this one has a solution."
+        },
+        "focus-ring": {
+          "$value": "{color.semantic.focus-ring}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.green.600}",
+          "$type": "color"
+        },
+        "bg-pressed": {
+          "$value": "{color.green.700}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.green.800}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.green.100}",
+          "$type": "color"
+        },
+        "soft-bg-hover": {
+          "$value": "{color.green.700}",
+          "$type": "color"
+        },
+        "soft-bg-pressed": {
+          "$value": "{color.green.600}",
+          "$type": "color"
+        }
+      },
+      "info": {
+        "bg": {
+          "$value": "{color.blue.500}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.blue.300}",
+          "$type": "color",
+          "$description": "The component's outline, for `outlined` (emphasis.md). 300, not an alias of `bg`. `bg` is 500 in dark so white text clears AA on it (color.md), and 500 sits at 2.51:1 against the flat surface, below WCAG 1.4.11's 3:1 for a component boundary, and worse on the lighter ones (1.93 / 1.45 / 1.19). Dark's four surfaces span #292F36-#526071; 300 is the darkest rung clearing 3:1 on all four (7.06 / 5.42 / 4.08 / 3.36). Unlike soft-bg (color.md §8), this one has a solution."
+        },
+        "focus-ring": {
+          "$value": "{color.semantic.focus-ring}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.blue.600}",
+          "$type": "color"
+        },
+        "bg-pressed": {
+          "$value": "{color.blue.700}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.blue.800}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.blue.100}",
+          "$type": "color"
+        },
+        "soft-bg-hover": {
+          "$value": "{color.blue.700}",
+          "$type": "color"
+        },
+        "soft-bg-pressed": {
+          "$value": "{color.blue.600}",
+          "$type": "color"
+        }
+      },
+      "plain": {
+        "bg": {
+          "$value": "{color.gray.500}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.gray.300}",
+          "$type": "color",
+          "$description": "The component's outline, for `outlined` (emphasis.md). 300, not an alias of `bg`. `bg` is 500 in dark so white text clears AA on it (color.md), and 500 sits at 2.51:1 against the flat surface, below WCAG 1.4.11's 3:1 for a component boundary, and worse on the lighter ones (1.93 / 1.45 / 1.19). Dark's four surfaces span #292F36-#526071; 300 is the darkest rung clearing 3:1 on all four (7.06 / 5.42 / 4.08 / 3.36). Unlike soft-bg (color.md §8), this one has a solution."
+        },
+        "focus-ring": {
+          "$value": "{color.semantic.focus-ring}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.gray.600}",
+          "$type": "color"
+        },
+        "bg-pressed": {
+          "$value": "{color.gray.700}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.gray.800}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.gray.100}",
+          "$type": "color"
+        },
+        "soft-bg-hover": {
+          "$value": "{color.gray.700}",
+          "$type": "color"
+        },
+        "soft-bg-pressed": {
+          "$value": "{color.gray.600}",
+          "$type": "color"
+        }
+      },
+      "disabled": {
+        "bg": {
+          "$value": "{color.gray.700}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{color.gray.500}",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.semantic.disabled.bg}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.gray.800}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.gray.600}",
+          "$type": "color"
+        }
+      }
+    },
+    "dataviz": {
+      "$description": "Chart palette (foundations/dataviz.md §3). Three scales with three different promises: categorical separates series, sequential shows order, diverging shows distance from a middle. checks/dataviz.ts enforces them, including under simulated deuteranopia and protanopia.",
+      "categorical": {
+        "1": {
+          "$value": "{color.blue.300}",
+          "$type": "color",
+          "$description": "Categorical rung 1 (blue.300)."
+        },
+        "2": {
+          "$value": "{color.orange.400}",
+          "$type": "color",
+          "$description": "Categorical rung 2 (orange.400)."
+        },
+        "3": {
+          "$value": "{color.teal.300}",
+          "$type": "color",
+          "$description": "Categorical rung 3 (teal.300)."
+        },
+        "4": {
+          "$value": "{color.pink.400}",
+          "$type": "color",
+          "$description": "Categorical rung 4 (pink.400)."
+        },
+        "5": {
+          "$value": "{color.green.400}",
+          "$type": "color",
+          "$description": "Categorical rung 5 (green.400)."
+        },
+        "6": {
+          "$value": "{color.yellow.300}",
+          "$type": "color",
+          "$description": "Categorical rung 6 (yellow.300)."
+        }
+      },
+      "sequential": {
+        "1": {
+          "$value": "{color.blue.800}",
+          "$type": "color",
+          "$description": "Sequential rung 1 (blue.800)."
+        },
+        "2": {
+          "$value": "{color.blue.700}",
+          "$type": "color",
+          "$description": "Sequential rung 2 (blue.700)."
+        },
+        "3": {
+          "$value": "{color.blue.600}",
+          "$type": "color",
+          "$description": "Sequential rung 3 (blue.600)."
+        },
+        "4": {
+          "$value": "{color.blue.500}",
+          "$type": "color",
+          "$description": "Sequential rung 4 (blue.500)."
+        },
+        "5": {
+          "$value": "{color.blue.400}",
+          "$type": "color",
+          "$description": "Sequential rung 5 (blue.400)."
+        },
+        "6": {
+          "$value": "{color.blue.300}",
+          "$type": "color",
+          "$description": "Sequential rung 6 (blue.300)."
+        },
+        "7": {
+          "$value": "{color.blue.200}",
+          "$type": "color",
+          "$description": "Sequential rung 7 (blue.200)."
+        },
+        "8": {
+          "$value": "{color.blue.100}",
+          "$type": "color",
+          "$description": "Sequential rung 8 (blue.100)."
+        }
+      },
+      "diverging": {
+        "1": {
+          "$value": "{color.red.300}",
+          "$type": "color",
+          "$description": "Diverging rung 1 (red.300)."
+        },
+        "2": {
+          "$value": "{color.red.400}",
+          "$type": "color",
+          "$description": "Diverging rung 2 (red.400)."
+        },
+        "3": {
+          "$value": "{color.red.500}",
+          "$type": "color",
+          "$description": "Diverging rung 3 (red.500)."
+        },
+        "4": {
+          "$value": "{color.gray.800}",
+          "$type": "color",
+          "$description": "Diverging rung 4 (gray.800)."
+        },
+        "5": {
+          "$value": "{color.teal.500}",
+          "$type": "color",
+          "$description": "Diverging rung 5 (teal.500)."
+        },
+        "6": {
+          "$value": "{color.teal.400}",
+          "$type": "color",
+          "$description": "Diverging rung 6 (teal.400)."
+        },
+        "7": {
+          "$value": "{color.teal.300}",
+          "$type": "color",
+          "$description": "Diverging rung 7 (teal.300)."
+        }
+      }
+    }
+  },
+  "scrim": {
+    "$value": "{color.app.scrim}",
+    "$type": "color",
+    "$extensions": {
+      "stemcell": {
+        "alpha": 0.4
+      }
+    },
+    "$description": "Veil behind modal / dialog / drawer. Stacking order is --layer-scrim; this token carries the visual value only (elevation.md §6). Opacity is a seed; 0.4 leans to the revealing side so the user keeps context of what's behind the modal (Art.1, elevation.md §6)."
+  }
 }

@@ -4,6 +4,35 @@ Versioning is suspended until the first release: pins stay at `0.0.0-alpha.N` an
 breaking changes are not expressed as major bumps. This file carries what the version
 number no longer says. See `GOVERNANCE.md` §3 in `stemcell-component-prompts`.
 
+## 0.0.0-alpha.13
+
+### Added — the chart palette (`color.dataviz.*`)
+
+Three scales, three different promises (`foundations/dataviz.md` §3):
+
+- `categorical` — six colours that separate series. Six, not eight: eight rungs off this
+  system's hues could not be told apart (measured), and the field's own guidance says the
+  same. Chosen by search rather than by eye: for every subset of six hues and every rung
+  that clears 3:1 on the chart surface, the set with the largest minimum pairwise OKLab
+  distance won. Light reaches 0.181, dark 0.136.
+- `sequential` — eight rungs of one hue, each further from the surface than the last.
+- `diverging` — seven rungs, red to teal, with the faintest rung in the middle.
+
+Dark is not light's list re-used: the rungs are re-chosen against dark's surface.
+
+### Added — `dataviz` check
+
+`src/checks/dataviz.ts` enforces the three promises, and measures the categorical set again
+through simulated deuteranopia and protanopia (Viénot matrices).
+
+The floors are calibrated against palettes the field already trusts rather than invented:
+Okabe-Ito's eight measure 0.118 / 0.019 / 0.053 (normal / deuteranopia / protanopia) and
+Tableau 10's first six measure 0.139 / 0.003 / 0.032. So normal is floored at 0.10 — which
+Okabe-Ito clears — and the simulated views are floored only at 0.02, enough to catch a
+collision but not enough to fail a palette the field considers exemplary. The measured
+minimums are printed on every run instead. Colour is not carrying the distinction alone
+anyway: `dataviz.md` §3 requires a second channel (pattern, symbol, direct label).
+
 ## 0.0.0-alpha.12
 
 ### Fixed — the theme tooling was not in the published tarball

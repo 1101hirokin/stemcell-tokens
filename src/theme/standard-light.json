@@ -1,268 +1,544 @@
 {
-    "$extensions": {
-        "stemcell": {
-            "scheme": "light"
-        }
-    },
-    "color": {
-        "app": {
-            "system": {
-                "$value": "{color.blue.600}",
-                "$type": "color",
-                "$description": "General-purpose system accent color. Both link and the focus ring point here, so the binding constraint is the stricter of the two: link is text and needs WCAG 2.2 AA 4.5:1 against every elevation surface it can sit on (all white in light), while the ring needs 3:1 (SC 1.4.11 / focus-ring.md). The previous value, iOS system blue #007AFF, measured 4.02:1 against white and failed AA for the link. 600 is the light theme's interactive calibration (bg and border both sit at 600), and blue.600 clears 6.49:1. 500 (5.38:1) also passes if a lighter accent is preferred; the floor is what CI enforces, the exact rung is a seed."
-            },
-            "background": {
-                "$value": "#FFFFFF",
-                "$type": "color"
-            },
-            "foreground": {
-                "$value": "{color.gray.900}",
-                "$type": "color"
-            },
-            "surface":        { "$value": "{color.app.background}", "$type": "color", "$description": "Raised surface (card/panel). Light: white; depth comes from shadow." },
-            "surface-raised": { "$value": "{color.app.background}", "$type": "color", "$description": "Nested raised surface." },
-            "overlay":        { "$value": "{color.app.background}", "$type": "color", "$description": "Popover/modal surface." },
-            "fg-muted":       { "$value": "{color.gray.600}", "$type": "color", "$description": "Secondary text." },
-            "fg-subtle":      { "$value": "{color.gray.500}", "$type": "color", "$description": "Supplementary text." },
-            "fg-disabled":    { "$value": "{color.gray.400}", "$type": "color", "$description": "Disabled text." },
-            "link":           { "$value": "{color.app.system}", "$type": "color", "$description": "Hyperlink text." },
-            "border":         { "$value": "#8592A2", "$type": "color", "$description": "Neutral border, for the resting outline of inputs and cards. Its own authored rung, not a gray alias: the gray staircase jumps from 400 (2.47:1 on white) to 500 (5.37:1), and neither lands near the 3:1 that WCAG 2.2 SC 1.4.11 asks of a component boundary. #8592A2 is 3.17:1 against white (every light elevation surface is white), the lightest value that still clears the bar. Same principle as the semantic borders (their own rung, calibrated to the ground). Provisional (2026-07); the palette-wide author will revisit." },
-            "divider":        { "$value": "{color.gray.100}", "$type": "color", "$description": "Neutral divider." },
-            "shadow":         { "$value": "{color.gray.900}", "$type": "color", "$description": "Elevation shadow color (slightly-blue near-black)." },
-            "shadow-umbra":    { "$value": "{color.app.shadow}", "$type": "color", "$extensions": { "stemcell": { "alpha": 0.24 } }, "$description": "The near, hard shadow. Light draws depth with shadows over an untinted surface, so this is the heavier of the two. Elevation's geometry points at this colour; the colour is a theme's to set, the geometry is not." },
-            "shadow-penumbra": { "$value": "{color.app.shadow}", "$type": "color", "$extensions": { "stemcell": { "alpha": 0.14 } }, "$description": "The far, soft shadow. Lighter and wider than the umbra." },
-            "scrim":          { "$value": "{color.gray.900}", "$type": "color", "$description": "Modal scrim base color (opaque). The veil applies it at ~0.4 opacity via the `scrim` token." }
-        },
-        "code": {
-            "$description": "コードの構文の色(color.md §10。RFC 0018)。intent でも app でもない三つ目の家族で、閉じた6役だけを持つ。識別子・演算子・区切りは塗らず color.app.foreground のままにする。面は color.app.surface に固定し、明暗どちらでも 4.5:1 を満たす(コードは本文である。WCAG 2.2 SC 1.4.3)。 明るいテーマは 600 段(白に対し 6.4〜6.5:1)。",
-            "comment": {
-                "$value": "{color.gray.600}",
-                "$type": "color",
-                "$description": "注釈。地に沈ませない(色の役の中で最も控えめだが、本文と同じ 4.5:1 を満たす)。"
-            },
-            "keyword": {
-                "$value": "{color.purple.600}",
-                "$type": "color",
-                "$description": "予約語(if / return / class / import)。"
-            },
-            "string": {
-                "$value": "{color.green.600}",
-                "$type": "color",
-                "$description": "文字列とその中の逃避。"
-            },
-            "number": {
-                "$value": "{color.orange.600}",
-                "$type": "color",
-                "$description": "数値・真偽値・null のような字句の定数。"
-            },
-            "function": {
-                "$value": "{color.blue.600}",
-                "$type": "color",
-                "$description": "呼び出しと定義の名前。"
-            },
-            "type": {
-                "$value": "{color.teal.600}",
-                "$type": "color",
-                "$description": "型・クラス・組み込みの名前。VS Code の既定テーマが型に teal を当てるのに揃えた。"
-            }
-        },
-        "semantic": {
-            "focus-ring": {
-                "$value": "{color.app.system}",
-                "$type": "color",
-                "$description": "Global focus ring color. Defaults to app.system; override per theme."
-            },
-            "primary": {
-                "bg": { "$value": "{color.brand.600}", "$type": "color" },
-                "fg": { "$value": "#ffffff", "$type": "color" },
-                "border": { "$value": "{color.brand.600}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be." },
-                "focus-ring": {
-                    "$value": "{color.semantic.focus-ring}",
-                    "$type": "color"
-                },
-                "bg-hover": {
-                    "$value": "{color.brand.700}",
-                    "$type": "color"
-                },
-                "bg-pressed": {
-                    "$value": "{color.brand.800}",
-                    "$type": "color"
-                },
-                "soft-bg": { "$value": "{color.brand.50}", "$type": "color" },
-                "soft-fg": { "$value": "{color.brand.800}", "$type": "color" },
-                "soft-bg-hover": {
-                    "$value": "{color.brand.100}",
-                    "$type": "color"
-                },
-                "soft-bg-pressed": {
-                    "$value": "{color.brand.200}",
-                    "$type": "color"
-                }
-            },
-            "danger": {
-                "bg": { "$value": "{color.red.600}", "$type": "color" },
-                "fg": { "$value": "#ffffff", "$type": "color" },
-                "border": { "$value": "{color.red.600}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be." },
-                "focus-ring": {
-                    "$value": "{color.semantic.focus-ring}",
-                    "$type": "color"
-                },
-                "bg-hover": {
-                    "$value": "{color.red.700}",
-                    "$type": "color"
-                },
-                "bg-pressed": {
-                    "$value": "{color.red.800}",
-                    "$type": "color"
-                },
-                "soft-bg": { "$value": "{color.red.50}", "$type": "color" },
-                "soft-fg": {
-                    "$value": "{color.red.800}",
-                    "$type": "color"
-                },
-                "soft-bg-hover": {
-                    "$value": "{color.red.100}",
-                    "$type": "color"
-                },
-                "soft-bg-pressed": {
-                    "$value": "{color.red.200}",
-                    "$type": "color"
-                }
-            },
-            "warning": {
-                "bg": { "$value": "{color.yellow.600}", "$type": "color" },
-                "fg": { "$value": "#ffffff", "$type": "color" },
-                "border": { "$value": "{color.yellow.600}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be." },
-                "focus-ring": {
-                    "$value": "{color.semantic.focus-ring}",
-                    "$type": "color"
-                },
-                "bg-hover": {
-                    "$value": "{color.yellow.700}",
-                    "$type": "color"
-                },
-                "bg-pressed": {
-                    "$value": "{color.yellow.800}",
-                    "$type": "color"
-                },
-                "soft-bg": {
-                    "$value": "{color.yellow.50}",
-                    "$type": "color"
-                },
-                "soft-fg": {
-                    "$value": "{color.yellow.800}",
-                    "$type": "color"
-                },
-                "soft-bg-hover": {
-                    "$value": "{color.yellow.100}",
-                    "$type": "color"
-                },
-                "soft-bg-pressed": {
-                    "$value": "{color.yellow.200}",
-                    "$type": "color"
-                }
-            },
-            "success": {
-                "bg": { "$value": "{color.green.600}", "$type": "color" },
-                "fg": { "$value": "#ffffff", "$type": "color" },
-                "border": { "$value": "{color.green.600}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be." },
-                "focus-ring": {
-                    "$value": "{color.semantic.focus-ring}",
-                    "$type": "color"
-                },
-                "bg-hover": {
-                    "$value": "{color.green.700}",
-                    "$type": "color"
-                },
-                "bg-pressed": {
-                    "$value": "{color.green.800}",
-                    "$type": "color"
-                },
-                "soft-bg": {
-                    "$value": "{color.green.50}",
-                    "$type": "color"
-                },
-                "soft-fg": {
-                    "$value": "{color.green.800}",
-                    "$type": "color"
-                },
-                "soft-bg-hover": {
-                    "$value": "{color.green.100}",
-                    "$type": "color"
-                },
-                "soft-bg-pressed": {
-                    "$value": "{color.green.200}",
-                    "$type": "color"
-                }
-            },
-            "info": {
-                "bg":              { "$value": "{color.blue.600}", "$type": "color" },
-                "fg":              { "$value": "#ffffff",          "$type": "color" },
-                "border": { "$value": "{color.blue.600}", "$type": "color", "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be." },
-                "focus-ring":      { "$value": "{color.semantic.focus-ring}", "$type": "color" },
-                "bg-hover":        { "$value": "{color.blue.700}", "$type": "color" },
-                "bg-pressed":      { "$value": "{color.blue.800}", "$type": "color" },
-                "soft-bg":         { "$value": "{color.blue.50}",  "$type": "color" },
-                "soft-fg":         { "$value": "{color.blue.800}", "$type": "color" },
-                "soft-bg-hover":   { "$value": "{color.blue.100}", "$type": "color" },
-                "soft-bg-pressed": { "$value": "{color.blue.200}", "$type": "color" }
-            },
-            "plain": {
-                "bg": { "$value": "{color.gray.600}", "$type": "color" },
-                "fg": { "$value": "#ffffff", "$type": "color" },
-                "border": { "$value": "{color.app.border}", "$type": "color", "$description": "The neutral outline. Unlike the other intents this one points at `app.border` instead of its own rung (2026-07-26). The neutral outline has one value: an outlined plain Button and a text field sit side by side constantly (a toolbar, a pager), and two different neutral outlines read as a defect. Dark already had them equal (both gray.300); only light had drifted, to 600 at 6.45:1 where the calibration principle these descriptions state — the rung that clears 3:1 against the ground — asks for the lightest passing rung. `app.border` is that rung (3.17:1 on white). The intent borders (primary / danger / warning / success / info) keep their own rungs: an intent outline should read as intent.", "$note": "prior/superseded: {color.gray.600}." },
-                "focus-ring": {
-                    "$value": "{color.semantic.focus-ring}",
-                    "$type": "color"
-                },
-                "bg-hover": {
-                    "$value": "{color.gray.700}",
-                    "$type": "color"
-                },
-                "bg-pressed": {
-                    "$value": "{color.gray.800}",
-                    "$type": "color"
-                },
-                "soft-bg": {
-                    "$value": "{color.gray.50}",
-                    "$type": "color"
-                },
-                "soft-fg": {
-                    "$value": "{color.gray.800}",
-                    "$type": "color"
-                },
-                "soft-bg-hover": {
-                    "$value": "{color.gray.100}",
-                    "$type": "color"
-                },
-                "soft-bg-pressed": {
-                    "$value": "{color.gray.200}",
-                    "$type": "color"
-                }
-            },
-            "disabled": {
-                "bg": { "$value": "{color.gray.200}", "$type": "color" },
-                "fg": { "$value": "{color.gray.400}", "$type": "color" },
-                "border": {
-                    "$value": "{color.semantic.disabled.bg}",
-                    "$type": "color"
-                },
-                "soft-bg": {
-                    "$value": "{color.gray.100}",
-                    "$type": "color"
-                },
-                "soft-fg": {
-                    "$value": "{color.gray.300}",
-                    "$type": "color"
-                }
-            }
-        }
-    },
-
-    "scrim": {
-        "$value": "{color.app.scrim}",
-        "$type": "color",
-        "$extensions": { "stemcell": { "alpha": 0.4 } },
-        "$description": "Veil behind modal / dialog / drawer. Stacking order is --layer-scrim; this token carries the visual value only (elevation.md §6). Opacity is a seed; 0.4 leans to the revealing side so the user keeps context of what's behind the modal (Art.1, elevation.md §6)."
+  "$extensions": {
+    "stemcell": {
+      "scheme": "light"
     }
+  },
+  "color": {
+    "app": {
+      "system": {
+        "$value": "{color.blue.600}",
+        "$type": "color",
+        "$description": "General-purpose system accent color. Both link and the focus ring point here, so the binding constraint is the stricter of the two: link is text and needs WCAG 2.2 AA 4.5:1 against every elevation surface it can sit on (all white in light), while the ring needs 3:1 (SC 1.4.11 / focus-ring.md). The previous value, iOS system blue #007AFF, measured 4.02:1 against white and failed AA for the link. 600 is the light theme's interactive calibration (bg and border both sit at 600), and blue.600 clears 6.49:1. 500 (5.38:1) also passes if a lighter accent is preferred; the floor is what CI enforces, the exact rung is a seed."
+      },
+      "background": {
+        "$value": "#FFFFFF",
+        "$type": "color"
+      },
+      "foreground": {
+        "$value": "{color.gray.900}",
+        "$type": "color"
+      },
+      "surface": {
+        "$value": "{color.app.background}",
+        "$type": "color",
+        "$description": "Raised surface (card/panel). Light: white; depth comes from shadow."
+      },
+      "surface-raised": {
+        "$value": "{color.app.background}",
+        "$type": "color",
+        "$description": "Nested raised surface."
+      },
+      "overlay": {
+        "$value": "{color.app.background}",
+        "$type": "color",
+        "$description": "Popover/modal surface."
+      },
+      "fg-muted": {
+        "$value": "{color.gray.600}",
+        "$type": "color",
+        "$description": "Secondary text."
+      },
+      "fg-subtle": {
+        "$value": "{color.gray.500}",
+        "$type": "color",
+        "$description": "Supplementary text."
+      },
+      "fg-disabled": {
+        "$value": "{color.gray.400}",
+        "$type": "color",
+        "$description": "Disabled text."
+      },
+      "link": {
+        "$value": "{color.app.system}",
+        "$type": "color",
+        "$description": "Hyperlink text."
+      },
+      "border": {
+        "$value": "#8592A2",
+        "$type": "color",
+        "$description": "Neutral border, for the resting outline of inputs and cards. Its own authored rung, not a gray alias: the gray staircase jumps from 400 (2.47:1 on white) to 500 (5.37:1), and neither lands near the 3:1 that WCAG 2.2 SC 1.4.11 asks of a component boundary. #8592A2 is 3.17:1 against white (every light elevation surface is white), the lightest value that still clears the bar. Same principle as the semantic borders (their own rung, calibrated to the ground). Provisional (2026-07); the palette-wide author will revisit."
+      },
+      "divider": {
+        "$value": "{color.gray.100}",
+        "$type": "color",
+        "$description": "Neutral divider."
+      },
+      "shadow": {
+        "$value": "{color.gray.900}",
+        "$type": "color",
+        "$description": "Elevation shadow color (slightly-blue near-black)."
+      },
+      "shadow-umbra": {
+        "$value": "{color.app.shadow}",
+        "$type": "color",
+        "$extensions": {
+          "stemcell": {
+            "alpha": 0.24
+          }
+        },
+        "$description": "The near, hard shadow. Light draws depth with shadows over an untinted surface, so this is the heavier of the two. Elevation's geometry points at this colour; the colour is a theme's to set, the geometry is not."
+      },
+      "shadow-penumbra": {
+        "$value": "{color.app.shadow}",
+        "$type": "color",
+        "$extensions": {
+          "stemcell": {
+            "alpha": 0.14
+          }
+        },
+        "$description": "The far, soft shadow. Lighter and wider than the umbra."
+      },
+      "scrim": {
+        "$value": "{color.gray.900}",
+        "$type": "color",
+        "$description": "Modal scrim base color (opaque). The veil applies it at ~0.4 opacity via the `scrim` token."
+      }
+    },
+    "code": {
+      "$description": "コードの構文の色(color.md §10。RFC 0018)。intent でも app でもない三つ目の家族で、閉じた6役だけを持つ。識別子・演算子・区切りは塗らず color.app.foreground のままにする。面は color.app.surface に固定し、明暗どちらでも 4.5:1 を満たす(コードは本文である。WCAG 2.2 SC 1.4.3)。 明るいテーマは 600 段(白に対し 6.4〜6.5:1)。",
+      "comment": {
+        "$value": "{color.gray.600}",
+        "$type": "color",
+        "$description": "注釈。地に沈ませない(色の役の中で最も控えめだが、本文と同じ 4.5:1 を満たす)。"
+      },
+      "keyword": {
+        "$value": "{color.purple.600}",
+        "$type": "color",
+        "$description": "予約語(if / return / class / import)。"
+      },
+      "string": {
+        "$value": "{color.green.600}",
+        "$type": "color",
+        "$description": "文字列とその中の逃避。"
+      },
+      "number": {
+        "$value": "{color.orange.600}",
+        "$type": "color",
+        "$description": "数値・真偽値・null のような字句の定数。"
+      },
+      "function": {
+        "$value": "{color.blue.600}",
+        "$type": "color",
+        "$description": "呼び出しと定義の名前。"
+      },
+      "type": {
+        "$value": "{color.teal.600}",
+        "$type": "color",
+        "$description": "型・クラス・組み込みの名前。VS Code の既定テーマが型に teal を当てるのに揃えた。"
+      }
+    },
+    "semantic": {
+      "focus-ring": {
+        "$value": "{color.app.system}",
+        "$type": "color",
+        "$description": "Global focus ring color. Defaults to app.system; override per theme."
+      },
+      "primary": {
+        "bg": {
+          "$value": "{color.brand.600}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.brand.600}",
+          "$type": "color",
+          "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be."
+        },
+        "focus-ring": {
+          "$value": "{color.semantic.focus-ring}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.brand.700}",
+          "$type": "color"
+        },
+        "bg-pressed": {
+          "$value": "{color.brand.800}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.brand.50}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.brand.800}",
+          "$type": "color"
+        },
+        "soft-bg-hover": {
+          "$value": "{color.brand.100}",
+          "$type": "color"
+        },
+        "soft-bg-pressed": {
+          "$value": "{color.brand.200}",
+          "$type": "color"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{color.red.600}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.red.600}",
+          "$type": "color",
+          "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be."
+        },
+        "focus-ring": {
+          "$value": "{color.semantic.focus-ring}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.red.700}",
+          "$type": "color"
+        },
+        "bg-pressed": {
+          "$value": "{color.red.800}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.red.50}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.red.800}",
+          "$type": "color"
+        },
+        "soft-bg-hover": {
+          "$value": "{color.red.100}",
+          "$type": "color"
+        },
+        "soft-bg-pressed": {
+          "$value": "{color.red.200}",
+          "$type": "color"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$value": "{color.yellow.600}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.yellow.600}",
+          "$type": "color",
+          "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be."
+        },
+        "focus-ring": {
+          "$value": "{color.semantic.focus-ring}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.yellow.700}",
+          "$type": "color"
+        },
+        "bg-pressed": {
+          "$value": "{color.yellow.800}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.yellow.50}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.yellow.800}",
+          "$type": "color"
+        },
+        "soft-bg-hover": {
+          "$value": "{color.yellow.100}",
+          "$type": "color"
+        },
+        "soft-bg-pressed": {
+          "$value": "{color.yellow.200}",
+          "$type": "color"
+        }
+      },
+      "success": {
+        "bg": {
+          "$value": "{color.green.600}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.green.600}",
+          "$type": "color",
+          "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be."
+        },
+        "focus-ring": {
+          "$value": "{color.semantic.focus-ring}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.green.700}",
+          "$type": "color"
+        },
+        "bg-pressed": {
+          "$value": "{color.green.800}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.green.50}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.green.800}",
+          "$type": "color"
+        },
+        "soft-bg-hover": {
+          "$value": "{color.green.100}",
+          "$type": "color"
+        },
+        "soft-bg-pressed": {
+          "$value": "{color.green.200}",
+          "$type": "color"
+        }
+      },
+      "info": {
+        "bg": {
+          "$value": "{color.blue.600}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.blue.600}",
+          "$type": "color",
+          "$description": "The component's outline, for `outlined` (emphasis.md). Its own rung, not an alias of `bg`: the two answer different questions. `bg` is calibrated to carry white text; a border is calibrated to be visible against the ground plane (WCAG 1.4.11, 3:1). Light's elevation surfaces are all #FFFFFF, so 600 clears it everywhere at 6.45:1. The calibration is kept separate anyway, because dark's cannot be."
+        },
+        "focus-ring": {
+          "$value": "{color.semantic.focus-ring}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.blue.700}",
+          "$type": "color"
+        },
+        "bg-pressed": {
+          "$value": "{color.blue.800}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.blue.50}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.blue.800}",
+          "$type": "color"
+        },
+        "soft-bg-hover": {
+          "$value": "{color.blue.100}",
+          "$type": "color"
+        },
+        "soft-bg-pressed": {
+          "$value": "{color.blue.200}",
+          "$type": "color"
+        }
+      },
+      "plain": {
+        "bg": {
+          "$value": "{color.gray.600}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "#ffffff",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.app.border}",
+          "$type": "color",
+          "$description": "The neutral outline. Unlike the other intents this one points at `app.border` instead of its own rung (2026-07-26). The neutral outline has one value: an outlined plain Button and a text field sit side by side constantly (a toolbar, a pager), and two different neutral outlines read as a defect. Dark already had them equal (both gray.300); only light had drifted, to 600 at 6.45:1 where the calibration principle these descriptions state — the rung that clears 3:1 against the ground — asks for the lightest passing rung. `app.border` is that rung (3.17:1 on white). The intent borders (primary / danger / warning / success / info) keep their own rungs: an intent outline should read as intent.",
+          "$note": "prior/superseded: {color.gray.600}."
+        },
+        "focus-ring": {
+          "$value": "{color.semantic.focus-ring}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.gray.700}",
+          "$type": "color"
+        },
+        "bg-pressed": {
+          "$value": "{color.gray.800}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.gray.50}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.gray.800}",
+          "$type": "color"
+        },
+        "soft-bg-hover": {
+          "$value": "{color.gray.100}",
+          "$type": "color"
+        },
+        "soft-bg-pressed": {
+          "$value": "{color.gray.200}",
+          "$type": "color"
+        }
+      },
+      "disabled": {
+        "bg": {
+          "$value": "{color.gray.200}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{color.gray.400}",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.semantic.disabled.bg}",
+          "$type": "color"
+        },
+        "soft-bg": {
+          "$value": "{color.gray.100}",
+          "$type": "color"
+        },
+        "soft-fg": {
+          "$value": "{color.gray.300}",
+          "$type": "color"
+        }
+      }
+    },
+    "dataviz": {
+      "$description": "Chart palette (foundations/dataviz.md §3). Three scales with three different promises: categorical separates series, sequential shows order, diverging shows distance from a middle. checks/dataviz.ts enforces them, including under simulated deuteranopia and protanopia.",
+      "categorical": {
+        "1": {
+          "$value": "{color.blue.500}",
+          "$type": "color",
+          "$description": "Categorical rung 1 (blue.500)."
+        },
+        "2": {
+          "$value": "{color.pink.500}",
+          "$type": "color",
+          "$description": "Categorical rung 2 (pink.500)."
+        },
+        "3": {
+          "$value": "{color.green.800}",
+          "$type": "color",
+          "$description": "Categorical rung 3 (green.800)."
+        },
+        "4": {
+          "$value": "{color.purple.500}",
+          "$type": "color",
+          "$description": "Categorical rung 4 (purple.500)."
+        },
+        "5": {
+          "$value": "{color.red.800}",
+          "$type": "color",
+          "$description": "Categorical rung 5 (red.800)."
+        },
+        "6": {
+          "$value": "{color.yellow.500}",
+          "$type": "color",
+          "$description": "Categorical rung 6 (yellow.500)."
+        }
+      },
+      "sequential": {
+        "1": {
+          "$value": "{color.blue.100}",
+          "$type": "color",
+          "$description": "Sequential rung 1 (blue.100)."
+        },
+        "2": {
+          "$value": "{color.blue.200}",
+          "$type": "color",
+          "$description": "Sequential rung 2 (blue.200)."
+        },
+        "3": {
+          "$value": "{color.blue.300}",
+          "$type": "color",
+          "$description": "Sequential rung 3 (blue.300)."
+        },
+        "4": {
+          "$value": "{color.blue.500}",
+          "$type": "color",
+          "$description": "Sequential rung 4 (blue.500)."
+        },
+        "5": {
+          "$value": "{color.blue.600}",
+          "$type": "color",
+          "$description": "Sequential rung 5 (blue.600)."
+        },
+        "6": {
+          "$value": "{color.blue.700}",
+          "$type": "color",
+          "$description": "Sequential rung 6 (blue.700)."
+        },
+        "7": {
+          "$value": "{color.blue.800}",
+          "$type": "color",
+          "$description": "Sequential rung 7 (blue.800)."
+        },
+        "8": {
+          "$value": "{color.blue.900}",
+          "$type": "color",
+          "$description": "Sequential rung 8 (blue.900)."
+        }
+      },
+      "diverging": {
+        "1": {
+          "$value": "{color.red.700}",
+          "$type": "color",
+          "$description": "Diverging rung 1 (red.700)."
+        },
+        "2": {
+          "$value": "{color.red.500}",
+          "$type": "color",
+          "$description": "Diverging rung 2 (red.500)."
+        },
+        "3": {
+          "$value": "{color.red.300}",
+          "$type": "color",
+          "$description": "Diverging rung 3 (red.300)."
+        },
+        "4": {
+          "$value": "{color.gray.100}",
+          "$type": "color",
+          "$description": "Diverging rung 4 (gray.100)."
+        },
+        "5": {
+          "$value": "{color.teal.300}",
+          "$type": "color",
+          "$description": "Diverging rung 5 (teal.300)."
+        },
+        "6": {
+          "$value": "{color.teal.500}",
+          "$type": "color",
+          "$description": "Diverging rung 6 (teal.500)."
+        },
+        "7": {
+          "$value": "{color.teal.700}",
+          "$type": "color",
+          "$description": "Diverging rung 7 (teal.700)."
+        }
+      }
+    }
+  },
+  "scrim": {
+    "$value": "{color.app.scrim}",
+    "$type": "color",
+    "$extensions": {
+      "stemcell": {
+        "alpha": 0.4
+      }
+    },
+    "$description": "Veil behind modal / dialog / drawer. Stacking order is --layer-scrim; this token carries the visual value only (elevation.md §6). Opacity is a seed; 0.4 leans to the revealing side so the user keeps context of what's behind the modal (Art.1, elevation.md §6)."
+  }
 }

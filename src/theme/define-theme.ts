@@ -9,7 +9,7 @@
  * 測ることはしない（裁定 2026-07-28）。規約を満たすかは消費者の責任で、測りたい消費者は
  * `checkTheme` を自分の CI で回す。ここは「安全な CSS を作る」ことだけを担う。
  */
-import { RUNGS, type Rung, type Scheme, type ThemeColors } from './check-theme.ts';
+import { CATEGORICAL, RUNGS, type CategoricalRung, type Rung, type Scheme, type ThemeColors } from './check-theme.ts';
 
 export type ThemeDefinition = {
   /** テーマの名前。data-theme の値になる。 */
@@ -51,8 +51,27 @@ export function defineTheme(theme: ThemeDefinition): DefineResult {
     }
     decls.push(`  --color-brand-${name}: ${value.trim()};`);
   }
+  // 図の分類の色。ブランドと同じ扱いで、部分指定を許す（渡さなかった段は既定に落ちる）
+  for (const [name, value] of Object.entries(theme.colors.dataviz?.categorical ?? {})) {
+    if (!CATEGORICAL.includes(name as CategoricalRung)) {
+      dropped.push(`dataviz.categorical.${name}: 知らない段（使えるのは ${CATEGORICAL.join(' / ')}）`);
+      continue;
+    }
+    if (typeof value !== 'string' || !COLOR.test(value.trim())) {
+      dropped.push(`dataviz.categorical.${name}: ${JSON.stringify(value)} は色として読めない`);
+      continue;
+    }
+    decls.push(`  --color-dataviz-categorical-${name}: ${value.trim()};`);
+  }
+  for (const key of Object.keys(theme.colors.dataviz ?? {})) {
+    if (key !== 'categorical') {
+      dropped.push(`dataviz.${key}: いま開いているのは categorical だけである（連続と発散は量そのものを表すので、まだ開けていない）`);
+    }
+  }
   for (const key of Object.keys(theme.colors)) {
-    if (key !== 'brand') dropped.push(`${key}: いま開いているのは brand だけである（StemcellProvider.md §7）`);
+    if (key !== 'brand' && key !== 'dataviz') {
+      dropped.push(`${key}: いま開いているのは brand と dataviz.categorical である（StemcellProvider.md §7）`);
+    }
   }
 
   const css = decls.length

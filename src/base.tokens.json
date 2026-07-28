@@ -337,6 +337,81 @@
         "$type": "color"
       }
     },
+    "viz": {
+      "$description": "Chart-only hues (foundations/dataviz.md §3). Separate from the UI ramps on purpose: those are built for text and surfaces, so their mid rungs are pastels that miss 3:1 on white and their dark rungs collapse into browns and muddy greens. A categorical palette needs six hues that hold their distance from each other AND clear 3:1 on the chart surface, which is a different job. Values come from IBM Carbon's categorical palette, which measures well under our own checks (OKLab distance 0.141 normal / 0.059 deuteranopia / 0.042 protanopia in light). Adobe Spectrum's categorical set was measured too and fails 3:1 on white (1.67:1): it is drawn for large fills, not for bars on a white page. Rung 500 is what light themes use, 300 what dark themes use, mirroring the UI ramps.",
+      "azure": {
+        "500": {
+          "$value": "#1192E8",
+          "$type": "color",
+          "$description": "Carbon blue-60 / blue-40. Light themes draw with this rung."
+        },
+        "300": {
+          "$value": "#33B1FF",
+          "$type": "color",
+          "$description": "Carbon blue-60 / blue-40. Dark themes draw with this rung."
+        }
+      },
+      "magenta": {
+        "500": {
+          "$value": "#9F1853",
+          "$type": "color",
+          "$description": "Carbon magenta-70 / magenta-40. Light themes draw with this rung."
+        },
+        "300": {
+          "$value": "#FF7EB6",
+          "$type": "color",
+          "$description": "Carbon magenta-70 / magenta-40. Dark themes draw with this rung."
+        }
+      },
+      "teal": {
+        "500": {
+          "$value": "#005D5D",
+          "$type": "color",
+          "$description": "Carbon teal-70 / teal-40. Light themes draw with this rung."
+        },
+        "300": {
+          "$value": "#08BDBA",
+          "$type": "color",
+          "$description": "Carbon teal-70 / teal-40. Dark themes draw with this rung."
+        }
+      },
+      "gold": {
+        "500": {
+          "$value": "#B28600",
+          "$type": "color",
+          "$description": "Carbon yellow-50 / yellow-40 相当。 Light themes draw with this rung."
+        },
+        "300": {
+          "$value": "#D2A106",
+          "$type": "color",
+          "$description": "Carbon yellow-50 / yellow-40 相当。 Dark themes draw with this rung."
+        }
+      },
+      "violet": {
+        "500": {
+          "$value": "#6929C4",
+          "$type": "color",
+          "$description": "Carbon purple-70 / purple-30. Light themes draw with this rung."
+        },
+        "300": {
+          "$value": "#D4BBFF",
+          "$type": "color",
+          "$description": "Carbon purple-70 / purple-30. Dark themes draw with this rung."
+        }
+      },
+      "green": {
+        "500": {
+          "$value": "#198038",
+          "$type": "color",
+          "$description": "Carbon green-60 / green-40. Light themes draw with this rung."
+        },
+        "300": {
+          "$value": "#42BE65",
+          "$type": "color",
+          "$description": "Carbon green-60 / green-40. Dark themes draw with this rung."
+        }
+      }
+    },
     "gray": {
       "50": {
         "$value": "#F2F4F6",
@@ -1201,9 +1276,9 @@
     },
     "draw": {
       "duration": {
-        "$value": "{motion.duration.slow-02}",
+        "$value": "{motion.duration.slow-01}",
         "$type": "duration",
-        "$description": "Chart draw-in. Longer than an entrance: a bar grows the height of the plot, not the few pixels an element travels when it appears. Industry defaults for the initial draw sit at 700-1000ms (Chart.js, ECharts, Highcharts 1000ms; Recharts 1500ms), against 150-240ms for UI transitions. Well under the 5s that WCAG 2.2 SC 2.2.2 would make pausable, and it stops entirely under reduced-motion via motion.scale."
+        "$description": "Chart draw-in. Longer than an entrance: a bar grows the height of the plot, not the few pixels an element travels when it appears. Industry defaults for the initial draw sit at 700-1000ms (Chart.js, ECharts, Highcharts 1000ms; Recharts 1500ms); we sit below them on purpose (Art.3 restraint, and charts appear several to a screen). Was slow-02 (700ms) and read slow in the real thing (owner, 2026-07-29). Well under the 5s that WCAG 2.2 SC 2.2.2 would make pausable, and it stops entirely under reduced-motion via motion.scale."
       },
       "easing": {
         "$value": "{motion.easing.standard}",

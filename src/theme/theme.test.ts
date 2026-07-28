@@ -62,3 +62,46 @@ test('テーマの名前は属性セレクタを閉じられない形だけ通�
   expect(css).toBe('');
   expect(dropped[0]).toContain('key');
 });
+
+test('図の分類の色を差し替えられる（テーマと同じ考え方）', () => {
+  const { css, dropped } = defineTheme({
+    key: 'acme',
+    scheme: 'light',
+    colors: { dataviz: { categorical: { '1': '#1B7F79', '2': '#C1440E' } } },
+  });
+  expect(css).toContain('--color-dataviz-categorical-1: #1B7F79;');
+  expect(css).toContain('--color-dataviz-categorical-2: #C1440E;');
+  expect(dropped).toEqual([]);
+});
+
+test('図の色も知らない段と読めない値は落とす', () => {
+  const { css, dropped } = defineTheme({
+    key: 'acme',
+    scheme: 'light',
+    colors: { dataviz: { categorical: { '9': '#000000', '1': 'red; } * { display: none' } as never } },
+  });
+  expect(css).toBe('');
+  expect(dropped).toHaveLength(2);
+});
+
+test('連続と発散はまだ開けていない', () => {
+  const { dropped } = defineTheme({
+    key: 'acme',
+    scheme: 'light',
+    colors: { dataviz: { sequential: { '1': '#000000' } } as never },
+  });
+  expect(dropped.some((d) => d.startsWith('dataviz.sequential'))).toBe(true);
+});
+
+test('差し替えた分類の色を測る（既定との混ざり目も見る）', () => {
+  // 2 を 1 と同じ色にすると、見分けが付かない
+  const report = checkTheme({ scheme: 'light', colors: { dataviz: { categorical: { '2': '#1192E8' } } } });
+  expect(report.violations.some((v) => v.layer === 'dataviz' && v.where.includes('↔'))).toBe(true);
+});
+
+test('既定の分類の色は自分の床を満たす', () => {
+  for (const scheme of ['light', 'dark'] as const) {
+    const report = checkTheme({ scheme, colors: {} });
+    expect(report.violations.filter((v) => v.layer === 'dataviz')).toEqual([]);
+  }
+});

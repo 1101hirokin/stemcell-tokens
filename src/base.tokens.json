@@ -1199,6 +1199,18 @@
         "$type": "cubicBezier"
       }
     },
+    "draw": {
+      "duration": {
+        "$value": "{motion.duration.slow-02}",
+        "$type": "duration",
+        "$description": "Chart draw-in. Longer than an entrance: a bar grows the height of the plot, not the few pixels an element travels when it appears. Industry defaults for the initial draw sit at 700-1000ms (Chart.js, ECharts, Highcharts 1000ms; Recharts 1500ms), against 150-240ms for UI transitions. Well under the 5s that WCAG 2.2 SC 2.2.2 would make pausable, and it stops entirely under reduced-motion via motion.scale."
+      },
+      "easing": {
+        "$value": "{motion.easing.standard}",
+        "$type": "cubicBezier",
+        "$description": "Decelerate. The bar arrives, it does not leave."
+      }
+    },
     "loop": {
       "duration": {
         "$value": "{motion.duration.slow-02}",

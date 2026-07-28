@@ -20,7 +20,9 @@ test('分類の色の隔たりを測って印字する(色覚の型ごと)', () 
 });
 
 test('近すぎる二色は捕まえる', () => {
-  const broken = structuredClone(light) as Record<string, never>;
+  // 型を跨ぐのは検査のための細工である。Record<string, never> へ直に被せると噛み合わないので
+  // unknown を経由する(tsc が指摘した)。
+  const broken = structuredClone(light) as unknown as Record<string, never>;
   const dv = (broken as never as { color: { dataviz: { categorical: Record<string, { $value: string }> } } }).color.dataviz
     .categorical;
   dv['2']!.$value = dv['1']!.$value; // 同じ色を二つ置く

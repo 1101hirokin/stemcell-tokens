@@ -1,6 +1,6 @@
 {
   "name": "@stemcell/tokens",
-  "version": "0.0.0-alpha.11",
+  "version": "0.0.0-alpha.12",
   "type": "module",
   "exports": {
     ".": {
@@ -40,6 +40,7 @@
   },
   "files": [
     "dist/web/",
+    "dist/theme/",
     "src/**/*.json"
   ],
   "scripts": {

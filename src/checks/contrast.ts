@@ -3,7 +3,7 @@
  *
  * foundations/color.md §3 states two promises about how the primitive scales are
  * built, and then says the promises are kept by a checker rather than by the
- * generator: "保証は『生成器』ではなく CI の制約チェッカで行う". This is that
+ * generator: "保証は『生成の道具』ではなく CI の制約チェッカで行う". This is that
  * checker. Without it the promises are prose, and prose does not fail a build —
  * brand drifted out of both of them and nothing noticed until a button's hover
  * state turned out to be unreadable in dark.

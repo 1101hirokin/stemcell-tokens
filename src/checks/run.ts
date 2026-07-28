@@ -16,6 +16,7 @@ import { checkBorders, type BorderViolation } from './border.ts';
 import { checkFocusRing, type FocusRingViolation } from './focus-ring.ts';
 import { checkCode, type CodeViolation } from './code.ts';
 import { checkText, type TextViolation, type TextNote } from './text.ts';
+import { checkIntents, type IntentViolation } from './intent.ts';
 
 const LADDER = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'];
 
@@ -81,6 +82,7 @@ const rings: FocusRingViolation[] = [];
 const codes: CodeViolation[] = [];
 const texts: TextViolation[] = [];
 const textNotes: TextNote[] = [];
+const intents: IntentViolation[] = [];
 for (const theme of ['standard-light', 'standard-dark']) {
   const tree = (await Bun.file(`src/theme/${theme}.json`).json()) as Dtcg;
   borders.push(...checkBorders(theme, tree as never, base as never, elevation as never));
@@ -89,15 +91,26 @@ for (const theme of ['standard-light', 'standard-dark']) {
   const text = checkText(theme, tree as never, base as never);
   texts.push(...text.violations);
   textNotes.push(...text.notes);
+  intents.push(...checkIntents(theme, tree as never, base as never));
 }
 
-if (violations.length === 0 && borders.length === 0 && rings.length === 0 && codes.length === 0 && texts.length === 0) {
+if (
+  violations.length === 0 &&
+  borders.length === 0 &&
+  rings.length === 0 &&
+  codes.length === 0 &&
+  texts.length === 0 &&
+  intents.length === 0
+) {
   console.log(`palette: ${checked} scales, no violations`);
   console.log('border: every intent clears 3:1 on every elevation surface (WCAG 2.2 SC 1.4.11)');
   console.log('focus-ring: every ring clears 3:1, and the link clears 4.5:1, on every elevation surface');
   console.log('code: every syntax role clears 4.5:1 on the code surface (WCAG 2.2 SC 1.4.3)');
   console.log(
     'text: foreground and link clear 4.5:1 on every plane; fg-muted and fg-subtle clear it on the two that carry them',
+  );
+  console.log(
+    'intent: every intent keeps its label at 4.5:1 on the fill and on the hover / pressed rungs, filled and soft',
   );
   for (const n of textNotes) {
     console.log(`  note: ${n.theme} / ${n.role} is ${n.ratio.toFixed(2)}:1 on the ${n.plane} plane (not enforced; color.md §11)`);
@@ -111,6 +124,15 @@ if (violations.length) {
   console.error(
     '\nThese are the promises color.md §3 makes about the primitive scales.' +
       '\nSee foundations/color.md in stemcell-component-prompts.',
+  );
+}
+
+if (intents.length) {
+  console.error(`\nintent: ${intents.length} violations\n`);
+  for (const i of intents) console.error(`  ${i.theme} / ${i.intent}.${i.state}\n    ${i.detail}`);
+  console.error(
+    '\nA state that only the pointer reaches is still text (WCAG 2.2 SC 1.4.3).' +
+      '\nDark moved hover / pressed to the darker rungs for this reason (2026-07-28).',
   );
 }
 

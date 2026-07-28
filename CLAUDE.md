@@ -153,7 +153,10 @@ explicit `data-theme` attribute is set.
 Light theme: bg tokens use high shades (600–800), soft-bg uses low shades (50).
 Dark theme: bg tokens use mid shades (300–400), soft-bg uses high shades (800–900).
 This keeps fg=#ffffff throughout while satisfying WCAG AA (500-shades yield 5.3:1+ with white).
-Scale: Light bg=600/hover=700/pressed=800 · Dark bg=500/hover=400/pressed=300.
+Scale: Light bg=600/hover=700/pressed=800 · Dark bg=500/hover=600/pressed=700.
+Dark's hover/pressed move *darker*, not lighter (changed 2026-07-28). "Lighter = raised" holds for
+surfaces, not for a fill whose label colour is pinned to white: 400 and 300 dropped the label to
+2.45:1 and 1.89:1. `src/checks/intent.ts` keeps them where they are.
 
 ### `vars` Export
 Each theme TS module exports a `vars` constant — a flat `Record<string, string>`

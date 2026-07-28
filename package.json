@@ -1,6 +1,6 @@
 {
   "name": "@stemcell/tokens",
-  "version": "0.0.0-alpha.10",
+  "version": "0.0.0-alpha.11",
   "type": "module",
   "exports": {
     ".": {
@@ -32,7 +32,11 @@
     "./dtcg/elevation": "./src/elevation.tokens.json",
     "./dtcg/standard-light": "./src/theme/standard-light.json",
     "./dtcg/standard-dark": "./src/theme/standard-dark.json",
-    "./dtcg/compact": "./src/density/compact.json"
+    "./dtcg/compact": "./src/density/compact.json",
+    "./theme": {
+      "import": "./dist/theme/index.js",
+      "types": "./dist/theme/index.d.ts"
+    }
   },
   "files": [
     "dist/web/",
@@ -40,14 +44,19 @@
   ],
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "bun run clean && bun run style-dictionary.config.ts && bunx tsc --project tsconfig.build.json",
+    "build": "bun run clean && bun run style-dictionary.config.ts && bunx tsc --project tsconfig.build.json && bun run build:theme",
     "check": "bunx tsc --noEmit && bun run check:palette",
     "check:palette": "bun src/checks/run.ts",
-    "prepublishOnly": "bun run build"
+    "prepublishOnly": "bun run build",
+    "build:theme": "bun build src/theme/index.ts src/theme/cli.ts --outdir dist/theme --target node && chmod +x dist/theme/cli.js && bunx tsc --project tsconfig.theme.json && cp dist/_types/theme/*.d.ts dist/theme/ && rm -rf dist/_types",
+    "test": "bun test"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "style-dictionary": "^5.4.0",
     "typescript": "^5"
+  },
+  "bin": {
+    "stemcell-theme": "./dist/theme/cli.js"
   }
 }

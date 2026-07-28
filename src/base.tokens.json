@@ -1364,7 +1364,7 @@
     }
   },
   "loader": {
-    "$description": "円形の進行表示(CircularLoader / CircularProgress)の径。spacing 原始のエイリアス(4px 格子・rem 建て)。配線は foundations/size.rules.json の loader チャンネル(size.md §2)。線形(Linear 系)は径を持たず器いっぱいに広がるので、このスケールを引かない。",
+    "$description": "円形の進行表示(CircularLoader / CircularProgress)の径。spacing 原始のエイリアス(4px 格子・rem 建て)。配線は foundations/size.rules.json の loader チャンネル(size.md §2)。線形(Linear 系)は径を持たず親の幅いっぱいに広がるので、このスケールを引かない。",
     "sm": {
       "$type": "dimension",
       "$value": "{spacing.4}",

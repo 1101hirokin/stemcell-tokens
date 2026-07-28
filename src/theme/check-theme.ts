@@ -91,17 +91,24 @@ export function mergeBrand(colors: ThemeColors): Record<Rung, string> {
   return merged;
 }
 
-/** 図の分類の色の既定（テーマごと）。差し替えられなかった段はこれが残る。 */
-export function defaultCategorical(scheme: Scheme): Record<CategoricalRung, string> {
+/**
+ * 図の分類の色の既定（テーマごと）。差し替えられなかった段はこれが残る。
+ *
+ * 一色目はブランドを引いているので、ブランドを差し替えた消費者では既定そのものが動く。だから
+ * 合成後のブランドを渡して解く（渡さなければ既定のブランド）。
+ */
+export function defaultCategorical(scheme: Scheme, brand: Record<Rung, string> = defaultBrand()): Record<CategoricalRung, string> {
   const theme = scheme === 'light' ? light : dark;
   const out = {} as Record<CategoricalRung, string>;
   for (const k of CATEGORICAL) {
     const raw = node(theme, `color.dataviz.categorical.${k}`)?.$value;
     if (typeof raw !== 'string') throw new Error(`既定の dataviz.categorical.${k} が読めない`);
     const m = /^\{color\.([a-z]+)\.([a-z0-9]+)(?:\.(\d+))?\}$/.exec(raw.trim());
-    const resolved = m
-      ? (node(base, m[3] ? `color.${m[1]}.${m[2]}.${m[3]}` : `color.${m[1]}.${m[2]}`)?.$value as string | undefined)
-      : raw;
+    const resolved = !m
+      ? raw
+      : m[1] === 'brand'
+        ? brand[m[2] as Rung]
+        : (node(base, m[3] ? `color.${m[1]}.${m[2]}.${m[3]}` : `color.${m[1]}.${m[2]}`)?.$value as string | undefined);
     if (typeof resolved !== 'string') throw new Error(`既定の dataviz.categorical.${k} が解けない（${raw}）`);
     out[k] = resolved;
   }
@@ -121,8 +128,13 @@ function chartSurface(scheme: Scheme): string {
 }
 
 /** 図の分類の色を測る。床は checks/dataviz.ts と同じ（既知の良いパレットから決めた値）。 */
-function checkCategorical(scheme: Scheme, colors: ThemeColors, violations: ThemeViolation[]): number {
-  const merged = defaultCategorical(scheme);
+function checkCategorical(
+  scheme: Scheme,
+  colors: ThemeColors,
+  brand: Record<Rung, string>,
+  violations: ThemeViolation[],
+): number {
+  const merged = defaultCategorical(scheme, brand);
   for (const k of CATEGORICAL) {
     const given = colors.dataviz?.categorical?.[k];
     if (given) merged[k] = given;
@@ -255,7 +267,7 @@ export function checkTheme(input: ThemeInput): ThemeReport {
   }
 
   // 4. 図の分類の色（差し替えたときだけ意味を持つが、既定との混ざり目も見るので常に測る）
-  for (const scheme of schemes) checked += checkCategorical(scheme, input.colors, violations);
+  for (const scheme of schemes) checked += checkCategorical(scheme, input.colors, brand, violations);
 
   return {
     merged: {

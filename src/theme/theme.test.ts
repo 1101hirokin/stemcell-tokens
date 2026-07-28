@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test';
-import { checkTheme, mergeBrand, defaultBrand } from './check-theme.ts';
+import { checkTheme, mergeBrand, defaultBrand, defaultCategorical } from './check-theme.ts';
 import { defineTheme } from './define-theme.ts';
 
 test('渡さなかった段は既定に落ちる', () => {
@@ -94,8 +94,9 @@ test('連続と発散はまだ開けていない', () => {
 });
 
 test('差し替えた分類の色を測る（既定との混ざり目も見る）', () => {
-  // 2 を 1 と同じ色にすると、見分けが付かない
-  const report = checkTheme({ scheme: 'light', colors: { dataviz: { categorical: { '2': '#1192E8' } } } });
+  // 2 を 1（ブランド）と同じ色にすると、見分けが付かない
+  const first = defaultCategorical('light')['1'];
+  const report = checkTheme({ scheme: 'light', colors: { dataviz: { categorical: { '2': first } } } });
   expect(report.violations.some((v) => v.layer === 'dataviz' && v.where.includes('↔'))).toBe(true);
 });
 
@@ -104,4 +105,18 @@ test('既定の分類の色は自分の床を満たす', () => {
     const report = checkTheme({ scheme, colors: {} });
     expect(report.violations.filter((v) => v.layer === 'dataviz')).toEqual([]);
   }
+});
+
+test('一色目はブランドに追従する（ブランドを差し替えると図の一色目も動く）', () => {
+  const own = defaultCategorical('light');
+  expect(own['1']).toBe(defaultBrand()['600']);
+  const swapped = defaultCategorical('light', { ...defaultBrand(), '600': '#0F766E' });
+  expect(swapped['1']).toBe('#0F766E');
+  expect(swapped['2']).toBe(own['2']);
+});
+
+test('ブランドを図に使えない色へ差し替えたら、図の側でも捕まる', () => {
+  // 面に対して 3:1 を割るブランド
+  const report = checkTheme({ scheme: 'light', colors: { brand: { '600': '#FFF7B0' } } });
+  expect(report.violations.some((v) => v.layer === 'dataviz' && v.where === 'dataviz.categorical.1')).toBe(true);
 });

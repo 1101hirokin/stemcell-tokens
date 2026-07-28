@@ -4,6 +4,51 @@ Versioning is suspended until the first release: pins stay at `0.0.0-alpha.N` an
 breaking changes are not expressed as major bumps. This file carries what the version
 number no longer says. See `GOVERNANCE.md` §3 in `stemcell-component-prompts`.
 
+## 0.0.0-alpha.11
+
+### Fixed — dark intents lost their label under the pointer
+
+Dark's fills moved *lighter* on hover and press (500 → 400 → 300) while `fg` stayed white.
+Every intent dropped its label to 2.45:1 on hover and 1.89:1 on press — filled buttons,
+filled tags, everything that pins white text to an intent. Light was never affected
+(600 → 700 → 800 goes the other way). Confirmed in a browser: a primary button in dark
+reads `rgb(140,160,255)` under the pointer.
+
+"Lighter = raised" is right for surfaces and wrong for a fill whose label colour is fixed.
+Dark's hover / pressed now use the darker rungs (600 / 700), matching light's direction.
+
+- `bg-hover`: `{hue}.400` → `{hue}.600` (2.45:1 → 6.42:1 with white)
+- `bg-pressed`: `{hue}.300` → `{hue}.700` (1.89:1 → 7.75:1)
+- Applies to all six intents (primary / danger / success / warning / info / plain).
+- Soft states were already above the floor and did not move.
+
+### Added — `intent` check
+
+`src/checks/intent.ts` asks the question none of the existing checks asked: does an
+intent's label still clear 4.5:1 on the hover and pressed rungs, filled and soft? The
+palette check asks whether a scale is built correctly; the border check asks which rung
+got wired to the border. Neither looks at a state that only the pointer reaches.
+
+`disabled` is exempt (SC 1.4.3 excludes text in an inactive control, and state.md §7 makes
+the low contrast the message).
+
+### Added — consumer theme tooling (`@stemcell/tokens/theme`, `stemcell-theme`)
+
+For consumers who replace the brand ramp. It is a yardstick, not a gate: the DS promises
+that following its rules keeps a floor, and a consumer who overrides takes that on
+(decision 2026-07-28). Nothing runs at app startup.
+
+- `defineTheme({ key, scheme, colors })` → `{ css, dropped }`. Validates keys and escapes
+  values (this is the one place a consumer string becomes CSS), and emits only the rungs
+  that were given — the rest fall back to the defaults.
+- `checkTheme({ scheme?, colors })` → violations over the **merged** ten rungs, not just
+  the given ones. Partial overrides are allowed, so the merged ramp is what ships.
+  Checks the ladder (five-apart is AA, same staircase) and the wired roles (label on
+  `primary.bg` and its states), in both schemes unless one is named.
+- `stemcell-theme check [file]` for CI. Finds `stemcell.theme.json` on its own, reads
+  JSON / a module's default export / stdin, prints one line when clean, and exits
+  0 / 1 / 2 (`--warn-only`, `--json`, `--scheme`, `--verbose`).
+
 ## 0.0.0-alpha.10
 
 ### Fixed — dark secondary text was below the floor

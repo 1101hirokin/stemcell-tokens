@@ -420,9 +420,9 @@
       "$description": "Chart palette (foundations/dataviz.md §3). Three scales with three different promises: categorical separates series, sequential shows order, diverging shows distance from a middle. checks/dataviz.ts enforces them, including under simulated deuteranopia and protanopia.",
       "categorical": {
         "1": {
-          "$value": "{color.viz.azure.500}",
+          "$value": "{color.brand.600}",
           "$type": "color",
-          "$description": "Categorical rung 1 (viz.azure.500)."
+          "$description": "Categorical rung 1 (brand.600). The first series is the brand colour: one series alone reads as \"this product's number\", and a consumer who swaps the brand gets a chart that follows."
         },
         "2": {
           "$value": "{color.viz.magenta.500}",

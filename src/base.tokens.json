@@ -338,19 +338,7 @@
       }
     },
     "viz": {
-      "$description": "Chart-only hues (foundations/dataviz.md §3). Separate from the UI ramps on purpose: those are built for text and surfaces, so their mid rungs are pastels that miss 3:1 on white and their dark rungs collapse into browns and muddy greens. A categorical palette needs six hues that hold their distance from each other AND clear 3:1 on the chart surface, which is a different job. Values come from IBM Carbon's categorical palette, which measures well under our own checks (OKLab distance 0.141 normal / 0.059 deuteranopia / 0.042 protanopia in light). Adobe Spectrum's categorical set was measured too and fails 3:1 on white (1.67:1): it is drawn for large fills, not for bars on a white page. Rung 500 is what light themes use, 300 what dark themes use, mirroring the UI ramps.",
-      "azure": {
-        "500": {
-          "$value": "#1192E8",
-          "$type": "color",
-          "$description": "Carbon blue-60 / blue-40. Light themes draw with this rung."
-        },
-        "300": {
-          "$value": "#33B1FF",
-          "$type": "color",
-          "$description": "Carbon blue-60 / blue-40. Dark themes draw with this rung."
-        }
-      },
+      "$description": "Chart-only hues (foundations/dataviz.md §3). Separate from the UI ramps on purpose: those are built for text and surfaces, so their mid rungs are pastels that miss 3:1 on white and their dark rungs collapse into browns and muddy greens. A categorical palette needs six hues that hold their distance from each other AND clear 3:1 on the chart surface, which is a different job. Series 1 is the brand colour (the theme decides it), so this family holds the other five. Values come from IBM Carbon's categorical palette, which measures well under our own checks (OKLab distance 0.141 normal / 0.059 deuteranopia / 0.042 protanopia in light). Adobe Spectrum's categorical set was measured too and fails 3:1 on white (1.67:1): it is drawn for large fills, not for bars on a white page. Rung 500 is what light themes use, 300 what dark themes use, mirroring the UI ramps.",
       "magenta": {
         "500": {
           "$value": "#9F1853",
@@ -406,9 +394,9 @@
           "$description": "Carbon green-60 / green-40. Light themes draw with this rung."
         },
         "300": {
-          "$value": "#42BE65",
+          "$value": "#6FDC8C",
           "$type": "color",
-          "$description": "Carbon green-60 / green-40. Dark themes draw with this rung."
+          "$description": "Carbon green-30. Dark themes draw with this rung."
         }
       }
     },

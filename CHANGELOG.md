@@ -4,6 +4,14 @@ Versioning is suspended until the first release: pins stay at `0.0.0-alpha.N` an
 breaking changes are not expressed as major bumps. This file carries what the version
 number no longer says. See `GOVERNANCE.md` §3 in `stemcell-component-prompts`.
 
+## 0.0.0-alpha.12
+
+### Fixed — the theme tooling was not in the published tarball
+
+`files` listed `dist/web/` only, so alpha.11 shipped `@stemcell/tokens/theme` in its
+`exports` map with nothing behind it. Consumers got a module-not-found. Added
+`dist/theme/`.
+
 ## 0.0.0-alpha.11
 
 ### Fixed — dark intents lost their label under the pointer

@@ -4,3 +4,5 @@ dist/
 *.tsbuildinfo
 .env*
 .cache
+.build/
+.swiftpm/

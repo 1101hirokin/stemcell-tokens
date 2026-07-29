@@ -128,3 +128,76 @@ export function registerTransformGroups(sd: typeof StyleDictionary): void {
     ],
   });
 }
+
+/**
+ * Swift の値へ写す変換。
+ *
+ * 長さは変換しない。数はそのまま pt として読む（size.md §5: 三つの土地で同じ数を使う。
+ * Web だけが rem へ寄せるのは、読者の文字拡大に追従させるという Web 固有の理由による）。
+ */
+export function registerSwiftTransforms(sd: typeof StyleDictionary): void {
+  const raw = (token: { $value?: unknown; value?: unknown }, usesDtcg?: boolean): string =>
+    String(usesDtcg ? token.$value : token.value).trim();
+
+  // #RGB / #RRGGBB / #RRGGBBAA を sRGB の成分へ。$extensions の alpha も畳む。
+  sd.registerTransform({
+    name: 'stemcell/color/swift',
+    type: 'value',
+    // 別名を透かす。SD の値変換は既定で参照解決より前に走るという既知の穴への備えである
+    // （CLAUDE.md が shadow で踏んだもの）。いまのトークンでは付けても外しても出力は変わらず、
+    // 効いていることを確かめられてはいない。将来 alias が深くなったときのために置く。
+    transitive: true,
+    filter: (token, options) => (options.usesDtcg ? token.$type : token.type) === 'color',
+    transform: (token, _, options) => {
+      const hex = raw(token, options.usesDtcg);
+      const m = /^#?([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i.exec(hex);
+      if (!m) return hex; // 参照が解けていない等。format 側で気づけるよう素通し
+      let h = m[1]!;
+      if (h.length === 3) h = h.split('').map(c => c + c).join('');
+      const part = (i: number) => parseInt(h.slice(i * 2, i * 2 + 2), 16) / 255;
+      const declared = (token as { $extensions?: { stemcell?: { alpha?: number } } }).$extensions?.stemcell?.alpha;
+      const alpha = h.length === 8 ? part(3) : (declared ?? 1);
+      const f = (n: number) => n.toFixed(4).replace(/0+$/, '').replace(/\.$/, '.0');
+      return `.init(.sRGB, red: ${f(part(0))}, green: ${f(part(1))}, blue: ${f(part(2))}, opacity: ${f(alpha)})`;
+    },
+  });
+
+  // ms を秒へ。SwiftUI の Animation は TimeInterval を取る（裁定 2026-07-29）。
+  sd.registerTransform({
+    name: 'stemcell/duration/seconds',
+    type: 'value',
+    // 別名を透かす。SD の値変換は既定で参照解決より前に走るという既知の穴への備えである
+    // （CLAUDE.md が shadow で踏んだもの）。いまのトークンでは付けても外しても出力は変わらず、
+    // 効いていることを確かめられてはいない。将来 alias が深くなったときのために置く。
+    transitive: true,
+    filter: (token, options) => (options.usesDtcg ? token.$type : token.type) === 'duration',
+    transform: (token, _, options) => {
+      const v = raw(token, options.usesDtcg);
+      const ms = parseFloat(v);
+      return Number.isFinite(ms) ? String(v.endsWith('ms') ? ms / 1000 : ms) : v;
+    },
+  });
+
+  // px を落として数だけにする。rem 化はしない。
+  sd.registerTransform({
+    name: 'stemcell/size/points',
+    type: 'value',
+    // 別名を透かす。SD の値変換は既定で参照解決より前に走るという既知の穴への備えである
+    // （CLAUDE.md が shadow で踏んだもの）。いまのトークンでは付けても外しても出力は変わらず、
+    // 効いていることを確かめられてはいない。将来 alias が深くなったときのために置く。
+    transitive: true,
+    filter: (token, options) => {
+      const t = options.usesDtcg ? token.$type : token.type;
+      return t === 'dimension' || t === 'fontSize' || t === 'borderRadius' || t === 'strokeWidth' || t === 'breakpoint';
+    },
+    transform: (token, _, options) => {
+      const v = raw(token, options.usesDtcg);
+      return v.endsWith('px') ? String(parseFloat(v)) : v;
+    },
+  });
+
+  sd.registerTransformGroup({
+    name: 'stemcell/swift',
+    transforms: ['name/camel', 'stemcell/color/swift', 'stemcell/duration/seconds', 'stemcell/size/points'],
+  });
+}

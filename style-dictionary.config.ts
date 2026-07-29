@@ -1,13 +1,15 @@
 // Style Dictionary build pipeline: base primitives + per-theme semantic layers.
 // webBase emits tokens from all consumers; webLight/webDark emit only source tokens.
 import StyleDictionary from 'style-dictionary';
-import { registerTransforms, registerTransformGroups } from './src/sd/transforms.ts';
-import { registerFormats } from './src/sd/formats.ts';
+import { registerTransforms, registerTransformGroups, registerSwiftTransforms } from './src/sd/transforms.ts';
+import { registerFormats, registerSwiftFormats } from './src/sd/formats.ts';
 import { themes } from './src/themes.ts';
 
 registerTransforms(StyleDictionary);
 registerTransformGroups(StyleDictionary);
 registerFormats(StyleDictionary);
+registerSwiftTransforms(StyleDictionary);
+registerSwiftFormats(StyleDictionary);
 
 // Typography composite tokens are expanded into individual sub-tokens
 // (fontFamily, fontWeight, fontSize, lineHeight) so they each get their own CSS var.
@@ -46,6 +48,17 @@ const webBase = new StyleDictionary({
         {
           destination: 'base.ts',
           format: 'stemcell/ts/css-var-names',
+        },
+      ],
+    },
+    swift: {
+      transformGroup: 'stemcell/swift',
+      buildPath: 'Sources/StemcellTokens/',
+      files: [
+        {
+          destination: 'Base.swift',
+          format: 'stemcell/swift/tokens',
+          options: { enumName: 'StemcellTokens' },
         },
       ],
     },
@@ -88,6 +101,18 @@ const webLight = new StyleDictionary({
         },
       ],
     },
+    swift: {
+      transformGroup: 'stemcell/swift',
+      buildPath: 'Sources/StemcellTokens/',
+      files: [
+        {
+          destination: 'StandardLight.swift',
+          format: 'stemcell/swift/tokens',
+          filter: sourceOnly,
+          options: { enumName: 'StemcellThemeStandardLight' },
+        },
+      ],
+    },
   },
 });
 
@@ -117,6 +142,18 @@ const webDark = new StyleDictionary({
           destination: 'standard-dark.ts',
           format: 'stemcell/ts/css-var-names',
           filter: sourceOnly,
+        },
+      ],
+    },
+    swift: {
+      transformGroup: 'stemcell/swift',
+      buildPath: 'Sources/StemcellTokens/',
+      files: [
+        {
+          destination: 'StandardDark.swift',
+          format: 'stemcell/swift/tokens',
+          filter: sourceOnly,
+          options: { enumName: 'StemcellThemeStandardDark' },
         },
       ],
     },

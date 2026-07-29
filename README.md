@@ -126,3 +126,31 @@ const { css, dropped } = defineTheme({ key: 'acme', scheme: 'light', colors });
 
 `defineTheme` は CSS を作る側で、測らない。キーの検証と値の検証はここが持つ（消費者の文字列が CSS になる
 唯一の場所であり、テナントごとに色を選ばせる作りではその値が利用者由来になるため）。
+
+## Swift から使う
+
+同じリポジトリが Swift のパッケージでもある。値の源が一つだからで、分けると版がずれる。
+
+```swift
+.package(url: "https://github.com/1101hirokin/stemcell-tokens.git", from: "0.0.1")
+```
+
+`Sources/StemcellTokens/` の中身は Style Dictionary が生成する。手で直さない。生成物を
+リポジトリに置いてあるのは、SPM がソースを要求するためである。トークンを変えると
+ここにも差分が出る。
+
+長さは pt で、Web の CSS px と同じ数である（`size.md` §5）。時間は秒で、SwiftUI の
+`Animation` がそのまま取れる。
+
+明暗で変わる色は `DynamicColor` で対にして持つ。アセットカタログを使わないのは、
+テーマを実行時に差し替えられる必要があるからである（憲法 第3条）。
+
+```swift
+let background = DynamicColor(
+    light: StemcellThemeStandardLight.Color.App.background,
+    dark: StemcellThemeStandardDark.Color.App.background
+).resolved
+```
+
+字体と字間の一部は出していない。CSS の font stack や em 建ての字間は、その土地の写像を
+決めないと数にできない。何を出していないかは生成物の先頭に書いてある。

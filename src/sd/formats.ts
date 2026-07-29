@@ -84,3 +84,109 @@ export function registerFormats(sd: typeof StyleDictionary): void {
     },
   });
 }
+
+/** Swift の識別子は数字で始まれない。段の番号には s を冠する（spacing.4 -> s4）。 */
+function swiftIdent(seg: string, upper: boolean): string {
+  const camel = seg.replace(/[-_.]([a-z0-9])/g, (_, c: string) => c.toUpperCase());
+  const safe = /^[0-9]/.test(camel) ? `s${camel}` : camel;
+  return upper ? safe.charAt(0).toUpperCase() + safe.slice(1) : safe;
+}
+
+type SwiftNode = { leaf?: TransformedToken; children: Map<string, SwiftNode> };
+
+function buildSwiftTree(tokens: TransformedToken[]): SwiftNode {
+  const root: SwiftNode = { children: new Map() };
+  for (const token of tokens) {
+    let node = root;
+    for (const part of token.path) {
+      if (!node.children.has(part)) node.children.set(part, { children: new Map() });
+      node = node.children.get(part)!;
+    }
+    node.leaf = token;
+  }
+  return root;
+}
+
+/** DTCG の型を Swift の型と、値の書き方へ写す。 */
+function swiftValue(token: TransformedToken): { type: string; literal: string } | null {
+  const t = (token as TransformedToken & { $type?: string }).$type ?? token.type;
+  const v = String((token as TransformedToken & { $value?: unknown }).$value ?? token.value);
+  switch (t) {
+    case 'color':
+      return v.startsWith('.init(') ? { type: 'SwiftUI.Color', literal: v } : null;
+    case 'duration':
+      return { type: 'TimeInterval', literal: v };
+    case 'dimension':
+    case 'fontSize':
+    case 'borderRadius':
+    case 'strokeWidth':
+    case 'breakpoint':
+    case 'number':
+    case 'fontWeight':
+      return Number.isFinite(parseFloat(v)) && /^-?[0-9.]+$/.test(v)
+        ? { type: 'CGFloat', literal: v }
+        : null;
+    case 'cubicBezier': {
+      const pts = (token as TransformedToken & { $value?: unknown }).$value as number[];
+      return Array.isArray(pts) && pts.length === 4
+        ? { type: '(CGFloat, CGFloat, CGFloat, CGFloat)', literal: `(${pts.join(', ')})` }
+        : null;
+    }
+    default:
+      return null; // fontFamily / typography / strokeStyle は土地の写像が要る。§9
+  }
+}
+
+function emitSwift(node: SwiftNode, name: string, indent: number, skipped: string[]): string[] {
+  const pad = ' '.repeat(indent);
+  const lines: string[] = [`${pad}public enum ${swiftIdent(name, true)} {`];
+  for (const [key, child] of node.children) {
+    if (child.leaf && child.children.size === 0) {
+      const val = swiftValue(child.leaf);
+      if (!val) { skipped.push(child.leaf.path.join('.')); continue; }
+      lines.push(`${pad}    public static let ${swiftIdent(key, false)}: ${val.type} = ${val.literal}`);
+    } else {
+      lines.push(...emitSwift(child, key, indent + 4, skipped));
+    }
+  }
+  lines.push(`${pad}}`);
+  return lines;
+}
+
+export function registerSwiftFormats(sd: typeof StyleDictionary): void {
+  sd.registerFormat({
+    name: 'stemcell/swift/tokens',
+    format: ({ dictionary, file }) => {
+      const root = buildSwiftTree(dictionary.allTokens);
+      const skipped: string[] = [];
+      const enumName = (file.options as { enumName?: string } | undefined)?.enumName ?? 'StemcellTokens';
+      const body: string[] = [];
+      for (const [key, child] of root.children) {
+        if (child.leaf && child.children.size === 0) {
+          const val = swiftValue(child.leaf);
+          if (!val) { skipped.push(child.leaf.path.join('.')); continue; }
+          body.push(`    public static let ${swiftIdent(key, false)}: ${val.type} = ${val.literal}`);
+        } else {
+          body.push(...emitSwift(child, key, 4, skipped));
+        }
+      }
+      const note = skipped.length
+        ? `//\n// 出していないトークン（土地の写像が要る。DESIGN.md §9）:\n${skipped.map(s => `//   ${s}`).join('\n')}\n`
+        : '';
+      return [
+        '// @stemcell/tokens が生成した。手で直さない。',
+        '// 長さは pt。数は Web の CSS px と同じ値である（size.md §5）。',
+        '// 時間は秒。SwiftUI の Animation が TimeInterval を取るため。',
+        note.trimEnd(),
+        '',
+        'import CoreGraphics',
+        'import SwiftUI',
+        '',
+        `public enum ${enumName} {`,
+        ...body,
+        '}',
+        '',
+      ].filter(l => l !== undefined).join('\n');
+    },
+  });
+}

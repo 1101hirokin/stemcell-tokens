@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.2
 import PackageDescription
 
 // stemcell のトークンを Swift から読むためのパッケージ。値は Style Dictionary が生成する。

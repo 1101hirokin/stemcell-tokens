@@ -29,8 +29,8 @@ public enum StemcellThemeStandardLight {
             public static let border: SwiftUI.Color = .init(.sRGB, red: 0.5216, green: 0.5725, blue: 0.6353, opacity: 1.0)
             public static let divider: SwiftUI.Color = .init(.sRGB, red: 0.902, green: 0.9098, blue: 0.9255, opacity: 1.0)
             public static let shadow: SwiftUI.Color = .init(.sRGB, red: 0.1608, green: 0.1843, blue: 0.2118, opacity: 1.0)
-            public static let shadowUmbra: SwiftUI.Color = .init(.sRGB, red: 0.1608, green: 0.1843, blue: 0.2118, opacity: 1.0)
-            public static let shadowPenumbra: SwiftUI.Color = .init(.sRGB, red: 0.1608, green: 0.1843, blue: 0.2118, opacity: 1.0)
+            public static let shadowUmbra: SwiftUI.Color = .init(.sRGB, red: 0.1608, green: 0.1843, blue: 0.2118, opacity: 0.24)
+            public static let shadowPenumbra: SwiftUI.Color = .init(.sRGB, red: 0.1608, green: 0.1843, blue: 0.2118, opacity: 0.14)
             public static let scrim: SwiftUI.Color = .init(.sRGB, red: 0.1608, green: 0.1843, blue: 0.2118, opacity: 1.0)
         }
         public enum Code {
@@ -173,5 +173,5 @@ public enum StemcellThemeStandardLight {
             public static let surface: SwiftUI.Color = .init(.sRGB, red: 1.0, green: 1.0, blue: 1.0, opacity: 1.0)
         }
     }
-    public static let scrim: SwiftUI.Color = .init(.sRGB, red: 0.1608, green: 0.1843, blue: 0.2118, opacity: 1.0)
+    public static let scrim: SwiftUI.Color = .init(.sRGB, red: 0.1608, green: 0.1843, blue: 0.2118, opacity: 0.4)
 }

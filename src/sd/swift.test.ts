@@ -65,6 +65,26 @@ describe('生成した Swift', () => {
     });
   }
 
+  for (const file of ['StandardLight.swift', 'StandardDark.swift']) {
+    test(`${file} の veil と影が宣言した不透明度を持つ`, () => {
+      // 不透明度は別名の先ではなくこの名前が持つ（elevation.md §6）。値変換の時点では
+      // 別名がまだ解けていないので、畳むのは書式の側になる。ここを見落として scrim が
+      // 不透明のまま出ていたことがある。数を固定して二度目を防ぐ。
+      const src = read(file);
+      const opacities = (name: string) =>
+        [...src.matchAll(new RegExp(`let ${name}: SwiftUI\\.Color = \\.init\\([^)]*opacity: ([\\d.]+)`, 'g'))]
+          .map(m => Number(m[1]));
+
+      // scrim は二つ出る。Color.App のほうは veil の基底色で不透明のまま、
+      // 外側の veil が 0.4 を持つ。どちらも要るので、両方あることを見る。
+      expect(opacities('scrim').sort()).toEqual([0.4, 1]);
+      for (const n of [...opacities('shadowUmbra'), ...opacities('shadowPenumbra')]) {
+        expect(n).toBeLessThan(1);
+        expect(n).toBeGreaterThan(0);
+      }
+    });
+  }
+
   test('時間は秒である', () => {
     const src = read('Base.swift');
     const values = [...src.matchAll(/: TimeInterval = ([\d.]+)/g)].map(m => Number(m[1]));

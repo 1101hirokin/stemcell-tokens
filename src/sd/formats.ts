@@ -108,12 +108,26 @@ function buildSwiftTree(tokens: TransformedToken[]): SwiftNode {
 }
 
 /** DTCG の型を Swift の型と、値の書き方へ写す。 */
+/// この名前が宣言する不透明度。別名の先ではなく手前が持つ（elevation.md §6 の veil）。
+function declaredAlpha(token: TransformedToken): number | undefined {
+  type Ext = { $extensions?: { stemcell?: { alpha?: number } }; original?: Ext };
+  const t = token as unknown as Ext;
+  return t.$extensions?.stemcell?.alpha ?? t.original?.$extensions?.stemcell?.alpha;
+}
+
 function swiftValue(token: TransformedToken): { type: string; literal: string } | null {
   const t = (token as TransformedToken & { $type?: string }).$type ?? token.type;
   const v = String((token as TransformedToken & { $value?: unknown }).$value ?? token.value);
   switch (t) {
-    case 'color':
-      return v.startsWith('.init(') ? { type: 'SwiftUI.Color', literal: v } : null;
+    case 'color': {
+      if (!v.startsWith('.init(')) return null;
+      // 不透明度は別名の先ではなく、この名前が宣言する。値変換の時点では別名がまだ
+      // 解けておらず素通しするので（transforms.ts の「既知の穴」）、畳むのはここになる。
+      // 見落とすと scrim が不透明のまま出る。実際そうなっていた。
+      const alpha = declaredAlpha(token);
+      const literal = alpha === undefined ? v : v.replace(/opacity: [0-9.]+/, `opacity: ${alpha}`);
+      return { type: 'SwiftUI.Color', literal };
+    }
     case 'duration':
       return { type: 'TimeInterval', literal: v };
     case 'dimension':
